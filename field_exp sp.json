@@ -18,10 +18,8 @@
             "Hours": 0
         },
         "Corequisite": "DBS approval",
-        "Delivery Mode": {
-            "In-person": true,
-            "Hybrid": false,
-            "Online": false
-        }
+        "Delivery Mode": [
+            "In-person"
+        ]
     }
 }

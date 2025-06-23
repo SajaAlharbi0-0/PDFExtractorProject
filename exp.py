@@ -24,24 +24,29 @@ def _grab(patterns, text, default=None, flags=re.IGNORECASE):
 
 # ---------- Field A ----------
 def extract_field_experience_details(text: str) -> dict:
+    modes = []
+    if re.search(r"[☒Xx]\s*In[- ]?person", text, re.IGNORECASE):
+        modes.append("In-person")
+    if re.search(r"[☒Xx]\s*Hybrid", text, re.IGNORECASE):
+        modes.append("Hybrid")
+    if re.search(r"[☒Xx]\s*Online", text, re.IGNORECASE):
+        modes.append("Online")
+
     return {
         "Credit Hours": _grab(r"Credit\s*hours.*?\(\s*(\d+)\s*credit", text),
-        "Level/Year"  : _grab(r"Level\/year.*?offered:\s*(.*?)\n", text),
+        "Level/Year": _grab(r"Level\/year.*?offered:\s*(.*?)\n", text),
         "Duration": {
-            "Weeks" : int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Weeks",  text, "0"))),
-            "Days"  : int(convert_arabic_digits(_grab(r"Weeks.*?\(\s*([\d٠-٩]+)\s*\)\s*Days",  text, "0"))),
-            "Hours" : int(convert_arabic_digits(_grab(r"Days.*?\(\s*([\d٠-٩]+)\s*\)\s*Hours", text, "0"))),
+            "Weeks": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Weeks", text, "0"))),
+            "Days": int(convert_arabic_digits(_grab(r"Weeks.*?\(\s*([\d٠-٩]+)\s*\)\s*Days", text, "0"))),
+            "Hours": int(convert_arabic_digits(_grab(r"Days.*?\(\s*([\d٠-٩]+)\s*\)\s*Hours", text, "0"))),
         },
         "Corequisite": _grab([
             r"Corequisite.*?\n\s*(.*?)\n",
             r"Corequisite.*?:\s*(.*?)\n"
         ], text, ""),
-        "Delivery Mode": {
-            "In-person": bool(re.search(r"[☒Xx]\s*In[- ]?person", text, re.IGNORECASE)),
-            "Hybrid"   : bool(re.search(r"[☒Xx]\s*Hybrid",      text, re.IGNORECASE)),
-            "Online"   : bool(re.search(r"[☒Xx]\s*Online",      text, re.IGNORECASE)),
-        }
+        "Delivery Mode": modes
     }
+
 
 # ---------- استخراج البيانات ----------
 def extract_data(file_path):
