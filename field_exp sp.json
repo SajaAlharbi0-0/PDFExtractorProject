@@ -22,7 +22,11 @@
             "In-person"
         ]
     },
-    "Field Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods": {},
+    "Field Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods": {
+        "1.0 Knowledge and understanding": [],
+        "2.0 Skills": [],
+        "3.0 Values, autonomy, and responsibility": []
+    },
     "Specification Approval Data": {
         "Council/Committee": "DBS COUNCIL MEETING 29TH FOR THE ACADEMIC YEAR 2023",
         "Reference No": "15",

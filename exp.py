@@ -51,46 +51,34 @@ def extract_field_experience_details(text: str) -> dict:
     }
 
 # ---------- Field B ----------
-def extract_clos_grouped(file_path: str) -> dict:
-    import camelot
+def extract_clos_grouped(text: str) -> dict:
+    pattern = re.compile(
+        r"(?P<code>\d\.\d)\s+(?P<outcome>.+?)\s+(?P<plo>S\d+|V\d+)\s+(?P<strategy>.+?)\s+(?P<assessment>Midterm.*?|Final.*?|Report.*?|Presentation.*?|Portfolio.*?)\s+(?P<resp>Supervisor|Instructor|Coordinator)",
+        re.DOTALL
+    )
 
-    tables = camelot.read_pdf(file_path, pages='all', flavor='stream')  # or 'lattice' if borders are clear
-    print(f"✅ Found {len(tables)} tables.")
+    clos = {
+        "1.0 Knowledge and understanding": [],
+        "2.0 Skills": [],
+        "3.0 Values, autonomy, and responsibility": []
+    }
 
-    # نفترض أن الجدول المناسب هو رقم 1 حسب اختبارك السابق
-    table = tables[1].df
-    clos = {}
-    current_section = None
+    for match in re.finditer(pattern, text):
+        group_key = {
+            "1": "1.0 Knowledge and understanding",
+            "2": "2.0 Skills",
+            "3": "3.0 Values, autonomy, and responsibility"
+        }.get(match.group("code")[0])
 
-    for index, row in table.iterrows():
-        # تخطى الصفوف الفارغة
-        if row.isnull().all() or row[0].strip() == "":
-            continue
-
-        code = row[0].strip()
-
-        # إذا الصف عبارة عن عنوان رئيسي (مثل 2.0 Skills)
-        if re.match(r"^\d+\.0$", code):
-            current_section = code
-            clos[current_section] = {
-                "Title": row[1].strip(),
-                "Items": []
-            }
-            continue
-
-        # إذا الصف عبارة عن CLO عادي
-        if re.match(r"^\d+\.\d+$", code) and current_section:
-            try:
-                clos[current_section]["Items"].append({
-                    "Code": code,
-                    "Outcome": row[1].strip(),
-                    "PLO Code": row[2].strip(),
-                    "Activities": row[3].strip(),
-                    "Assessment Methods": row[4].strip(),
-                    "Responsibility": row[5].strip()
-                })
-            except IndexError:
-                print(f"⚠️ Skipping incomplete row at index {index}: {row}")
+        if group_key:
+            clos[group_key].append({
+                "Code": match.group("code").strip(),
+                "Course Learning Outcome": match.group("outcome").strip().replace("\n", " "),
+                "PLO Code": match.group("plo").strip(),
+                "Teaching Strategies": match.group("strategy").strip(),
+                "Assessment Methods": match.group("assessment").strip(),
+                "Responsibility": match.group("resp").strip()
+            })
 
     return clos
 
@@ -131,7 +119,8 @@ def extract_data(file_path):
         },
         "Field Experience Details": extract_field_experience_details(text),
         "Field Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods":
-        extract_clos_grouped(file_path),
+            extract_clos_grouped(file_path),
+
 
         "Specification Approval Data": extract_spec_approval_data(text)
  
