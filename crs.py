@@ -69,7 +69,43 @@ data_structure = {
                 "2.0 Skills": [],
                 "3.0 Values, autonomy, and responsibility": []
             }
+        }, "D": {
+        "title": "Students Assessment Activities",
+        "content": []
+    },
+    "E": {
+        "title": "Learning Resources and Facilities",
+        "content": {
+            "References and Learning Resources": {
+                "Essential References": [],
+                "Supportive References": [],
+                "Electronic Materials": [],
+                "Other Learning Materials": []
+            },
+            "Required Facilities and Equipment": {
+                "Facilities": "",
+                "Technology equipment": "",
+                "Other equipment": ""
+            }
         }
+    },
+    "F": {
+    "title": "Assessment of Course Quality",
+    "content": {
+        "assessment_of_course_quality": []
+    }
+},
+"G": {
+    "title": "Specification Approval",
+    "content": {
+        "COUNCIL /COMMITTEE": "",
+        "REFERENCE NO.": "",
+        "DATE": ""
+    }
+}
+
+
+
     }
 }
 # Extract from PDF
@@ -204,6 +240,38 @@ data_structure["Sections"]["D"]["content"] = extract_assessment_activities(full_
 
 
 
+# === Section E: Learning Resources and Facilities ===
+def clean_reference_block(text):
+    lines = [line.strip() for line in text.strip().splitlines() if line.strip()]
+    return [" ".join(lines)] if lines else []
+
+essential_match = re.search(r"Essential References\s*(.+?)\s*(Supportive References|Electronic Materials)", full_text, re.DOTALL)
+if essential_match:
+    data_structure["Sections"]["E"]["content"]["References and Learning Resources"]["Essential References"] = clean_reference_block(essential_match.group(1))
+
+supportive_match = re.search(r"Supportive References\s*(.+?)\s*(Electronic Materials|Other Learning Materials)", full_text, re.DOTALL)
+if supportive_match:
+    data_structure["Sections"]["E"]["content"]["References and Learning Resources"]["Supportive References"] = clean_reference_block(supportive_match.group(1))
+
+electronic_match = re.search(r"Electronic Materials\s*(.+?)\s*(Other Learning Materials|Required Facilities and Equipment)", full_text, re.DOTALL)
+if electronic_match:
+    data_structure["Sections"]["E"]["content"]["References and Learning Resources"]["Electronic Materials"] = clean_reference_block(electronic_match.group(1))
+
+other_match = re.search(r"Other Learning Materials\s*(.+?)\s*(Required Facilities and Equipment|6\. Required Facilities and Equipment)", full_text, re.DOTALL)
+if other_match:
+    data_structure["Sections"]["E"]["content"]["References and Learning Resources"]["Other Learning Materials"] = clean_reference_block(other_match.group(1))
+
+facilities_match = re.search(r"Facilities\s*:\s*(.+?)\s*Technology equipment", full_text, re.DOTALL)
+if facilities_match:
+    data_structure["Sections"]["E"]["content"]["Required Facilities and Equipment"]["Facilities"] = facilities_match.group(1).strip().replace("\n", " ")
+
+tech_match = re.search(r"Technology equipment\s*:\s*(.+?)\s*Other equipment", full_text, re.DOTALL)
+if tech_match:
+    data_structure["Sections"]["E"]["content"]["Required Facilities and Equipment"]["Technology equipment"] = tech_match.group(1).strip().replace("\n", " ")
+
+other_eq_match = re.search(r"Other equipment\s*:\s*(.+?)\s*(\n|$)", full_text, re.DOTALL)
+if other_eq_match:
+    data_structure["Sections"]["E"]["content"]["Required Facilities and Equipment"]["Other equipment"] = other_eq_match.group(1).strip().replace("\n", " ")
 
 
 
