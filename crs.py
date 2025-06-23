@@ -165,16 +165,19 @@ data_structure["Sections"]["D"]["content"] = extract_assessment_activities(full_
 
 
 
-
 # === Section F: Assessment of Course Quality ===
-def parse_manual_section_f(raw_text):
-    lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
+def parse_section_f_from_page_lines(lines):
     result = []
     i = 0
 
     while i < len(lines):
-        # If we hit "Other", it's the last known row
-        if lines[i].lower().startswith("other"):
+        line = lines[i].lower()
+
+        if "assessment areas/issues" in line or "assessors" in line or "assessment methods" in line:
+            i += 1
+            continue
+
+        if "other" in line:
             result.append({
                 "assessment_areas_issues": "Other",
                 "assessor": None,
@@ -183,45 +186,42 @@ def parse_manual_section_f(raw_text):
             i += 1
             continue
 
-        # Get area
-        area_lines = []
-        while i < len(lines) and not any(kw in lines[i].lower() for kw in ["faculty", "students", "peer", "staff", "coordinator", "review", "direct", "indirect", "none", "other"]):
-            area_lines.append(lines[i])
-            i += 1
-        area = " ".join(area_lines).strip()
+        # Gather area
+        area = lines[i]
+        i += 1
 
-        # Get assessor
-        assessor_lines = []
-        while i < len(lines) and not any(kw in lines[i].lower() for kw in ["direct", "indirect"]):
-            if lines[i].lower().startswith("other"):
-                break
-            assessor_lines.append(lines[i])
+        # Gather assessor(s)
+        assessors = []
+        while i < len(lines) and not ("direct" in lines[i].lower() or "indirect" in lines[i].lower()):
+            if lines[i].lower().startswith("other"): break
+            assessors.append(lines[i])
             i += 1
-        assessor = " ".join(assessor_lines).strip() if assessor_lines else None
 
-        # Get methods
-        method_lines = []
-        while i < len(lines) and any(kw in lines[i].lower() for kw in ["direct", "indirect"]):
-            method_lines.append(lines[i])
+        # Gather method(s)
+        methods = []
+        while i < len(lines) and ("direct" in lines[i].lower() or "indirect" in lines[i].lower()):
+            methods.append(lines[i])
             i += 1
-        method = " ".join(method_lines).strip() if method_lines else None
 
         result.append({
-            "assessment_areas_issues": area if area else "Other",
-            "assessor": assessor if assessor and assessor.lower() != "none" else None,
-            "assessment_methods": method if method and method.lower() != "none" else None
+            "assessment_areas_issues": area.strip(),
+            "assessor": " ".join(assessors).strip() if assessors else None,
+            "assessment_methods": " ".join(methods).strip() if methods else None
         })
 
-    return {"assessment_of_course_quality": result}
+    return result
 
-# Extract and parse text between F and G
-section_f_match = re.search(r"F\. Assessment of Course Quality(.+?)G\. Specification Approval", full_text, re.DOTALL)
-if section_f_match:
-    section_f_text = section_f_match.group(1)
-    parsed_f = parse_manual_section_f(section_f_text)
-    data_structure["Sections"]["F"]["content"] = parsed_f
+# Extract and process lines from page 6
+with pdfplumber.open(pdf_path) as pdf:
+    page_6_lines = [line.strip() for line in pdf.pages[5].extract_text().splitlines() if line.strip()]
+    start_index = next(i for i, line in enumerate(page_6_lines) if "Assessment of Course Quality" in line)
+    end_index = next(i for i, line in enumerate(page_6_lines) if line.startswith("G. Specification Approval"))
+    section_f_lines = page_6_lines[start_index:end_index]
 
-
+    parsed_f = parse_section_f_from_page_lines(section_f_lines)
+    data_structure["Sections"]["F"]["content"] = {
+        "assessment_of_course_quality": parsed_f
+    }
 
 
 
