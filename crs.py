@@ -64,18 +64,60 @@ data_structure = {
 
             }
         },
-        "B": {"title": "Course Learning Outcomes (CLOs), Teaching Strategies and Assessment", "content": None},
-        "C": {"title": "Course Content", "content": None},
-        "D": {"title": "Students Assessment Activities", "content": None},
-        "E": {"title": "Learning Resources and Facilities", "content": None},
-        "F": {"title": "Assessment of Course Quality", "content": None},
-        "G": {"title": "Specification Approval", "content": None}
+        "B": {
+            "title": "Course Learning Outcomes (CLOs), Teaching Strategies and Assessment Methods",
+            "content": {
+                "1.0 Knowledge and understanding": [],
+                "2.0 Skills": [],
+                "3.0 Values, autonomy, and responsibility": []
+            }
+        }
     }
 }
-
 # Extract from PDF
 with pdfplumber.open(pdf_path) as pdf:
     full_text = "\n".join(page.extract_text() for page in pdf.pages)
+
+# Extract CLOs from Section B using improved regex
+clo_matches = re.findall(
+    r"(?P<code>\d\.\d)\s+(?P<outcome>.+?)\s+Activities;\s*(?P<strategy>.+?)\s+(Midterms.*?|Final Exam.*?)\s*(?=\d\.\d|\Z)",
+    full_text,
+    re.DOTALL
+)
+
+# Debug check (optional)
+print("=== Sample from text ===")
+print(full_text[full_text.find("1.0 Knowledge and understanding"):][:500])  # Print preview
+
+# Assign CLOs to their categories
+for match in clo_matches:
+    clo_code = match[0]
+    outcome = match[1]
+    strategy = match[2]
+    assessment = match[3]
+
+    group_key = {
+        "1": "1.0 Knowledge and understanding",
+        "2": "2.0 Skills",
+        "3": "3.0 Values, autonomy, and responsibility"
+    }.get(clo_code[0], None)
+
+    if group_key:
+        data_structure["Sections"]["B"]["content"][group_key].append({
+            "Code": clo_code.strip(),
+            "Course Learning Outcome": outcome.strip().replace("\n", " "),
+            "PLO Code": "",  # Leave blank or fill later
+            "Teaching Strategies": strategy.strip(),
+            "Assessment Methods": assessment.strip()
+        })
+
+
+
+
+    
+
+
+
 
 # Fill Course Info
 patterns = {
