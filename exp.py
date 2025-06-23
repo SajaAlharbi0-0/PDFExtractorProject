@@ -4,6 +4,7 @@ import re
 import json
 from pathlib import Path
 from tkinter import Tk, filedialog
+import pdfplumber, re ,camelot
 
 
 
@@ -50,6 +51,54 @@ def extract_field_experience_details(text: str) -> dict:
         "Delivery Mode": modes
     }
 
+# ---------- Field B ----------
+def extract_clos_grouped(file_path: str) -> dict:
+    import camelot
+
+    tables = camelot.read_pdf(file_path, pages='all', flavor='stream')  # or 'lattice' if borders are clear
+    print(f"✅ Found {len(tables)} tables.")
+
+    # نفترض أن الجدول المناسب هو رقم 1 حسب اختبارك السابق
+    table = tables[1].df
+    clos = {}
+    current_section = None
+
+    for index, row in table.iterrows():
+        # تخطى الصفوف الفارغة
+        if row.isnull().all() or row[0].strip() == "":
+            continue
+
+        code = row[0].strip()
+
+        # إذا الصف عبارة عن عنوان رئيسي (مثل 2.0 Skills)
+        if re.match(r"^\d+\.0$", code):
+            current_section = code
+            clos[current_section] = {
+                "Title": row[1].strip(),
+                "Items": []
+            }
+            continue
+
+        # إذا الصف عبارة عن CLO عادي
+        if re.match(r"^\d+\.\d+$", code) and current_section:
+            try:
+                clos[current_section]["Items"].append({
+                    "Code": code,
+                    "Outcome": row[1].strip(),
+                    "PLO Code": row[2].strip(),
+                    "Activities": row[3].strip(),
+                    "Assessment Methods": row[4].strip(),
+                    "Responsibility": row[5].strip()
+                })
+            except IndexError:
+                print(f"⚠️ Skipping incomplete row at index {index}: {row}")
+
+    return clos
+
+
+
+
+
 
 # ---------- Field C ----------
 def extract_spec_approval_data(text: str) -> dict:
@@ -82,6 +131,9 @@ def extract_data(file_path):
             "Last Revision Date": _grab(r"Last Revision Date:\s+(.*?)\n",             text),
         },
         "Field Experience Details": extract_field_experience_details(text),
+        "Field Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods":
+        extract_clos_grouped(file_path),
+
         "Specification Approval Data": extract_spec_approval_data(text)
  
 
