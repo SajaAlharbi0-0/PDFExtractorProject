@@ -38,10 +38,11 @@ def extract_field_experience_details(text: str) -> dict:
         "Credit Hours": _grab(r"Credit\s*hours.*?\(\s*(\d+)\s*credit", text),
         "Level/Year": _grab(r"Level\/year.*?offered:\s*(.*?)\n", text),
         "Duration": {
-            "Weeks": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Weeks", text, "0"))),
-            "Days": int(convert_arabic_digits(_grab(r"Weeks.*?\(\s*([\d٠-٩]+)\s*\)\s*Days", text, "0"))),
-            "Hours": int(convert_arabic_digits(_grab(r"Days.*?\(\s*([\d٠-٩]+)\s*\)\s*Hours", text, "0"))),
-        },
+    "Weeks": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Weeks", text, "0"))),
+    "Days": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Days", text, "0"))),
+    "Hours": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Hours", text, "0"))),
+},
+
         "Corequisite": _grab([
             r"Corequisite.*?\n\s*(.*?)\n",
             r"Corequisite.*?:\s*(.*?)\n"
