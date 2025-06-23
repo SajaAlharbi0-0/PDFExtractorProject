@@ -162,34 +162,66 @@ data_structure["Sections"]["D"]["content"] = extract_assessment_activities(full_
 
 
 
+
+
+
+
 # === Section F: Assessment of Course Quality ===
-def extract_table_from_section_f(pdf):
-    for page in pdf.pages:
-        text = page.extract_text()
-        if text and "Assessment of Course Quality" in text:
-            table = page.extract_table()
-            if not table:
-                continue
+def parse_manual_section_f(raw_text):
+    lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
+    result = []
+    i = 0
 
-            entries = []
-            for row in table[1:]:  # skip header
-                if row and len(row) >= 3:
-                    area = row[0].strip() if row[0] else None
-                    assessor = row[1].strip() if row[1] else None
-                    method = row[2].strip() if row[2] else None
-                    entries.append({
-                        "assessment_areas_issues": area or "Other",
-                        "assessor": assessor if assessor and assessor.lower() != "none" else None,
-                        "assessment_methods": method if method and method.lower() != "none" else None
-                    })
-            return entries
-    return []
+    while i < len(lines):
+        # If we hit "Other", it's the last known row
+        if lines[i].lower().startswith("other"):
+            result.append({
+                "assessment_areas_issues": "Other",
+                "assessor": None,
+                "assessment_methods": None
+            })
+            i += 1
+            continue
 
-with pdfplumber.open(pdf_path) as pdf:
-    f_entries = extract_table_from_section_f(pdf)
-    data_structure["Sections"]["F"]["content"] = {
-        "assessment_of_course_quality": f_entries
-    }
+        # Get area
+        area_lines = []
+        while i < len(lines) and not any(kw in lines[i].lower() for kw in ["faculty", "students", "peer", "staff", "coordinator", "review", "direct", "indirect", "none", "other"]):
+            area_lines.append(lines[i])
+            i += 1
+        area = " ".join(area_lines).strip()
+
+        # Get assessor
+        assessor_lines = []
+        while i < len(lines) and not any(kw in lines[i].lower() for kw in ["direct", "indirect"]):
+            if lines[i].lower().startswith("other"):
+                break
+            assessor_lines.append(lines[i])
+            i += 1
+        assessor = " ".join(assessor_lines).strip() if assessor_lines else None
+
+        # Get methods
+        method_lines = []
+        while i < len(lines) and any(kw in lines[i].lower() for kw in ["direct", "indirect"]):
+            method_lines.append(lines[i])
+            i += 1
+        method = " ".join(method_lines).strip() if method_lines else None
+
+        result.append({
+            "assessment_areas_issues": area if area else "Other",
+            "assessor": assessor if assessor and assessor.lower() != "none" else None,
+            "assessment_methods": method if method and method.lower() != "none" else None
+        })
+
+    return {"assessment_of_course_quality": result}
+
+# Extract and parse text between F and G
+section_f_match = re.search(r"F\. Assessment of Course Quality(.+?)G\. Specification Approval", full_text, re.DOTALL)
+if section_f_match:
+    section_f_text = section_f_match.group(1)
+    parsed_f = parse_manual_section_f(section_f_text)
+    data_structure["Sections"]["F"]["content"] = parsed_f
+
+
 
 
 
