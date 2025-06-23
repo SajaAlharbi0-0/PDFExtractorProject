@@ -3,8 +3,8 @@ import json
 import re
 
 # Paths
-pdf_path = "C:\\Users\\sajaa\\Downloads\\crs sp1.pdf"
-output_json_path = "C:\\Users\\sajaa\\Downloads\\all_courses_updated.json"
+pdf_path = "C:\\Users\\mahaf\\Downloads\\crs sp1.pdf"
+output_json_path = "C:\\Users\\mahaf\\Downloads\\all_courses_updated.json"
 
 # Updated data structure
 data_structure = {
@@ -60,7 +60,6 @@ data_structure = {
                     "Others (…)": None,
                     "Total": None
                 }
-
             }
         },
         "B": {"title": "Course Learning Outcomes (CLOs), Teaching Strategies and Assessment", "content": None},
@@ -124,19 +123,19 @@ obj = re.search(r"7\. Course Main Objective\(s\):\s*(.+?)\s*2\.", full_text, re.
 if obj:
     data_structure["Sections"]["A"]["content"]["1. Course Identification"]["7. Course Main Objective(s)"] = obj.group(1).strip()
 
-# Teaching mode (read only Traditional classroom hours and percentage from table)
+# Teaching mode
 teaching_mode_match = re.search(r"1\s+Traditional classroom\s+(\d+)\s+(\d+%)", full_text)
 if teaching_mode_match:
     hours = teaching_mode_match.group(1)
     percent = teaching_mode_match.group(2)
     data_structure["Sections"]["A"]["content"]["2. Teaching mode"]["Traditional classroom"]["Contact Hours"] = int(hours)
     data_structure["Sections"]["A"]["content"]["2. Teaching mode"]["Traditional classroom"]["Percentage"] = percent
-# Contact Hours (based on academic semester) – Read values from table
+
+# Contact Hours
 contact_hour_match = re.search(
     r"1\.\s*Lectures\s+(\d+)\s*2\.\s*Laboratory/Studio\s+(\d+)?\s*3\.\s*Field\s+(\d+)?\s*4\.\s*Tutorial\s+(\d+)?\s*5\.\s*Others.*?\s*(\d+)?\s*Total\s+(\d+)",
     full_text
 )
-
 if contact_hour_match:
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Lectures"] = int(contact_hour_match.group(1))
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Laboratory/Studio"] = int(contact_hour_match.group(2)) if contact_hour_match.group(2) else None
@@ -145,12 +144,20 @@ if contact_hour_match:
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Others (…)"] = int(contact_hour_match.group(5)) if contact_hour_match.group(5) else None
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Total"] = int(contact_hour_match.group(6))
 
+# === Section D: Students Assessment Activities ===
+def extract_assessment_activities(text):
+    pattern = r"\d+\.\s+(.*?)\s+(TBA|\d+)\s+(\d+%)"
+    matches = re.findall(pattern, text)
+    activities = []
+    for activity, week, percent in matches:
+        activities.append({
+            "activity": activity.strip(),
+            "week": week.strip(),
+            "percentage": percent.strip()
+        })
+    return activities
 
-
-
-
-
-
+data_structure["Sections"]["D"]["content"] = extract_assessment_activities(full_text)
 
 # === Section F: Assessment of Course Quality ===
 section_f_match = re.search(r"F\. Assessment of Course Quality(.+?)G\. Specification Approval", full_text, re.DOTALL)
@@ -206,15 +213,8 @@ if section_g_match:
         "DATE": date
     }
 
-
-
-
-
-
-
-
-# Save
+# === Save JSON ===
 with open(output_json_path, "w", encoding="utf-8") as f:
     json.dump(data_structure, f, ensure_ascii=False, indent=2)
 
-output_json_path
+print("Saved to:", output_json_path)
