@@ -1,0 +1,30 @@
+{
+    "General Info": {
+        "Course Title": "Field Training",
+        "Course Code": "Bio 390",
+        "Program": "B.Sc. in Molecular Biology and Biotechnology",
+        "Department": "Department of Biological Sciences",
+        "College": "Faculty of Science",
+        "Institution": "King Abdulaziz University",
+        "Version": "4",
+        "Last Revision Date": "14 June 2023"
+    },
+    "Field Experience Details": {
+        "Credit Hours": "2",
+        "Level/Year": "7th level/ 4th year",
+        "Duration": {
+            "Weeks": 2,
+            "Days": 10,
+            "Hours": 60
+        },
+        "Corequisite": "DBS approval",
+        "Delivery Mode": [
+            "In-person"
+        ]
+    },
+    "Specification Approval Data": {
+        "Council/Committee": "DBS COUNCIL MEETING 29TH FOR THE ACADEMIC YEAR 2023",
+        "Reference No": "15",
+        "Date": "25/11/1444 H – 14 JUNE 2023"
+    }
+}
