@@ -38,9 +38,9 @@ def extract_field_experience_details(text: str) -> dict:
         "Credit Hours": _grab(r"Credit\s*hours.*?\(\s*(\d+)\s*credit", text),
         "Level/Year": _grab(r"Level\/year.*?offered:\s*(.*?)\n", text),
         "Duration": {
-    "Weeks": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Weeks", text, "0"))),
-    "Days": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Days", text, "0"))),
-    "Hours": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Hours", text, "0"))),
+        "Weeks": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Weeks", text, "0"))),
+        "Days": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Days", text, "0"))),
+        "Hours": int(convert_arabic_digits(_grab(r"\(\s*([\d٠-٩]+)\s*\)\s*Hours", text, "0"))),
 },
 
         "Corequisite": _grab([
@@ -49,6 +49,20 @@ def extract_field_experience_details(text: str) -> dict:
         ], text, ""),
         "Delivery Mode": modes
     }
+
+
+# ---------- Field C ----------
+def extract_spec_approval_data(text: str) -> dict:
+    council = _grab(r"Council\s*/Committee\s*(.*?)\n", text, "")
+    reference_no = _grab(r"Reference No\.\s*(\d+)", text, "")
+    date = _grab(r"Date\s*([\d/]+\s*H\s*[–-]\s*[\dA-Z\s]+)", text, "")
+
+    return {
+        "Council/Committee": council,
+        "Reference No": reference_no,
+        "Date": date
+    }
+
 
 
 # ---------- استخراج البيانات ----------
@@ -68,6 +82,8 @@ def extract_data(file_path):
             "Last Revision Date": _grab(r"Last Revision Date:\s+(.*?)\n",             text),
         },
         "Field Experience Details": extract_field_experience_details(text),
+        "Specification Approval Data": extract_spec_approval_data(text)
+ 
 
     }
 
