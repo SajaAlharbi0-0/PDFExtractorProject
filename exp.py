@@ -1,4 +1,3 @@
-# field_parser.py
 import fitz  # PyMuPDF ➜ pip install pymupdf
 import re
 import json
