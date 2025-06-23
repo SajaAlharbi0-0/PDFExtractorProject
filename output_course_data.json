@@ -1,0 +1,37 @@
+{
+    "Course Title": "General Physics I",
+    "Course Code": "PHYS110",
+    "Program": "General Physics",
+    "Department": "Physics",
+    "Faculty": null,
+    "University": null,
+    "Version": "1",
+    "Last Revision Date": "Pick Revision Date.",
+    "Credit Hours": "3",
+    "Required": false,
+    "Pre-requirements": "None",
+    "Co-requirements": null,
+    "Main Objective": "",
+    "Teaching Modes": [
+        {
+            "Mode": "Traditional classroom",
+            "Hours": 45,
+            "Percentage": "100%"
+        }
+    ],
+    "Assessment": [],
+    "Essential Reference": "Fundamentals of Physics Halliday, Resnick, and Walker, 8th Edition.",
+    "Electronic Material": "Other Learning Materials",
+    "Facilities": {
+        "Classroom": "",
+        "Equipment": [
+            "Projector",
+            "smart board"
+        ]
+    },
+    "Approval": {
+        "Council": "REFERENCE NO.",
+        "Reference": "DATE",
+        "Date": ""
+    }
+}
