@@ -91,7 +91,7 @@ if __name__ == "__main__":
             print(f"{k:<25}: {v}")
 
     # حفظ JSON
-    json_path = Path(pdf_path).with_suffix(".json")
+    json_path = Path(__file__).parent / (Path(pdf_path).stem + ".json")
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
