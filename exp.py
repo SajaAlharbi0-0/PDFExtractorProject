@@ -49,7 +49,6 @@ def extract_field_experience_details(text: str) -> dict:
         "Delivery Mode": modes
     }
 
-<<<<<<< HEAD
 # ---------- Field B ----------
 def extract_clos_grouped(text: str) -> dict:
     pattern = re.compile(
@@ -86,8 +85,6 @@ def extract_clos_grouped(text: str) -> dict:
 
 
 
-=======
->>>>>>> c4312af098193f75a998062578ba4ad1c2b7b52b
 
 # ---------- Field C ----------
 def extract_spec_approval_data(text: str) -> dict:
@@ -120,13 +117,10 @@ def extract_data(file_path):
             "Last Revision Date": _grab(r"Last Revision Date:\s+(.*?)\n",             text),
         },
         "Field Experience Details": extract_field_experience_details(text),
-<<<<<<< HEAD
         "Field Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods":
             extract_clos_grouped(file_path),
 
 
-=======
->>>>>>> c4312af098193f75a998062578ba4ad1c2b7b52b
         "Specification Approval Data": extract_spec_approval_data(text)
  
 
