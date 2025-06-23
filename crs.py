@@ -160,45 +160,63 @@ def extract_assessment_activities(text):
 data_structure["Sections"]["D"]["content"] = extract_assessment_activities(full_text)
 
 # === Section F: Assessment of Course Quality ===
+def parse_assessment_section_f(raw_text):
+    lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
+    result = []
+    i = 0
+
+    while i < len(lines):
+        # Handle 'Other' case
+        if lines[i].lower().startswith("other"):
+            result.append({
+                "assessment_areas_issues": "Other",
+                "assessor": None,
+                "assessment_methods": None
+            })
+            i += 1
+            continue
+
+        # Get assessment area
+        area_lines = []
+        while i < len(lines) and not any(keyword in lines[i].lower() for keyword in [
+            "faculty", "students", "staff", "coordinator", "peer", "review", "direct", "indirect", "none", "other"
+        ]):
+            area_lines.append(lines[i])
+            i += 1
+        area = " ".join(area_lines).strip()
+
+        # Get assessor lines
+        assessor_lines = []
+        while i < len(lines) and not ("direct" in lines[i].lower() or "indirect" in lines[i].lower()):
+            assessor_lines.append(lines[i])
+            i += 1
+        assessor = " ".join(assessor_lines).strip() if assessor_lines else None
+
+        # Get method lines
+        method_lines = []
+        while i < len(lines) and ("direct" in lines[i].lower() or "indirect" in lines[i].lower()):
+            method_lines.append(lines[i])
+            i += 1
+        methods = " ".join(method_lines).strip() if method_lines else None
+
+        result.append({
+            "assessment_areas_issues": area,
+            "assessor": assessor,
+            "assessment_methods": methods
+        })
+
+    return {"assessment_of_course_quality": result}
+
+# Extract Section F content and parse it
 section_f_match = re.search(r"F\. Assessment of Course Quality(.+?)G\. Specification Approval", full_text, re.DOTALL)
 if section_f_match:
     section_f_text = section_f_match.group(1)
-    lines = [line.strip() for line in section_f_text.splitlines() if line.strip()]
-    assessment_areas = []
-    assessors = []
-    methods = []
+    parsed_f = parse_assessment_section_f(section_f_text)
+    data_structure["Sections"]["F"]["content"] = parsed_f
 
-    current_area = None
-    current_assessor = []
-    current_method = []
 
-    for i, line in enumerate(lines):
-        if line.lower().startswith("assessors") or line.lower().startswith("assessment methods"):
-            continue
-        if line.lower().startswith("other"):
-            assessment_areas.append("Other")
-            assessors.append("None")
-            methods.append("None")
-            continue
-        if "Effectiveness" in line or "Quality" in line or "extent" in line.lower():
-            current_area = line
-        elif any(role in line for role in ["Faculty", "Students", "Peer", "Course coordinator", "Assessment committee"]):
-            current_assessor.append(line)
-        elif "Direct" in line or "Indirect" in line:
-            current_method.append(line)
-            if current_area:
-                assessment_areas.append(current_area)
-                assessors.append(" / ".join(current_assessor))
-                methods.append(" / ".join(current_method))
-                current_area = None
-                current_assessor = []
-                current_method = []
 
-    data_structure["Sections"]["F"]["content"] = {
-        "Assessment Areas": assessment_areas,
-        "Issues Assessor": assessors,
-        "Assessment Methods": methods
-    }
+
 
 # === Section G: Specification Approval ===
 section_g_match = re.search(r"G\. Specification Approval.*?(COUNCIL.*?)(REFERENCE NO\..*?)(DATE.+)", full_text, re.DOTALL)
