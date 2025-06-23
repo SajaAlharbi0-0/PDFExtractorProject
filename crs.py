@@ -1,4 +1,3 @@
-
 import pdfplumber
 import json
 import re
@@ -145,6 +144,74 @@ if contact_hour_match:
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Tutorial"] = int(contact_hour_match.group(4)) if contact_hour_match.group(4) else None
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Others (…)"] = int(contact_hour_match.group(5)) if contact_hour_match.group(5) else None
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Total"] = int(contact_hour_match.group(6))
+
+
+
+
+
+
+
+
+# === Section F: Assessment of Course Quality ===
+section_f_match = re.search(r"F\. Assessment of Course Quality(.+?)G\. Specification Approval", full_text, re.DOTALL)
+if section_f_match:
+    section_f_text = section_f_match.group(1)
+    lines = [line.strip() for line in section_f_text.splitlines() if line.strip()]
+    assessment_areas = []
+    assessors = []
+    methods = []
+
+    current_area = None
+    current_assessor = []
+    current_method = []
+
+    for i, line in enumerate(lines):
+        if line.lower().startswith("assessors") or line.lower().startswith("assessment methods"):
+            continue
+        if line.lower().startswith("other"):
+            assessment_areas.append("Other")
+            assessors.append("None")
+            methods.append("None")
+            continue
+        if "Effectiveness" in line or "Quality" in line or "extent" in line.lower():
+            current_area = line
+        elif any(role in line for role in ["Faculty", "Students", "Peer", "Course coordinator", "Assessment committee"]):
+            current_assessor.append(line)
+        elif "Direct" in line or "Indirect" in line:
+            current_method.append(line)
+            if current_area:
+                assessment_areas.append(current_area)
+                assessors.append(" / ".join(current_assessor))
+                methods.append(" / ".join(current_method))
+                current_area = None
+                current_assessor = []
+                current_method = []
+
+    data_structure["Sections"]["F"]["content"] = {
+        "Assessment Areas": assessment_areas,
+        "Issues Assessor": assessors,
+        "Assessment Methods": methods
+    }
+
+# === Section G: Specification Approval ===
+section_g_match = re.search(r"G\. Specification Approval.*?(COUNCIL.*?)(REFERENCE NO\..*?)(DATE.+)", full_text, re.DOTALL)
+if section_g_match:
+    council = section_g_match.group(1).replace("COUNCIL /COMMITTEE", "").strip()
+    reference = section_g_match.group(2).replace("REFERENCE NO.", "").strip()
+    date = section_g_match.group(3).replace("DATE", "").strip()
+
+    data_structure["Sections"]["G"]["content"] = {
+        "COUNCIL /COMMITTEE": council,
+        "REFERENCE NO.": reference,
+        "DATE": date
+    }
+
+
+
+
+
+
+
 
 # Save
 with open(output_json_path, "w", encoding="utf-8") as f:
