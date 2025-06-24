@@ -1,35 +1,42 @@
+# G.py
 import docx
 import json
 
-# === CONFIG ===
-docx_path = "/mnt/data/crs_spfinal.docx"
-output_json_path = "specification_approval_output.json"
+# ==== CONFIG ====
+docx_path = "crs sp2 (1).docx"  # Adjust path as needed
+output_g_path = "section_g_output.json"
 
-def extract_specification_approval(file_path):
+def extract_section_g(file_path):
     doc = docx.Document(file_path)
-
-    approval_data = {
+    section_g = {
         "Council/Committee": "",
         "Reference No.": "",
         "Date": ""
     }
 
-    for para in doc.paragraphs:
-        text = para.text.strip().lower()
+    for table in doc.tables:
+        headers = [cell.text.strip().lower() for cell in table.rows[0].cells]
 
-        if "council" in text and "committee" in text:
-            approval_data["Council/Committee"] = para.text.strip()
-        elif "reference no" in text:
-            approval_data["Reference No."] = para.text.strip()
-        elif "date" in text:
-            approval_data["Date"] = para.text.strip()
+        if any("council" in h or "reference" in h or "date" in h for h in headers):
+            for row in table.rows:
+                cells = [cell.text.strip() for cell in row.cells]
+                if len(cells) >= 2:
+                    key = cells[0].lower()
+                    value = cells[1]
+                    if "council" in key:
+                        section_g["Council/Committee"] = value
+                    elif "reference" in key:
+                        section_g["Reference No."] = value
+                    elif "date" in key:
+                        section_g["Date"] = value
+            break  # Stop after finding the table
 
-    return approval_data
+    return section_g
 
-# === RUN ===
-approval_section = extract_specification_approval(docx_path)
+# ==== RUN ====
+section_g_data = extract_section_g(docx_path)
 
-with open(output_json_path, "w", encoding="utf-8") as f:
-    json.dump(approval_section, f, ensure_ascii=False, indent=2)
+with open(output_g_path, "w", encoding="utf-8") as f:
+    json.dump({"Specification Approval": section_g_data}, f, ensure_ascii=False, indent=2)
 
-print("✅ Specification Approval section extracted and saved to:", output_json_path)
+print("✅ Section G saved to:", output_g_path)
