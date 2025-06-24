@@ -274,69 +274,138 @@ if other_eq_match:
     data_structure["Sections"]["E"]["content"]["Required Facilities and Equipment"]["Other equipment"] = other_eq_match.group(1).strip().replace("\n", " ")
 
 
-
+####################################################################################################################################
 # === Section F: Assessment of Course Quality ===
-def parse_section_f_from_page_lines(lines):
-    result = []
+# === Section F using fresh read with PyMuPDF ===
+#############################################################
+# === Section F: Parser that merges broken area names ===
+
+def parse_section_f_from_file(pdf_path):
+    import fitz, re
+
+    print("\n🔍 [DEBUG] Entering parse_section_f_from_file()")
+
+    # 1) Open PDF and locate real table
+    doc = fitz.open(pdf_path)
+    section_text = ""
+    for pno, page in enumerate(doc, start=1):
+        txt = page.get_text()
+        if "Assessment Areas/Issues" in txt:
+            section_text = txt
+            print(f" [DEBUG] Found table on page {pno}")
+            break
+    if not section_text:
+        print(" [DEBUG] Table header not located")
+        return {"assessment_of_course_quality": []}
+
+    # 2) Normalize lines
+    lines = [ln.strip() for ln in section_text.splitlines() if ln.strip()]
+    # 3) Find header index
+    header_idx = next((i for i, ln in enumerate(lines)
+                       if "Assessment Areas/Issues" in ln), None)
+    if header_idx is None:
+        print(" [DEBUG] Header index missing")
+        return {"assessment_of_course_quality": []}
+    table_lines = lines[header_idx+1:]
+    print("[DEBUG] Raw table lines:")
+    for idx, ln in enumerate(table_lines):
+        print(f"  {idx:02d}: {repr(ln)}")
+
+    # 4) Merge split area names
+    fixed_areas = [
+        "Effectiveness of teaching",
+        "Effectiveness of Students assessment",
+        "Quality of learning resources",
+        "The extent to which CLOs have been achieved"
+    ]
+
+    merged = []
     i = 0
-
-    while i < len(lines):
-        line = lines[i].lower()
-
-        if "assessment areas/issues" in line or "assessors" in line or "assessment methods" in line:
-            i += 1
+    while i < len(table_lines):
+        curr = table_lines[i]
+        merged_flag = False
+        # try to merge with next if combined equals any fixed_area
+        if i + 1 < len(table_lines):
+            combo = (curr + " " + table_lines[i+1]).strip()
+            for area in fixed_areas:
+                if combo.lower() == area.lower():
+                    merged.append(area)
+                    merged_flag = True
+                    i += 2
+                    break
+        if merged_flag:
             continue
-
-        if "other" in line:
-            result.append({
-                "assessment_areas_issues": "Other",
-                "assessor": None,
-                "assessment_methods": None
-            })
-            i += 1
-            continue
-
-        # Gather area
-        area = lines[i]
+        merged.append(curr)
         i += 1
 
-        # Gather assessor(s)
-        assessors = []
-        while i < len(lines) and not ("direct" in lines[i].lower() or "indirect" in lines[i].lower()):
-            if lines[i].lower().startswith("other"): break
-            assessors.append(lines[i])
-            i += 1
+    print("\n[DEBUG] Merged table lines:")
+    for idx, ln in enumerate(merged):
+        print(f"  {idx:02d}: {repr(ln)}")
 
-        # Gather method(s)
-        methods = []
-        while i < len(lines) and ("direct" in lines[i].lower() or "indirect" in lines[i].lower()):
-            methods.append(lines[i])
-            i += 1
+    # 5) Parse each fixed area
+    result = []
+    for area in fixed_areas:
+        print(f"\n[DEBUG] Parsing area: {area!r}")
+        # find index in merged
+        start_idx = next((i for i, ln in enumerate(merged)
+                          if ln.lower().startswith(area.lower())), None)
+        if start_idx is None:
+            print(f"   [DEBUG] Area {area!r} not found")
+            result.append({
+                "assessment_areas_issues": area,
+                "assessor": "",
+                "assessment_methods": ""
+            })
+            continue
+
+        # collect assessor lines
+        assessor_parts = []
+        j = start_idx + 1
+        while j < len(merged):
+            ln = merged[j]
+            if any(ln.lower().startswith(a.lower()) for a in fixed_areas + ["other"]) \
+               or ln.startswith("Direct:") or ln.startswith("Indirect:"):
+                break
+            assessor_parts.append(ln)
+            j += 1
+        assessor = " ".join(assessor_parts).strip()
+        print(f"  [DEBUG] assessor_parts={assessor_parts!r} => {assessor!r}")
+
+        # collect methods
+        direct = ""
+        indirect = ""
+        if j < len(merged) and merged[j].startswith("Direct:"):
+            direct = merged[j]; j += 1
+        if j < len(merged) and merged[j].startswith("Indirect:"):
+            indirect = merged[j]; j += 1
+        methods = " ".join([direct, indirect]).strip()
+        print(f"  [DEBUG] methods_direct={direct!r}, indirect={indirect!r} => {methods!r}")
 
         result.append({
-            "assessment_areas_issues": area.strip(),
-            "assessor": " ".join(assessors).strip() if assessors else None,
-            "assessment_methods": " ".join(methods).strip() if methods else None
+            "assessment_areas_issues": area,
+            "assessor": assessor,
+            "assessment_methods": methods
         })
 
-    return result
+    # 6) Append Other
+    result.append({
+        "assessment_areas_issues": "Other",
+        "assessor": "None",
+        "assessment_methods": "None"
+    })
 
-# Extract and process lines from page 6
-with pdfplumber.open(pdf_path) as pdf:
-    page_6_lines = [line.strip() for line in pdf.pages[5].extract_text().splitlines() if line.strip()]
-    start_index = next(i for i, line in enumerate(page_6_lines) if "Assessment of Course Quality" in line)
-    end_index = next(i for i, line in enumerate(page_6_lines) if line.startswith("G. Specification Approval"))
-    section_f_lines = page_6_lines[start_index:end_index]
+    print("\n🔍 [DEBUG] Finished parsing Section F\n")
+    return {"assessment_of_course_quality": result}
 
-    parsed_f = parse_section_f_from_page_lines(section_f_lines)
-    data_structure["Sections"]["F"]["content"] = {
-        "assessment_of_course_quality": parsed_f
-    }
-
-
+# — Plug it in:
+data_structure["Sections"]["F"]["content"] = parse_section_f_from_file(pdf_path)
+#############################################################
 
 
 
+
+
+####################################################################################################################################
 # === Section G: Specification Approval ===
 section_g_match = re.search(r"G\. Specification Approval.*?(COUNCIL.*?)(REFERENCE NO\..*?)(DATE.+)", full_text, re.DOTALL)
 if section_g_match:
@@ -349,6 +418,10 @@ if section_g_match:
         "REFERENCE NO.": reference,
         "DATE": date
     }
+####################################################################################################################################
+
+
+
 
 # === Save JSON ===
 with open(output_json_path, "w", encoding="utf-8") as f:
