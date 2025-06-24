@@ -86,7 +86,7 @@ def extract_clos_grouped(text: str) -> dict:
 
 
 
-# ---------- Field C ----------
+# ---------- Field E ----------
 def extract_spec_approval_data(text: str) -> dict:
     council = _grab(r"Council\s*/Committee\s*(.*?)\n", text, "")
     reference_no = _grab(r"Reference No\.\s*(\d+)", text, "")
