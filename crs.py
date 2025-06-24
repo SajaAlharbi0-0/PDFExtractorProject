@@ -222,6 +222,10 @@ if contact_hour_match:
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Others (…)"] = int(contact_hour_match.group(5)) if contact_hour_match.group(5) else None
     data_structure["Sections"]["A"]["content"]["3. Contact Hours"]["Total"] = int(contact_hour_match.group(6))
 
+# Here is the Section C code
+##################################################################################################################
+
+##################################################################################################################
 # === Section D: Students Assessment Activities ===
 def extract_assessment_activities(text):
     pattern = r"\d+\.\s+(.*?)\s+(TBA|\d+)\s+(\d+%)"
