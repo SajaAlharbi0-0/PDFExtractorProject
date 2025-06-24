@@ -97,6 +97,23 @@ def extract_spec_approval_data(text: str) -> dict:
         "Reference No": reference_no,
         "Date": date
     }
+# ---------- Field 1.C ----------
+def extract_flowchart_title_and_description(text: str) -> dict:
+    pattern = re.compile(
+        r"Field Experience Flowchart for Responsibility\s*\n(.*?)\n",
+        re.IGNORECASE | re.DOTALL
+    )
+
+    match = re.search(pattern, text)
+    description = match.group(1).strip() if match else ""
+
+    return {
+        "Title": "Field Experience Flowchart for Responsibility",
+        "Description": description,
+        "Note": "There is a flowchart image for this section."
+    }
+
+
 
 
 
@@ -121,7 +138,8 @@ def extract_data(file_path):
             extract_clos_grouped(file_path),
 
 
-        "Specification Approval Data": extract_spec_approval_data(text)
+        "Specification Approval Data": extract_spec_approval_data(text),
+        "Field Experience Flowchart for Responsibility":extract_flowchart_title_and_description(text)
  
 
     }
