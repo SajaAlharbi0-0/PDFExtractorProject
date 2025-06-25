@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 course_files = {
     "BIO390": "field_exp_sp(final)_extracted.json",
     "FNU484": "field_exp sp3_extracted.json",
-    "FNU473": "field_exp sp2_extracted.json"  # أضف باقي الملفات هنا
+  # "FNU473": "field_exp sp2_extracted.json"  # أضف باقي الملفات هنا
 }
 
 # --- الجهات المعنية ---
