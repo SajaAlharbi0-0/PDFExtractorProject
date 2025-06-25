@@ -159,46 +159,41 @@ def is_clo_table(table):
     keywords = ["code", "learning", "plo", "activities", "assessment", "responsibility"]
     return any(k in " ".join(header) for k in keywords)
 
-target_table = None
 for table in doc.tables:
     if is_clo_table(table):
-        target_table = table
-        break
+        for row in table.rows[1:]:
+            cells = row.cells
+            if len(cells) < 6:
+                continue
+            code = clean(cells[0].text)
+            outcome = clean(cells[1].text)
+            plo_code = clean(cells[2].text)
+            activities = clean(cells[3].text)
+            assessment = clean(cells[4].text)
+            respons = clean(cells[5].text)
+            if not code or re.fullmatch(r"\d+\.0", code):
+                continue
+            group_key = {
+                "1": "1.0 Knowledge and understanding",
+                "2": "2.0 Skills",
+                "3": "3.0 Values, autonomy, and responsibility"
+            }.get(code[0], None)
+            if group_key:
+                clos_data[group_key].append({
+                    "Code": code,
+                    "Course Learning Outcome": outcome,
+                    "PLO Code": plo_code,
+                    "Teaching Strategies / Activities": activities,
+                    "Assessment Methods": assessment,
+                    "Responsibility": respons
+                })
 
-if target_table:
-    for row in target_table.rows[1:]:
-        cells = row.cells
-        if len(cells) < 6:
-            continue
-        code = clean(cells[0].text)
-        outcome = clean(cells[1].text)
-        plo_code = clean(cells[2].text)
-        activities = clean(cells[3].text)
-        assessment = clean(cells[4].text)
-        respons = clean(cells[5].text)
-        if not code or re.fullmatch(r"\d+\.0", code):
-            continue
-        group_key = {
-            "1": "1.0 Knowledge and understanding",
-            "2": "2.0 Skills",
-            "3": "3.0 Values, autonomy, and responsibility"
-        }.get(code[0], None)
-        if group_key:
-            clos_data[group_key].append({
-                "Code": code,
-                "Course Learning Outcome": outcome,
-                "PLO Code": plo_code,
-                "Teaching Strategies / Activities": activities,
-                "Assessment Methods": assessment,
-                "Responsibility": respons
-            })
 
 # === الفقرة C ===
 section_c_data = {
     "Distribution of Responsibilities for Field Experience Activities": [],
     "Field Experience Location Requirements": [],
-    "Safety and Risk Management": [],
-    "Training Quality Evaluation": []
+    "Safety and Risk Management": []
 }
 
 for table in doc.tables:
@@ -225,13 +220,27 @@ for table in doc.tables:
                 section_c_data["Safety and Risk Management"].append({
                     "Potential Risk": cells[0], "Safety Actions": cells[1], "Risk Management Procedures": cells[2]
                 })
-    elif "evaluation" in headers[0] and "evaluators" in headers[1]:
+
+
+
+
+# === الفقرة D ===
+section_D_data = {
+    "Training Quality Evaluation": []
+}
+
+for table in doc.tables:
+    headers = [cell.text.strip().lower() for cell in table.rows[0].cells]
+    if "evaluation" in headers[0] and "evaluators" in headers[1]:
         for row in table.rows[1:]:
             cells = [cell.text.strip() for cell in row.cells]
             if len(cells) >= 3:
-                section_c_data["Training Quality Evaluation"].append({
-                    "Evaluation Area/Issue": cells[0], "Evaluator": cells[1], "Evaluation Method": cells[2]
+                section_D_data["Training Quality Evaluation"].append({
+                    "Evaluation Area/Issue": cells[0],
+                    "Evaluator": cells[1],
+                    "Evaluation Method": cells[2]
                 })
+
 
 # === الفقرة: المعلومات العامة (نتيجة نهائية dict) ===
 general_info_data = {}
@@ -265,18 +274,17 @@ for table in doc.tables:
 # === تجميع البيانات النهائية ===
 final_data = {
     "General Info": general_info_data,
-    "Field Experience Details": field_experience_details,
-    "CLOs": clos_data,
+    "A.	Field Experience Details": field_experience_details,
+    "B.	Field Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods": clos_data,
+    "C.	Field Experience Administration": section_c_data,
     "Field Experience Flowchart for Responsibility": extract_flowchart_title_and_description(full_text),
-    "Field Experience Administration": section_c_data,
-    "Specification Approval Data": approval_data_from_tables(doc),
+    "D. Training Quality Evaluation": section_D_data,
+    "E.	Specification Approval Data": approval_data_from_tables(doc),
 }
 
 # === حفظ الملف ===
 with open(OUT_JSON, "w", encoding="utf-8") as f:
     json.dump(final_data, f, ensure_ascii=False, indent=2)
-
-
 
 
 print("✅ All sections extracted and saved to:", OUT_JSON.resolve())
