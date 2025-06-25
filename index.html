@@ -1,42 +1,27 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  
   <meta charset="UTF-8" />
-  <title>أداة تحليل ملفات Word المتقدمة</title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Specification Uploader</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h2>📄 أداة تحليل ملفات Word المتقدمة</h2>
-    <form method="POST" action="/upload" enctype="multipart/form-data">
-      <label>🔼 اختر ملفات Word (يمكنك اختيار أكثر من ملف):</label>
-      <input type="file" name="docx_files" accept=".docx" multiple required>
-      <label>🔍 أدخل كلمات البحث (يبحث عن وجود كل الكلمات معًا):</label>
-      <input type="text" name="search_term" placeholder="مثلاً: course title summer" required>
-      <button type="submit">ابدأ البحث</button>
-    </form>
+    <h1>Upload Your Specification</h1>
+    <select id="specType" class="dropdown">
+      <option value="" disabled selected>Select Type</option>
+      <option value="course">Course Specification</option>
+      <option value="field">Field Experience Specification</option>
+    </select>
 
-    {% if result %}
-      <hr>
-      <h3>📋 النتيجة:</h3>
-      <textarea readonly>{{ result }}</textarea>
-    {% endif %}
+    <input type="file" id="fileInput" class="file-input" accept=".doc,.docx" />
 
-    {% if results %}
-      <hr>
-      <h3>نتائج البحث عن: "{{ query }}"</h3>
-      {% for file in results %}
-        <div class="file-results">
-          <div class="filename">ملف: {{ file.filename }}</div>
-          <ul>
-            {% for line in file.matches %}
-              <li>{{ line }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endfor %}
-    {% endif %}
+    <button id="uploadBtn" class="upload-btn">Upload</button>
+
+    <div id="message" class="message"></div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

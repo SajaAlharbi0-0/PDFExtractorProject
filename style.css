@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #f0f8ff, #e6fff9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+h1 {
+  color: #046582;
+  margin-bottom: 20px;
+}
+
+.dropdown, .file-input, .upload-btn {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.dropdown:hover, .file-input:hover {
+  border-color: #00a6a6;
+}
+
+.upload-btn {
+  background-color: #00a86b;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.upload-btn:hover {
+  background-color: #007c5c;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.message.success {
+  color: green;
+}
+
+.message.error {
+  color: red;
+}
