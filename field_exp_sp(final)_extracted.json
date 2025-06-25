@@ -1,0 +1,273 @@
+{
+  "General Info": {
+    "Course Title": "Field Training",
+    "Course Code": "Bio 390",
+    "Program": "B.Sc. in Molecular Biology and Biotechnology",
+    "Department": "Department of Biological Sciences",
+    "College": "Faculty of Science",
+    "Institution": "King Abdulaziz University",
+    "Version": "4",
+    "Last Revision Date": "14 June 2023"
+  },
+  "Field Experience Details": {
+    "Credit Hours": "2",
+    "Level/Year": "7th level/ 4th year",
+    "Duration": {
+      "Weeks": 2,
+      "Days": 10,
+      "Hours": 60
+    },
+    "Corequisite": "DBS approval",
+    "Delivery Mode": [
+      "In-person"
+    ]
+  },
+  "CLOs": {
+    "1.0 Knowledge and understanding": [],
+    "2.0 Skills": [
+      {
+        "Code": "2.1",
+        "Course Learning Outcome": "Conduct practical works in the field using specialized materials, tools, and devices",
+        "PLO Code": "S3",
+        "Teaching Strategies / Activities": "Practical work Demonstrate use of daily logbook",
+        "Assessment Methods": "Field-supervisor performance evaluation",
+        "Responsibility": "Filed Supervisor"
+      },
+      {
+        "Code": "2.2",
+        "Course Learning Outcome": "Use IT applications in practical settings, data analysis and written report",
+        "PLO Code": "S4",
+        "Teaching Strategies / Activities": "Writing report",
+        "Assessment Methods": "Academic supervisor evaluation- rubric",
+        "Responsibility": "Academic supervisor"
+      },
+      {
+        "Code": "2.3",
+        "Course Learning Outcome": "Communicate results with scientific audience",
+        "PLO Code": "S5",
+        "Teaching Strategies / Activities": "Oral Presentation",
+        "Assessment Methods": "Academic supervisor evaluation- rubric",
+        "Responsibility": "Internal evaluators"
+      }
+    ],
+    "3.0 Values, autonomy, and responsibility": [
+      {
+        "Code": "3.1",
+        "Course Learning Outcome": "Implement scientific and work ethics",
+        "PLO Code": "V2",
+        "Teaching Strategies / Activities": "Practical work setting Workshops",
+        "Assessment Methods": "Field supervisor performance evaluation + Workshops",
+        "Responsibility": "Field Supervisor + Academic supervisor"
+      }
+    ]
+  },
+  "Field Experience Administration": {
+    "Distribution of Responsibilities for Field Experience Activities": [
+      {
+        "Activity": "Selection of a field experience site",
+        "Department/College": "√",
+        "Teaching Staff": "",
+        "Student": "",
+        "Training Organization": "√",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Selection of supervisory staff",
+        "Department/College": "√",
+        "Teaching Staff": "",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Provision of the required\nequipment",
+        "Department/College": "",
+        "Teaching Staff": "",
+        "Student": "",
+        "Training Organization": "√",
+        "Field Supervisor": "√"
+      },
+      {
+        "Activity": "Provision of learning resources",
+        "Department/College": "√",
+        "Teaching Staff": "√",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Ensuring the safety of the site",
+        "Department/College": "",
+        "Teaching Staff": "",
+        "Student": "",
+        "Training Organization": "√",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Commuting to and from the field\nexperience site",
+        "Department/College": "√",
+        "Teaching Staff": "√",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Provision of support and guidance",
+        "Department/College": "√",
+        "Teaching Staff": "√",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Implementation of training activities\n(duties, reports, projects ...)",
+        "Department/College": "",
+        "Teaching Staff": "√",
+        "Student": "√",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Follow up on student training activities",
+        "Department/College": "",
+        "Teaching Staff": "√",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": "√"
+      },
+      {
+        "Activity": "Monitoring attendance and leave",
+        "Department/College": "",
+        "Teaching Staff": "",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": "√"
+      },
+      {
+        "Activity": "Assessment of learning outcomes",
+        "Department/College": "",
+        "Teaching Staff": "√",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Evaluating the quality of field experience",
+        "Department/College": "",
+        "Teaching Staff": "√",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      },
+      {
+        "Activity": "Others (specify)",
+        "Department/College": "",
+        "Teaching Staff": "",
+        "Student": "",
+        "Training Organization": "",
+        "Field Supervisor": ""
+      }
+    ],
+    "Field Experience Location Requirements": [
+      {
+        "Location": "King Fahad Medical Research Center",
+        "General Requirements": "Specialized equipment and devices for microbial and gene analyses at the center.\nAnimal house",
+        "Special Requirements": "Standard safety requirements."
+      },
+      {
+        "Location": "Ministry of Environment, Water and Agriculture",
+        "General Requirements": "Specialized equipment and devices for microbial and gene analyses",
+        "Special Requirements": "Standard safety requirements."
+      },
+      {
+        "Location": "Albaik Food Systems Company (Aquat)",
+        "General Requirements": "Specialized equipment and devices for chemical and microbial analyses",
+        "Special Requirements": "Standard safety requirements"
+      },
+      {
+        "Location": "Australian Laboratory Service Arabia Co. LTD",
+        "General Requirements": "Specialized equipment and devices for chemical and microbial analyses",
+        "Special Requirements": "Standard safety requirements."
+      },
+      {
+        "Location": "REZA Food Service Co. LTD (McDonald’s)",
+        "General Requirements": "Specialized equipment and devices for chemical and microbial analyses",
+        "Special Requirements": "Standard safety requirements."
+      },
+      {
+        "Location": "Halwani Bros Company",
+        "General Requirements": "Specialized equipment and devices for chemical and microbial analyses",
+        "Special Requirements": "Standard safety requirements."
+      },
+      {
+        "Location": "King Faisal Specialist Hospital & Research Centre (Al-Razi Trainig Program)",
+        "General Requirements": "Specialized equipment and devices for chemical and pathological analyses",
+        "Special Requirements": "Standard safety requirements, and general health precautions."
+      },
+      {
+        "Location": "Fakieh Aquarium",
+        "General Requirements": "Devices for chemical and microbial analyses",
+        "Special Requirements": "Standard safety requirements."
+      },
+      {
+        "Location": "King Abdulaziz University Hospital",
+        "General Requirements": "Specialized equipment and devices for chemical and pathological analyses",
+        "Special Requirements": "Standard safety requirements, and general health precautions."
+      },
+      {
+        "Location": "Fisheries Research Centre",
+        "General Requirements": "Specialized equipment and devices for\nmicrobial and gene\nanalyses",
+        "Special Requirements": "Standard safety requirements."
+      },
+      {
+        "Location": "",
+        "General Requirements": "",
+        "Special Requirements": ""
+      }
+    ],
+    "Safety and Risk Management": [
+      {
+        "Potential Risk": "The expulsion of training without compelling reasons",
+        "Safety Actions": "Contract an agreement with the institute.",
+        "Risk Management Procedures": "Selection of institutes with an agreement in advance.\nNot to expel the trainee of the program without giving convincing reasons."
+      },
+      {
+        "Potential Risk": "Injury of the trainee during training",
+        "Safety Actions": "Contract an agreement with the institute beforehand.",
+        "Risk Management Procedures": "Select institutes with an agreement in advance.\nEnsure the institute carry out occupational and health safety measures"
+      }
+    ],
+    "Training Quality Evaluation": [
+      {
+        "Evaluation Area/Issue": "Training site",
+        "Evaluator": "Students",
+        "Evaluation Method": "Indirect- Hard-copy evaluation form is filled -mandatory- by all students upon submission of training report. The course coordinator analyzes survey data and submit to the program coordinator and course instructors for evaluation and\ndeveloping planning."
+      },
+      {
+        "Evaluation Area/Issue": "Student performance in training",
+        "Evaluator": "Academic supervisor",
+        "Evaluation Method": "Direct- An instructor from Department of Biological Sciences is assigned to a section with a number of near- graduating students- for supervision on the training experience,, evaluation and\ngrading on OdusPlus for Bio 390."
+      },
+      {
+        "Evaluation Area/Issue": "Student performance in training",
+        "Evaluator": "Training site supervisor",
+        "Evaluation Method": "Direct- An official form from Faculty of Science for Field Training is provided at the start of training period for the student at the training site for the supervisor to be filled by the end of training period. This form includes evaluation of student knowledge, practical work, commitment and overall\nperformance during training."
+      },
+      {
+        "Evaluation Area/Issue": "Overall training experience",
+        "Evaluator": "Students",
+        "Evaluation Method": "Indirect- An item in Graduate students survey (KAU Central Survey System) is regarding the Field Experience. The graduate student, especially if already offered a job, can evaluate the training experience and its\nimpact on their work experience."
+      }
+    ]
+  },
+  "Field Experience Flowchart for Responsibility": {
+    "Title": "Field Experience Flowchart for Responsibility",
+    "Description": "Including units, departments, and committees responsible for field experience identifying by the interrelations.",
+    "Note": "There is a flowchart image for this section."
+  },
+  "Specification Approval Data": {
+    "Council/Committee": "DBS COUNCIL MEETING 29TH FOR THE ACADEMIC YEAR 2023",
+    "Reference No": "15",
+    "Date": "25/11/1444 H – 14 JUNE 2023"
+  }
+}
