@@ -34,6 +34,10 @@ def _grab(patterns, text, default="", flags=re.IGNORECASE):
             return m.group(1).strip()
     return default
 
+# === استيراد الملف ===
+doc = Document(DOC_PATH)
+full_text = "\n".join([clean(p.text) for p in doc.paragraphs])  # ✅ مع التنظيف
+
 
 # === دالة استخراج وصف Flowchart ===
 def extract_flowchart_title_and_description(text: str) -> dict:
@@ -69,9 +73,7 @@ def approval_data_from_tables(doc: Document) -> dict:
         "Date": ""
     }
 
-# === استيراد الملف ===
-doc = Document(DOC_PATH)
-full_text = "\n".join([clean(p.text) for p in doc.paragraphs])  # ✅ مع التنظيف
+
 
 # === الفقرة A ===
 field_experience_details = {
