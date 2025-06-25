@@ -9,7 +9,7 @@
     "Version": "4",
     "Last Revision Date": "14 June 2023"
   },
-  "Field Experience Details": {
+  "A.\tField Experience Details": {
     "Credit Hours": "2",
     "Level/Year": "7th level/ 4th year",
     "Duration": {
@@ -22,7 +22,7 @@
       "In-person"
     ]
   },
-  "CLOs": {
+  "B.\tField Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods": {
     "1.0 Knowledge and understanding": [],
     "2.0 Skills": [
       {
@@ -58,11 +58,19 @@
         "Teaching Strategies / Activities": "Practical work setting Workshops",
         "Assessment Methods": "Field supervisor performance evaluation + Workshops",
         "Responsibility": "Field Supervisor + Academic supervisor"
+      },
+      {
+        "Code": "3.2",
+        "Course Learning Outcome": "Implement employment qualities",
+        "PLO Code": "V3",
+        "Teaching Strategies / Activities": "Practical work setting",
+        "Assessment Methods": "Field supervisor performance evaluation",
+        "Responsibility": "Field Supervisor"
       }
     ]
   },
-  "Field Experience Administration": {
-    "Distribution of Responsibilities for Field Experience Activities": [
+  "C.\tField Experience Administration": {
+    "2. Distribution of Responsibilities for Field Experience Activities": [
       {
         "Activity": "Selection of a field experience site",
         "Department/College": "√",
@@ -168,7 +176,7 @@
         "Field Supervisor": ""
       }
     ],
-    "Field Experience Location Requirements": [
+    "3. Field Experience Location Requirements": [
       {
         "Location": "King Fahad Medical Research Center",
         "General Requirements": "Specialized equipment and devices for microbial and gene analyses at the center.\nAnimal house",
@@ -225,7 +233,7 @@
         "Special Requirements": ""
       }
     ],
-    "Safety and Risk Management": [
+    "5. Safety and Risk Management": [
       {
         "Potential Risk": "The expulsion of training without compelling reasons",
         "Safety Actions": "Contract an agreement with the institute.",
@@ -236,7 +244,14 @@
         "Safety Actions": "Contract an agreement with the institute beforehand.",
         "Risk Management Procedures": "Select institutes with an agreement in advance.\nEnsure the institute carry out occupational and health safety measures"
       }
-    ],
+    ]
+  },
+  "1. Field Experience Flowchart for Responsibility": {
+    "Title": "Field Experience Flowchart for Responsibility",
+    "Description": "Including units, departments, and committees responsible for field experience identifying by the interrelations.",
+    "Note": "There is a flowchart image for this section."
+  },
+  "D. Training Quality Evaluation": {
     "Training Quality Evaluation": [
       {
         "Evaluation Area/Issue": "Training site",
@@ -260,12 +275,7 @@
       }
     ]
   },
-  "Field Experience Flowchart for Responsibility": {
-    "Title": "Field Experience Flowchart for Responsibility",
-    "Description": "Including units, departments, and committees responsible for field experience identifying by the interrelations.",
-    "Note": "There is a flowchart image for this section."
-  },
-  "Specification Approval Data": {
+  "E.\tSpecification Approval Data": {
     "Council/Committee": "DBS COUNCIL MEETING 29TH FOR THE ACADEMIC YEAR 2023",
     "Reference No": "15",
     "Date": "25/11/1444 H – 14 JUNE 2023"

@@ -159,9 +159,9 @@ for table in doc.tables:
 
 # === الفقرة C ===
 section_c_data = {
-    "Distribution of Responsibilities for Field Experience Activities": [],
-    "Field Experience Location Requirements": [],
-    "Safety and Risk Management": []
+    "2. Distribution of Responsibilities for Field Experience Activities": [],
+    "3. Field Experience Location Requirements": [],
+    "5. Safety and Risk Management": []
 }
 
 for table in doc.tables:
@@ -170,7 +170,7 @@ for table in doc.tables:
         for row in table.rows[1:]:
             cells = [cell.text.strip() for cell in row.cells]
             if len(cells) >= 6:
-                section_c_data["Distribution of Responsibilities for Field Experience Activities"].append({
+                section_c_data["2. Distribution of Responsibilities for Field Experience Activities"].append({
                     "Activity": cells[0], "Department/College": cells[1], "Teaching Staff": cells[2],
                     "Student": cells[3], "Training Organization": cells[4], "Field Supervisor": cells[5]
                 })
@@ -178,14 +178,14 @@ for table in doc.tables:
         for row in table.rows[1:]:
             cells = [cell.text.strip() for cell in row.cells]
             if len(cells) >= 3:
-                section_c_data["Field Experience Location Requirements"].append({
+                section_c_data["3. Field Experience Location Requirements"].append({
                     "Location": cells[0], "General Requirements": cells[1], "Special Requirements": cells[2]
                 })
     elif "potential risks" in headers[0]:
         for row in table.rows[1:]:
             cells = [cell.text.strip() for cell in row.cells]
             if len(cells) >= 3:
-                section_c_data["Safety and Risk Management"].append({
+                section_c_data["5. Safety and Risk Management"].append({
                     "Potential Risk": cells[0], "Safety Actions": cells[1], "Risk Management Procedures": cells[2]
                 })
 
@@ -278,7 +278,7 @@ final_data = {
     "A.	Field Experience Details": field_experience_details,
     "B.	Field Experience Course Learning Outcomes (CLOs), Training Activities and Assessment Methods": clos_data,
     "C.	Field Experience Administration": section_c_data,
-    "Field Experience Flowchart for Responsibility": extract_flowchart_title_and_description(full_text),
+    "1. Field Experience Flowchart for Responsibility": extract_flowchart_title_and_description(full_text),
     "D. Training Quality Evaluation": section_D_data,
     "E.	Specification Approval Data": approval_data_from_tables(doc),
 }
