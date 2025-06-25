@@ -39,9 +39,5 @@ def extract_course_topics_from_docx(docx_path, output_json_path=None):
 
     return result
 
-# ✅ Usage
-docx_path = "crs sp2 (1).docx"  # Change this if needed
-output_json = "course_topics_from_docx.json"
 
-data = extract_course_topics_from_docx(docx_path, output_json)
-print(json.dumps(data, indent=2, ensure_ascii=False))
+

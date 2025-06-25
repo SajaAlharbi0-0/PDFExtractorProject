@@ -3,8 +3,8 @@ import docx
 import json
 
 # ==== CONFIG ====
-docx_path = "crs sp2 (1).docx"  # Adjust path as needed
-output_g_path = "section_g_output.json"
+docx_path = r"C:\Users\mahaf\Downloads\crs sp1.w.docx"
+output_g_path = r"C:\Users\mahaf\Downloads\section_g_only.json"
 
 def extract_section_g(file_path):
     doc = docx.Document(file_path)

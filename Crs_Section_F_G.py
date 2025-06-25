@@ -1,9 +1,7 @@
 import docx
 import json
 
-# ==== CONFIG ====
-docx_path = "crs sp2 (1).docx"  # Update as needed
-output_json_path = "_Gg_approval_output.json"
+
 
 def extract_F_and_G(file_path):
     doc = docx.Document(file_path)
@@ -47,10 +45,3 @@ def extract_F_and_G(file_path):
 
     return result
 
-# ==== RUN ====
-section_data = extract_F_and_G(docx_path)
-
-with open(output_json_path, "w", encoding="utf-8") as f:
-    json.dump(section_data, f, ensure_ascii=False, indent=2)
-
-print("✅ Section G & Specification Approval extracted and saved to:", output_json_path)

@@ -2,9 +2,7 @@ import docx
 import json
 import os
 
-# ==== CONFIG ====
-docx_path = r"C:\Users\mahaf\Downloads\crs sp2.w.docx"  # ← عدّل المسار إذا تغير الملف
-output_json_path = "C:\\Users\\mahaf\\Downloads\\section_e_output.json"
+
 
 def extract_section_e_from_docx(file_path):
     doc = docx.Document(file_path)
@@ -56,10 +54,6 @@ def extract_section_e_from_docx(file_path):
 
     return refs
 
-# ==== RUN ====
-section_e_data = extract_section_e_from_docx(docx_path)
 
-with open(output_json_path, "w", encoding="utf-8") as f:
-    json.dump(section_e_data, f, ensure_ascii=False, indent=2)
 
-print("✅ Section E extracted and saved to:", output_json_path)
+
