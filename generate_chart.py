@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 # --- قائمة ملفات JSON ---
 json_files = [
     "field_exp_sp(final)_extracted.json",
-     "field_exp sp3_extracted.json"
+    "field_exp sp3_extracted.json"
 ]
 
 # --- الجهات المعنية ---
@@ -16,10 +16,8 @@ for json_file in json_files:
         with open(json_file, encoding="utf-8") as f:
             data = json.load(f)
 
-        # استخراج البيانات المطلوبة من كل ملف
         resp = data["C.\tField Experience Administration"]["2. Distribution of Responsibilities for Field Experience Activities"]
 
-        # تجميع الأنشطة حسب الجهات
         activities_by_stakeholder = {s: [] for s in stakeholders}
         for row in resp:
             activity = row["Activity"]
@@ -27,12 +25,10 @@ for json_file in json_files:
                 if row[s].strip() == "√":
                     activities_by_stakeholder[s].append(activity)
 
-        # جمع كل الأنشطة (لترتيب الرسم)
         all_activities = sorted(set(
             act for acts in activities_by_stakeholder.values() for act in acts
         ))
 
-        # إنشاء مصفوفة العلاقات
         matrix = []
         for act in all_activities:
             row = []
@@ -54,7 +50,13 @@ for json_file in json_files:
         plt.ylabel("Activities")
         plt.grid(True, linestyle='--', alpha=0.5)
         plt.tight_layout()
-        plt.show()
+
+        # 👇 عرض بدون إيقاف البرنامج
+        plt.show(block=False)
+        plt.pause(0.5)  # تسمح له بالرسم قبل عرض التالي
 
     except Exception as e:
         print(f"❌ خطأ في الملف {json_file}: {e}")
+
+# إبقاء الرسومات مفتوحة حتى المستخدم يقفلها يدويًا
+input("↩️ اضغط Enter بعد الانتهاء لإغلاق جميع الرسومات...")
