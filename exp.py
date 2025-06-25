@@ -39,40 +39,6 @@ doc = Document(DOC_PATH)
 full_text = "\n".join([clean(p.text) for p in doc.paragraphs])  # ✅ مع التنظيف
 
 
-# === دالة استخراج وصف Flowchart ===
-def extract_flowchart_title_and_description(text: str) -> dict:
-    pattern = re.compile(
-        r"Field Experience Flowchart for Responsibility\s*(.*?)\n",
-        re.IGNORECASE | re.DOTALL
-    )
-    match = re.search(pattern, text)
-    description = match.group(1).strip() if match else ""
-    return {
-        "Title": "Field Experience Flowchart for Responsibility",
-        "Description": description,
-        "Note": "There is a flowchart image for this section."
-    }
-
-# === دالة الفقرة E ===
-def approval_data_from_tables(doc: Document) -> dict:
-    for table in doc.tables:
-        if len(table.rows) >= 3:
-            headers = [cell.text.strip().lower() for cell in table.columns[0].cells]
-            if "council /committee" in headers[0].lower() and "reference no." in headers[1].lower():
-                try:
-                    return {
-                        "Council/Committee": table.cell(0, 1).text.strip(),
-                        "Reference No": table.cell(1, 1).text.strip(),
-                        "Date": table.cell(2, 1).text.strip()
-                    }
-                except:
-                    continue
-    return {
-        "Council/Committee": "",
-        "Reference No": "",
-        "Date": ""
-    }
-
 
 
 # === الفقرة A ===
@@ -223,6 +189,40 @@ for table in doc.tables:
                     "Potential Risk": cells[0], "Safety Actions": cells[1], "Risk Management Procedures": cells[2]
                 })
 
+
+# === دالة استخراج وصف Flowchart ===
+def extract_flowchart_title_and_description(text: str) -> dict:
+    pattern = re.compile(
+        r"Field Experience Flowchart for Responsibility\s*(.*?)\n",
+        re.IGNORECASE | re.DOTALL
+    )
+    match = re.search(pattern, text)
+    description = match.group(1).strip() if match else ""
+    return {
+        "Title": "Field Experience Flowchart for Responsibility",
+        "Description": description,
+        "Note": "There is a flowchart image for this section."
+    }
+
+# === دالة الفقرة E ===
+def approval_data_from_tables(doc: Document) -> dict:
+    for table in doc.tables:
+        if len(table.rows) >= 3:
+            headers = [cell.text.strip().lower() for cell in table.columns[0].cells]
+            if "council /committee" in headers[0].lower() and "reference no." in headers[1].lower():
+                try:
+                    return {
+                        "Council/Committee": table.cell(0, 1).text.strip(),
+                        "Reference No": table.cell(1, 1).text.strip(),
+                        "Date": table.cell(2, 1).text.strip()
+                    }
+                except:
+                    continue
+    return {
+        "Council/Committee": "",
+        "Reference No": "",
+        "Date": ""
+    }
 
 
 
