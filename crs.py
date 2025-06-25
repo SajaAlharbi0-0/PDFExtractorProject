@@ -1,11 +1,12 @@
 import os
 import json
 from tkinter import Tk, filedialog
+from info import extract_course_info_from_docx
 from Crs_Section_C import extract_course_topics_from_docx
 from Crs_Section_D import extract_section_d, extract_text_from_docx as d_text
 from Crs_Section_E import extract_section_e_from_docx
 from Crs_Section_F_G import extract_F_and_G
-from crsSectionA_CourseInfo import extract_section_a_and_info
+from Crs_Section_A import extract_section_a_and_info
 from crsSectionB import extract_clos
 
 def browse_file(title, filetypes):
@@ -41,7 +42,16 @@ def main():
         return
 
     # Run Section A + Course Info (from PDF)
-    section_a_data = extract_section_a_and_info(docx_path)
+    # Get "Course Info" part from improved extractor
+    course_info = extract_course_info_from_docx(docx_path)
+
+    # Get rest of Section A content from the older method
+    section_a_structure = extract_section_a_and_info(docx_path)
+
+    # Inject the course_info into the final structure
+    section_a_structure["Course Info"] = course_info
+    section_a_data = section_a_structure
+   
 
 
     # Run Section B (from Word)
