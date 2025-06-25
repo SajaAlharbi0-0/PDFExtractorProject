@@ -204,6 +204,25 @@ def extract_flowchart_title_and_description(text: str) -> dict:
         "Note": "There is a flowchart image for this section."
     }
 
+
+# === الفقرة D ===
+section_D_data = {
+    "Training Quality Evaluation": []
+}
+
+for table in doc.tables:
+    headers = [cell.text.strip().lower() for cell in table.rows[0].cells]
+    if "evaluation" in headers[0] and "evaluators" in headers[1]:
+        for row in table.rows[1:]:
+            cells = [cell.text.strip() for cell in row.cells]
+            if len(cells) >= 3:
+                section_D_data["Training Quality Evaluation"].append({
+                    "Evaluation Area/Issue": cells[0],
+                    "Evaluator": cells[1],
+                    "Evaluation Method": cells[2]
+                })
+
+
 # === دالة الفقرة E ===
 def approval_data_from_tables(doc: Document) -> dict:
     for table in doc.tables:
@@ -223,26 +242,6 @@ def approval_data_from_tables(doc: Document) -> dict:
         "Reference No": "",
         "Date": ""
     }
-
-
-
-# === الفقرة D ===
-section_D_data = {
-    "Training Quality Evaluation": []
-}
-
-for table in doc.tables:
-    headers = [cell.text.strip().lower() for cell in table.rows[0].cells]
-    if "evaluation" in headers[0] and "evaluators" in headers[1]:
-        for row in table.rows[1:]:
-            cells = [cell.text.strip() for cell in row.cells]
-            if len(cells) >= 3:
-                section_D_data["Training Quality Evaluation"].append({
-                    "Evaluation Area/Issue": cells[0],
-                    "Evaluator": cells[1],
-                    "Evaluation Method": cells[2]
-                })
-
 
 # === الفقرة: المعلومات العامة (نتيجة نهائية dict) ===
 general_info_data = {}
