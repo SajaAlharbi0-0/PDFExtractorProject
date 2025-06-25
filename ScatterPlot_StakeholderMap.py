@@ -1,17 +1,39 @@
 import json
 import matplotlib.pyplot as plt
 
-# --- قائمة ملفات JSON ---
-json_files = [
-    "field_exp_sp(final)_extracted.json",
-    "field_exp sp3_extracted.json"
-]
+# --- ربط كل كورس بملفه ---
+course_files = {
+    "BIO390": "field_exp_sp(final)_extracted.json",
+    "FNU484": "field_exp sp3_extracted.json"
+   #"FNU473": "fnu473_extracted.json"  # أضف باقي الملفات هنا
+}
 
 # --- الجهات المعنية ---
 stakeholders = ["Department/College", "Teaching Staff", "Student", "Training Organization", "Field Supervisor"]
 
-# --- معالجة كل ملف ---
-for json_file in json_files:
+# --- إدخال المستخدم ---
+department = input("Enter Department (BIO / FNU): ").strip().upper()
+code = input("Enter Course Code (390 / 484 / 473) [Optional]: ").strip()
+
+# --- تحديد المفاتيح المستهدفة ---
+if code:
+    course_key = department + code
+    if course_key in course_files:
+        target_keys = [course_key]
+    else:
+        print(f"❌ No file found for {course_key}")
+        exit()
+else:
+    # إذا لم يُدخل الكود، اختر جميع المواد التابعة للقسم
+    target_keys = [k for k in course_files if k.startswith(department)]
+    if not target_keys:
+        print(f"❌ No courses found for department {department}")
+        exit()
+
+# --- عرض الرسومات ---
+for key in target_keys:
+    json_file = course_files[key]
+
     try:
         with open(json_file, encoding="utf-8") as f:
             data = json.load(f)
@@ -45,18 +67,15 @@ for json_file in json_files:
 
         plt.xticks(range(len(stakeholders)), stakeholders, rotation=45)
         plt.yticks(range(len(all_activities)), all_activities)
-        plt.title(f"نقاط التوزيع - {json_file}")
+        plt.title(f"Stakeholder Activity Map - {key}")
         plt.xlabel("Stakeholders")
         plt.ylabel("Activities")
         plt.grid(True, linestyle='--', alpha=0.5)
         plt.tight_layout()
-
-        # 👇 عرض بدون إيقاف البرنامج
         plt.show(block=False)
-        plt.pause(0.5)  # تسمح له بالرسم قبل عرض التالي
+        plt.pause(0.5)
 
     except Exception as e:
-        print(f"❌ خطأ في الملف {json_file}: {e}")
+        print(f"❌ Error in {json_file}: {e}")
 
-# إبقاء الرسومات مفتوحة حتى المستخدم يقفلها يدويًا
-input("↩️ اضغط Enter بعد الانتهاء لإغلاق جميع الرسومات...")
+input("↩️ Press Enter to close all charts...")
