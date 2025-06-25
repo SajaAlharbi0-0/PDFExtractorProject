@@ -1,4 +1,4 @@
-// ========== Upload Section ========== //
+// Upload logic
 const uploadBtn = document.getElementById('uploadBtn');
 const fileInput = document.getElementById('fileInput');
 const specType = document.getElementById('specType');
@@ -30,58 +30,117 @@ uploadBtn.addEventListener('click', () => {
   message.className = 'message success';
 });
 
-// ========== Chart Section ========== //
-const chartType = document.getElementById('chartType');
-const chartCanvas = document.getElementById('chartCanvas');
-let chartInstance = null;
+// Chart logic
+const departmentData = {
+  BIO: ['BIO101', 'BIO210', 'BIO390'],
+  CHEM: ['CHEM101', 'CHEM202'],
+  PHYS: ['PHYS101']
+};
 
-chartType.addEventListener('change', () => {
-  const type = chartType.value;
+const loadBtn = document.getElementById('loadCharts');
+const chartAllCanvas = document.getElementById('chartAll');
+const chartSubjectCanvas = document.getElementById('chartSubject');
+const chartError = document.getElementById('chartError');
 
-  if (chartInstance) chartInstance.destroy();
+let chartAllInstance = null;
+let chartSubInstance = null;
 
-  let chartData = {};
-  let chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      }
-    }
-  };
+loadBtn.addEventListener('click', () => {
+  const dept = document.getElementById('department').value;
+  const code = document.getElementById('subjectCode').value.trim().toUpperCase();
+  const chartType = document.getElementById('chartType').value;
 
-  if (type === 'distribution') {
-    chartData = {
-      labels: ['Lecturer', 'Coordinator', 'QA', 'Students'],
-      datasets: [{
-        label: 'Activity Distribution',
-        data: [30, 25, 20, 25],
-        backgroundColor: ['#4dc9f6', '#f67019', '#f53794', '#537bc4']
-      }]
-    };
-  } else if (type === 'evaluation') {
-    chartData = {
-      labels: ['Direct', 'Indirect'],
-      datasets: [{
-        label: 'Evaluation Type',
-        data: [70, 30],
-        backgroundColor: ['#36a2eb', '#ff6384']
-      }]
-    };
-  } else if (type === 'assessment') {
-    chartData = {
-      labels: ['Quizzes', 'Midterms', 'Projects', 'Final'],
-      datasets: [{
-        label: 'Assessment Distribution',
-        data: [15, 30, 25, 30],
-        backgroundColor: ['#9966ff', '#ff9f40', '#4bc0c0', '#ffcd56']
-      }]
-    };
+  chartError.style.display = 'none';
+  chartSubjectCanvas.style.display = 'none';
+
+  if (chartAllInstance) chartAllInstance.destroy();
+  if (chartSubInstance) chartSubInstance.destroy();
+
+  if (!dept) {
+    chartError.textContent = 'Please select a department.';
+    chartError.style.display = 'block';
+    return;
   }
 
-  chartInstance = new Chart(chartCanvas, {
+  const validCodeFormat = /^[A-Z]{3,4}\d{3}$/;
+  if (code && !validCodeFormat.test(code)) {
+    chartError.textContent = 'Subject code format is invalid. Must end with exactly 3 digits (e.g., BIO390).';
+    chartError.style.display = 'block';
+    return;
+  }
+
+  // Chart for all subjects in department
+  chartAllInstance = new Chart(chartAllCanvas, {
     type: 'bar',
-    data: chartData,
-    options: chartOptions
+    data: {
+      labels: departmentData[dept],
+      datasets: [{
+        label: `Average Score for ${dept} Dept`,
+        data: departmentData[dept].map(() => Math.floor(Math.random() * 50 + 50)),
+        backgroundColor: '#4f4a8b'
+      }]
+    },
+    options: { responsive: true }
   });
+
+  // If subject code is provided
+  if (code) {
+    if (departmentData[dept].includes(code)) {
+      chartSubjectCanvas.style.display = 'block';
+
+      let subjectData = [10, 30, 25, 35];
+      let labels = ['Quiz', 'Midterm', 'Project', 'Final'];
+      let backgroundColors = ['#058646', '#d25629', '#4f4a8b', '#999'];
+
+      if (chartType === "evaluation") {
+        labels = ['Direct', 'Indirect'];
+        subjectData = [70, 30];
+      } else if (chartType === "stakeholders") {
+        labels = ['Instructor', 'Coordinator', 'Institution'];
+        subjectData = [40, 35, 25];
+      }
+
+      chartSubInstance = new Chart(chartSubjectCanvas, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: `Assessment Breakdown for ${code}`,
+            data: subjectData,
+            backgroundColor: backgroundColors
+          }]
+        }
+      });
+    } else {
+      chartError.textContent = 'Invalid subject code.';
+      chartError.style.display = 'block';
+    }
+  }
+
+  showQueryList(dept, code);
 });
+
+// Show list of queries used
+function showQueryList(dept, code) {
+  const queryList = document.getElementById('queryList');
+  queryList.innerHTML = '';
+
+  if (!dept || !departmentData[dept]) {
+    queryList.innerHTML = `<strong>No department selected or invalid department.</strong>`;
+    return;
+  }
+
+  const validSubjects = departmentData[dept].filter(c => /\d{3}$/.test(c));
+  let content = `<strong>Processed Queries for Department ${dept}:</strong><br>`;
+  content += validSubjects.map(c => `• ${c}`).join('<br>');
+
+  if (code) {
+    if (validSubjects.includes(code)) {
+      content += `<br><br><strong>Detailed Subject Query:</strong><br>• ${code}`;
+    } else {
+      content += `<br><br><strong style="color:#d25629">Invalid subject code provided: ${code}</strong>`;
+    }
+  }
+
+  queryList.innerHTML = content;
+}

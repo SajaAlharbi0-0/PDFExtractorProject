@@ -5,33 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Specification Uploader</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <span class="logo">UniPortal</span>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#upload">Upload</a></li>
+        <li><a href="#charts">Charts</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="container">
-    <h1>Upload Your Specification</h1>
-    <select id="specType" class="dropdown">
-      <option value="" disabled selected>Select Type</option>
-      <option value="course">Course Specification</option>
-      <option value="field">Field Experience Specification</option>
-    </select>
+    <header>
+      <h1>Academic Dashboard</h1>
+      <p>Upload specifications and explore evaluation charts</p>
+    </header>
 
-    <input type="file" id="fileInput" class="file-input" accept=".doc,.docx" />
+    <section id="upload" class="upload-section">
+      <h2>Upload Specification</h2>
+      <select id="specType" class="dropdown">
+        <option value="" disabled selected>Select Type</option>
+        <option value="course">Course Specification</option>
+        <option value="field">Field Experience Specification</option>
+      </select>
 
-    <button id="uploadBtn" class="upload-btn">Upload</button>
+      <input type="file" id="fileInput" class="file-input" accept=".doc,.docx" />
+      <button id="uploadBtn" class="upload-btn">Upload</button>
+      <div id="message" class="message"></div>
+    </section>
 
-    <div id="message" class="message"></div>
+    <section id="charts" class="chart-section">
+      <h2>Evaluation Charts</h2>
 
-    <hr style="margin: 40px 0;">
+      <div class="chart-filters">
+        <select id="fileType" class="dropdown">
+          <option value="" disabled selected>Select File Type</option>
+          <option value="experience">Experience</option>
+          <option value="course">Course</option>
+        </select>
 
-    <h2>Select a Chart to Display</h2>
-    <select id="chartType" class="dropdown">
-      <option value="" disabled selected>Select Chart</option>
-      <option value="distribution">Distribution by Activity & Entity</option>
-      <option value="evaluation">Direct vs Indirect Evaluation</option>
-      <option value="assessment">Assessment Distribution</option>
-    </select>
+        <select id="department" class="dropdown">
+          <option value="" disabled selected>Select Department</option>
+          <option value="BIO">BIO</option>
+          <option value="CHEM">CHEM</option>
+          <option value="PHYS">PHYS</option>
+        </select>
 
-    <canvas id="chartCanvas" width="400" height="250" style="margin-top: 20px;"></canvas>
+        <input type="number" id="subjectCode" class="file-input" placeholder="e.g. 390" min="0" max="3" />
+         <button id="loadCharts" class="upload-btn">Load Charts</button>
+      </div>
+      
+      <div id="chartArea">
+        <canvas id="chartAll" width="400" height="250"></canvas>
+        <canvas id="chartSubject" width="400" height="250" style="display: none;"></canvas>
+        <div id="chartError" class="message error" style="display: none;"></div>
+      </div>
+      <div id="queryList" class="query-list"></div>
+    </section>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
