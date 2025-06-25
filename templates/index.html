@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>أداة تحليل ملفات Word المتقدمة</title>
+  <style>
+    body { font-family: Arial; padding: 30px; background-color: #f4f4f4; }
+    .container { background: white; padding: 20px; border-radius: 10px; max-width: 700px; margin: auto; }
+    input, button { width: 100%; padding: 10px; margin-top: 10px; }
+    textarea { width: 100%; height: 200px; margin-top: 10px; }
+    .file-results { margin-bottom: 20px; }
+    .filename { font-weight: bold; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📄 أداة تحليل ملفات Word المتقدمة</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+      <label>🔼 اختر ملفات Word (يمكنك اختيار أكثر من ملف):</label>
+      <input type="file" name="docx_files" accept=".docx" multiple required>
+      <label>🔍 أدخل كلمات البحث (يبحث عن وجود كل الكلمات معًا):</label>
+      <input type="text" name="search_term" placeholder="مثلاً: course title summer" required>
+      <button type="submit">ابدأ البحث</button>
+    </form>
+
+    {% if result %}
+      <hr>
+      <h3>📋 النتيجة:</h3>
+      <textarea readonly>{{ result }}</textarea>
+    {% endif %}
+
+    {% if results %}
+      <hr>
+      <h3>نتائج البحث عن: "{{ query }}"</h3>
+      {% for file in results %}
+        <div class="file-results">
+          <div class="filename">ملف: {{ file.filename }}</div>
+          <ul>
+            {% for line in file.matches %}
+              <li>{{ line }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</body>
+</html>
