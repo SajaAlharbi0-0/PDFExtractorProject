@@ -55,15 +55,30 @@
           <option value="PHYS">PHYS</option>
         </select>
 
-        <input type="number" id="subjectCode" class="file-input" placeholder="e.g. 390" min="0" max="3" />
-         <button id="loadCharts" class="upload-btn">Load Charts</button>
+       <input type="number" id="subjectCode" class="file-input"
+       placeholder="e.g. 390 (optional)"
+       min="0"
+       max="999"
+       oninput="this.value = this.value.slice(0, 3)"
+/>
+
+
+        <select id="chartType" class="dropdown">
+          <option value="" disabled selected>Select Chart Type</option>
+          <option value="assessment">Assessment Distribution</option>
+          <option value="evaluation">Direct vs Indirect Evaluation</option>
+          <option value="stakeholders">Activity & Stakeholders Distribution</option>
+        </select>
+
+        <button id="loadCharts" class="upload-btn">Load Charts</button>
       </div>
-      
+
       <div id="chartArea">
         <canvas id="chartAll" width="400" height="250"></canvas>
         <canvas id="chartSubject" width="400" height="250" style="display: none;"></canvas>
         <div id="chartError" class="message error" style="display: none;"></div>
       </div>
+
       <div id="queryList" class="query-list"></div>
     </section>
   </div>
