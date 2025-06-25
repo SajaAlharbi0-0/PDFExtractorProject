@@ -15,13 +15,14 @@ body {
   box-shadow: 0 15px 30px rgba(0,0,0,0.1);
   text-align: center;
   transition: transform 0.3s ease;
+  max-width: 600px;
 }
 
 .container:hover {
   transform: translateY(-5px);
 }
 
-h1 {
+h1, h2 {
   color: #046582;
   margin-bottom: 20px;
 }
@@ -65,4 +66,14 @@ h1 {
 
 .message.error {
   color: red;
+}
+
+#chartType {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto;
 }

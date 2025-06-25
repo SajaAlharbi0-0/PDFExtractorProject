@@ -20,8 +20,21 @@
     <button id="uploadBtn" class="upload-btn">Upload</button>
 
     <div id="message" class="message"></div>
+
+    <hr style="margin: 40px 0;">
+
+    <h2>Select a Chart to Display</h2>
+    <select id="chartType" class="dropdown">
+      <option value="" disabled selected>Select Chart</option>
+      <option value="distribution">Distribution by Activity & Entity</option>
+      <option value="evaluation">Direct vs Indirect Evaluation</option>
+      <option value="assessment">Assessment Distribution</option>
+    </select>
+
+    <canvas id="chartCanvas" width="400" height="250" style="margin-top: 20px;"></canvas>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
