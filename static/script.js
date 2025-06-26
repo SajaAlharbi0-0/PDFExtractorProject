@@ -2,7 +2,20 @@
 const uploadBtn = document.getElementById('uploadBtn');
 const fileInput = document.getElementById('fileInput');
 const specType = document.getElementById('specType');
-const message = document.getElementById('message');
+
+document.addEventListener("DOMContentLoaded", () => {
+  const messageDiv = document.getElementById("resultMessage");
+  if (messageDiv && messageDiv.textContent.trim() !== "") {
+    setTimeout(() => {
+      messageDiv.style.opacity = "0";
+      setTimeout(() => {
+        messageDiv.style.display = "none";
+      }, 500); // وقت الإخفاء بعد الانميشن
+    }, 3000); // انتظر 3 ثواني قبل بدء الإخفاء
+  }
+});
+
+
 
 uploadBtn.addEventListener('click', () => {
   const file = fileInput.files[0];
