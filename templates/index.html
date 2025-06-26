@@ -7,6 +7,11 @@
 
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    #viewTypeContainer {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -26,6 +31,7 @@
       <p>Upload specifications and explore evaluation charts</p>
     </header>
 
+    <!-- ========== Upload Section ========== -->
     <section id="upload" class="upload-section">
       <h2>Upload Specification</h2>
       <form method="POST" enctype="multipart/form-data" action="/upload">
@@ -35,59 +41,53 @@
           <option value="Experience">Field Experience Specification</option>
         </select>
 
-        <input type="file" name="docx_files" id="fileInput" class="file-input" accept=".doc,.docx" multiple required />
+        <input type="file" name="docx_files" id="fileInput" class="file-input"
+               accept=".doc,.docx" multiple required />
         <button class="upload-btn" type="submit">Upload</button>
       </form>
 
-      
-
-
-
-    {% if result %}
-      <div id="resultMessage" class="result-message {{ 'success' if 'successfully' in result else 'error' }}">
-        {{ result }}
-      </div>
-    {% endif %}
-
-
-
+      {% if result %}
+        <div id="resultMessage"
+             class="result-message {{ 'success' if 'successfully' in result else 'error' }}">
+          {{ result }}
+        </div>
+      {% endif %}
     </section>
 
-
-
-
-
-
+    <!-- ========== Charts Section ========== -->
     <section id="charts" class="chart-section">
       <h2>Evaluation Charts</h2>
 
       <div class="chart-filters">
-        <select id="fileType" class="dropdown">
+        <select id="fileType" class="dropdown"
+                onchange="loadDepartments(); updateChartTypeOptions();" required>
           <option value="" disabled selected>Select File Type</option>
-          <option value="experience">Experience</option>
-          <option value="course">Course</option>
+          <option value="Experience">Experience</option>
+          <option value="Course">Course</option>
         </select>
 
-        <select id="department" class="dropdown">
+        <select id="department" class="dropdown" required onchange="showOutputType()">
           <option value="" disabled selected>Select Department</option>
-          <option value="BIO">BIO</option>
-          <option value="CHEM">CHEM</option>
-          <option value="PHYS">PHYS</option>
         </select>
 
-       <input type="text" id="subjectCode" class="file-input"
-       placeholder="e.g. 390 (optional)"
-       maxlength="3"
-       pattern="\d{3}"
-       oninput="validateSubjectCode(this)"/>
+        <!-- سيتم إظهاره فقط بعد اختيار القسم -->
+        <!-- مكانه داخل chart-filters -->
+        <div id="viewTypeContainer" style="display:none;">
+          <select id="viewType" class="dropdown" onchange="updateChartTypeOptions()" required>
+            <option value="" disabled selected>Select Output Type</option>
+            <option value="chart">Chart</option>
+            <option value="table">Printable Table</option>
+          </select>
+        </div>
 
 
+        <input type="text" id="subjectCode" class="file-input"
+               placeholder="e.g. 390 (optional)"
+               maxlength="3" pattern="\d{3}"
+               oninput="validateSubjectCode(this)" />
 
-        <select id="chartType" class="dropdown">
+        <select id="chartType" class="dropdown" required>
           <option value="" disabled selected>Select Chart Type</option>
-          <option value="assessment">Assessment Distribution</option>
-          <option value="evaluation">Direct vs Indirect Evaluation</option>
-          <option value="stakeholders">Activity & Stakeholders Distribution</option>
         </select>
 
         <button id="loadCharts" class="upload-btn">Load Charts</button>
@@ -95,15 +95,22 @@
 
       <div id="chartArea">
         <canvas id="chartAll" width="400" height="250"></canvas>
-        <canvas id="chartSubject" width="400" height="250" style="display: none;"></canvas>
-        <div id="chartError" class="message error" style="display: none;"></div>
+        <canvas id="chartSubject" width="400" height="250" style="display:none;"></canvas>
+        <div id="chartError" class="message error" style="display:none;"></div>
       </div>
 
       <div id="queryList" class="query-list"></div>
     </section>
   </div>
 
+  <!-- ========== Scripts ========== -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function showOutputType() {
+      document.getElementById("viewTypeContainer").style.display = "block";
+    }
+  </script>
   <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
+
