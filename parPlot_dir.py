@@ -5,7 +5,7 @@ from pathlib import Path
 # البحث عن جميع ملفات *_extracted.json
 json_files = list(Path().glob("*_extracted.json"))
 if not json_files:
-    print("❌ لا يوجد ملفات JSON في المجلد.")
+    print("❌ No JSON files found in the folder.")
     exit()
 
 for json_path in json_files:
@@ -14,7 +14,7 @@ for json_path in json_files:
             data = json.load(f)
             evaluations = data["D. Training Quality Evaluation"]["Training Quality Evaluation"]
         except Exception as e:
-            print(f"❌ خطأ في قراءة الملف {json_path.name}: {e}")
+            print(f"❌ Error reading file{json_path.name}: {e}")
             continue
 
         # عداد التقييمات
@@ -35,10 +35,12 @@ for json_path in json_files:
         # ⚠ صيغة غير واضحة
         if unknown_format or (direct_count == 0 and indirect_count == 0):
             fig, ax = plt.subplots()
-            msg = f"⚠ {json_path.name}\nطريقة التقييم غير مكتوبة بصيغة 'Direct' أو 'Indirect'"
+            msg = f"⚠ {json_path.name}\nThe evaluation method is not written in a recognizable 'Direct' or 'Indirect' format."
+
             ax.text(0.5, 0.5, msg, fontsize=12, ha='center', va='center', wrap=True)
             ax.axis('off')
-            plt.title("تحذير في تنسيق التقييم")
+            plt.title("Warning: Invalid Evaluation Format")
+
             plt.show()
         else:
             # ✅ عرض شارت
