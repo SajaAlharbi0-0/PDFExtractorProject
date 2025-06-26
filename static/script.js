@@ -2,6 +2,7 @@
 const uploadBtn = document.getElementById('uploadBtn');
 const fileInput = document.getElementById('fileInput');
 const specType = document.getElementById('specType');
+const message = document.getElementById('message');
 
 document.addEventListener("DOMContentLoaded", () => {
   const messageDiv = document.getElementById("resultMessage");
@@ -10,14 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
       messageDiv.style.opacity = "0";
       setTimeout(() => {
         messageDiv.style.display = "none";
-      }, 500); // وقت الإخفاء بعد الانميشن
-    }, 3000); // انتظر 3 ثواني قبل بدء الإخفاء
+      }, 500);
+    }, 3000);
   }
 });
 
-
-
-uploadBtn.addEventListener('click', () => {
+uploadBtn?.addEventListener('click', () => {
   const file = fileInput.files[0];
   const selectedType = specType.value;
 
@@ -65,13 +64,44 @@ uploadBtn.addEventListener('click', () => {
 });
 
 
-// ===== Chart logic =====
-const departmentData = {
-  BIO: ['BIO101', 'BIO210', 'BIO390'],
-  CHEM: ['CHEM101', 'CHEM202'],
-  PHYS: ['PHYS101']
-};
+// ===== Load Departments =====
+function loadDepartments() {
+  const fileType = document.getElementById("fileType").value;
+  const departmentDropdown = document.getElementById("department");
 
+  departmentDropdown.innerHTML = '<option value="" disabled selected>Loading...</option>';
+
+  fetch("/get_departments", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ fileType: fileType })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "success") {
+      departmentDropdown.innerHTML = '<option value="" disabled selected>Select Department</option>';
+      data.departments.forEach(dep => {
+        const option = document.createElement("option");
+        option.value = dep;
+        option.textContent = dep;
+        departmentDropdown.appendChild(option);
+      });
+
+      // ✅ إظهار حقل الإخراج بعد ما المستخدم يختار قسم
+      document.getElementById("viewTypeContainer").style.display = "block";
+
+    } else {
+      departmentDropdown.innerHTML = '<option value="" disabled selected>No departments found</option>';
+    }
+  })
+  .catch(() => {
+    departmentDropdown.innerHTML = '<option value="" disabled selected>Error loading departments</option>';
+  });
+}
+
+
+
+// ===== Chart logic =====
 const loadBtn = document.getElementById('loadCharts');
 const chartAllCanvas = document.getElementById('chartAll');
 const chartSubjectCanvas = document.getElementById('chartSubject');
@@ -81,8 +111,9 @@ let chartAllInstance = null;
 let chartSubInstance = null;
 
 loadBtn.addEventListener('click', () => {
-  const dept = document.getElementById('department').value;
-  const code = document.getElementById('subjectCode').value.trim().toUpperCase();
+  const fileType = document.getElementById('fileType').value;
+  const department = document.getElementById('department').value;
+  const subjectCode = document.getElementById('subjectCode').value.trim();
   const chartType = document.getElementById('chartType').value;
 
   chartError.style.display = 'none';
@@ -91,91 +122,105 @@ loadBtn.addEventListener('click', () => {
   if (chartAllInstance) chartAllInstance.destroy();
   if (chartSubInstance) chartSubInstance.destroy();
 
-  if (!dept) {
-    chartError.textContent = 'Please select a department.';
+  if (!fileType || !department || !chartType) {
+    chartError.textContent = 'Please select file type, department, and chart type.';
     chartError.style.display = 'block';
     return;
   }
 
-  const validCodeFormat = /^[A-Z]{3,4}\d{3}$/;
-  if (code && !validCodeFormat.test(code)) {
-    chartError.textContent = 'Subject code format is invalid. Must end with exactly 3 digits (e.g., BIO390).';
-    chartError.style.display = 'block';
-    return;
-  }
+  fetch('/get_charts_data', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fileType,
+      department,
+      subjectCode,
+      chartType
+    })
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.status !== 'success') {
+      chartError.textContent = res.message || 'Failed to load chart data.';
+      chartError.style.display = 'block';
+      return;
+    }
 
-  // Chart for all subjects in department
-  chartAllInstance = new Chart(chartAllCanvas, {
-    type: 'bar',
-    data: {
-      labels: departmentData[dept],
-      datasets: [{
-        label: `Average Score for ${dept} Dept`,
-        data: departmentData[dept].map(() => Math.floor(Math.random() * 50 + 50)),
-        backgroundColor: '#4f4a8b'
-      }]
-    },
-    options: { responsive: true }
-  });
+    const labels = res.data.labels;
+    const values = res.data.values;
+    const title = res.data.chartTitle || 'Chart';
+    const isSingle = res.isSingleCourse;
 
-  // If subject code is provided
-  if (code) {
-    if (departmentData[dept].includes(code)) {
+    if (isSingle) {
       chartSubjectCanvas.style.display = 'block';
-
-      let subjectData = [10, 30, 25, 35];
-      let labels = ['Quiz', 'Midterm', 'Project', 'Final'];
-      let backgroundColors = ['#058646', '#d25629', '#4f4a8b', '#999'];
-
-      if (chartType === "evaluation") {
-        labels = ['Direct', 'Indirect'];
-        subjectData = [70, 30];
-      } else if (chartType === "stakeholders") {
-        labels = ['Instructor', 'Coordinator', 'Institution'];
-        subjectData = [40, 35, 25];
-      }
-
       chartSubInstance = new Chart(chartSubjectCanvas, {
-        type: 'pie',
+        type: chartType === 'evaluation' ? 'pie' : 'bar',
         data: {
-          labels: labels,
+          labels,
           datasets: [{
-            label: `Assessment Breakdown for ${code}`,
-            data: subjectData,
-            backgroundColor: backgroundColors
+            label: title,
+            data: values,
+            backgroundColor: ['#4f4a8b', '#d25629', '#058646', '#999']
           }]
-        }
+        },
+        options: { responsive: true }
       });
     } else {
-      chartError.textContent = 'Invalid subject code.';
-      chartError.style.display = 'block';
+      chartAllInstance = new Chart(chartAllCanvas, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: title,
+            data: values,
+            backgroundColor: '#4f4a8b'
+          }]
+        },
+        options: { responsive: true }
+      });
     }
-  }
-
-  showQueryList(dept, code);
+  })
+  .catch(() => {
+    chartError.textContent = '⚠️ Error connecting to server.';
+    chartError.style.display = 'block';
+  });
 });
 
-// ===== Show list of queries used =====
-function showQueryList(dept, code) {
-  const queryList = document.getElementById('queryList');
-  queryList.innerHTML = '';
 
-  if (!dept || !departmentData[dept]) {
-    queryList.innerHTML = `<strong>No department selected or invalid department.</strong>`;
-    return;
-  }
+// ===== Update Chart Type Options Based on File Type & View =====
+function updateChartTypeOptions() {
+  const fileType = document.getElementById("fileType").value;
+  const viewType = document.getElementById("viewType")?.value;
+  const chartTypeDropdown = document.getElementById("chartType");
 
-  const validSubjects = departmentData[dept].filter(c => /\d{3}$/.test(c));
-  let content = `<strong>Processed Queries for Department ${dept}:</strong><br>`;
-  content += validSubjects.map(c => `• ${c}`).join('<br>');
+  chartTypeDropdown.innerHTML = '<option value="" disabled selected>Select Chart Type</option>';
 
-  if (code) {
-    if (validSubjects.includes(code)) {
-      content += `<br><br><strong>Detailed Subject Query:</strong><br>• ${code}`;
-    } else {
-      content += `<br><br><strong style="color:#d25629">Invalid subject code provided: ${code}</strong>`;
+  if (!viewType) return;
+
+  if (viewType === "chart") {
+    if (fileType === "Course") {
+      chartTypeDropdown.innerHTML += `
+        <option value="assessment">Assessment Distribution</option>
+        <option value="elective">Required vs Elective Courses per Department</option>
+      `;
+    } else if (fileType === "Experience") {
+      chartTypeDropdown.innerHTML += `
+        <option value="clo_group">CLO Count By Group</option>
+        <option value="stakeholders">Stakeholder Activities</option>
+        <option value="evaluation">Evaluation Methods (Direct or Indirect)</option>
+      `;
+    }
+  } else if (viewType === "table") {
+    if (fileType === "Course") {
+      chartTypeDropdown.innerHTML += `
+        <option value="outcomes">Learning Outcomes & Assessment</option>
+        <option value="resources">Learning Resources and References</option>
+      `;
+    } else if (fileType === "Experience") {
+      chartTypeDropdown.innerHTML += `
+        <option value="location">Field Experience Location</option>
+      `;
     }
   }
-
-  queryList.innerHTML = content;
 }
+
