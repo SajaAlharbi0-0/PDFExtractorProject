@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Specification Uploader</title>
-  
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <span class="logo">EduSpec </span>
+      <span class="logo">EduSpec</span>
       <ul class="nav-links">
         <li><a href="#">Home</a></li>
         <li><a href="#upload">Upload</a></li>
@@ -28,16 +28,35 @@
 
     <section id="upload" class="upload-section">
       <h2>Upload Specification</h2>
-      <select id="specType" class="dropdown">
-        <option value="" disabled selected>Select Type</option>
-        <option value="course">Course Specification</option>
-        <option value="field">Field Experience Specification</option>
-      </select>
+      <form method="POST" enctype="multipart/form-data" action="/upload">
+        <select name="file_type" id="specType" class="dropdown" required>
+          <option value="" disabled selected>Select Type</option>
+          <option value="Course">Course Specification</option>
+          <option value="Experience">Field Experience Specification</option>
+        </select>
 
-      <input type="file" id="fileInput" class="file-input" accept=".doc,.docx" />
-      <button id="uploadBtn" class="upload-btn" type="button">Upload</button>
-      <div id="message" class="message"></div>
+        <input type="file" name="docx_files" id="fileInput" class="file-input" accept=".doc,.docx" multiple required />
+        <button class="upload-btn" type="submit">Upload</button>
+      </form>
+
+      
+
+
+
+    {% if result %}
+      <div id="resultMessage" class="result-message {{ 'success' if 'successfully' in result else 'error' }}">
+        {{ result }}
+      </div>
+    {% endif %}
+
+
+
     </section>
+
+
+
+
+
 
     <section id="charts" class="chart-section">
       <h2>Evaluation Charts</h2>
@@ -56,12 +75,12 @@
           <option value="PHYS">PHYS</option>
         </select>
 
-       <input type="number" id="subjectCode" class="file-input"
+       <input type="text" id="subjectCode" class="file-input"
        placeholder="e.g. 390 (optional)"
-       min="0"
-       max="999"
-       oninput="this.value = this.value.slice(0, 3)"
-/>
+       maxlength="3"
+       pattern="\d{3}"
+       oninput="validateSubjectCode(this)"/>
+
 
 
         <select id="chartType" class="dropdown">
