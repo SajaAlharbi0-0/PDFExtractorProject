@@ -1,0 +1,270 @@
+{
+  "Course Info": {
+    "Course Title": "Genomics and proteomics",
+    "Course Code": "Bio 306",
+    "Program": "B.Sc. in Molecular Biology and Biotechnology",
+    "Department": "Department of Biological Sciences",
+    "Faculty": "Faculty of Science",
+    "Institution": "King Abdulaziz University",
+    "Version": "1",
+    "Last Revision Date": "14 June 2023"
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "",
+          "2. Course type": {
+            "A.": "Department",
+            "B.": "Required"
+          },
+          "3. Level/year at which this course is offered": "(6th level / 3rd Year)"
+        },
+        "2. Course Description": "Principles and technologies for generating genomic information for ecological, biomedical and biotechnological applications. Technologies will be introduced progressively, from DNA to RNA to protein to whole cell systems. The integration of biology, chemistry, engineering, and computational sciences will be stressed. Topics include Technology for the High-throughput Sequencing, Methods for annotating genomes, characterizing functional genes, Gene Expression, Comparative Genomics, Population Genomics, Proteomic Technologies and Systems Biology.",
+        "3. Pre-requisites": "Bio 221",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "es of genomic information",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "60",
+            "Percentage": "100"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "-",
+            "Percentage": "-"
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "-",
+            "Percentage": "-"
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "-",
+            "Percentage": "-"
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": "-"
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": "-"
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": "15"
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)",
+            "Contact Hours": "-"
+          },
+          {
+            "No": "Total",
+            "Activity": "Total",
+            "Contact Hours": "60"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Define the fundamental aspects of Genomics and proteomics",
+          "PLO Code": "K1",
+          "Teaching Strategies": "- Lectures Class activity",
+          "Assessment Methods": "Written exams"
+        },
+        {
+          "Code": "1.2",
+          "Course Learning Outcome": "Explain how organismic diversity and evolution can be understood through comparative approaches of genomic information.",
+          "PLO Code": "K2",
+          "Teaching Strategies": "Lectures Class discussion Class activity.",
+          "Assessment Methods": "Written exams"
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Interpret the ecological and evolutionary phenotypic features from analyses of genomic information",
+          "PLO Code": "S4",
+          "Teaching Strategies": "-Practical computer exercises",
+          "Assessment Methods": "Practical exercises evaluation - Discussion grading"
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": [
+        {
+          "Code": "3.1",
+          "Course Learning Outcome": "Work within a group to solve different challenging genomics problems.",
+          "PLO Code": "V1",
+          "Teaching Strategies": "Teamwork Exercise Presentation",
+          "Assessment Methods": "Work evaluation"
+        }
+      ]
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Introduction to Genome and Gene structure"
+          },
+          {
+            "no": 2,
+            "topic": "Functional domains and Transcriptomics"
+          },
+          {
+            "no": 3,
+            "topic": "Proteomics and Bio database"
+          },
+          {
+            "no": 4,
+            "topic": "Next-Generation sequencers and Sequencing strategies and the shotgun\nmethod"
+          },
+          {
+            "no": 5,
+            "topic": "Massive parallel sequencing and its applications"
+          },
+          {
+            "no": 6,
+            "topic": "Basis of population genomics"
+          },
+          {
+            "no": 7,
+            "topic": "Comparative genomic"
+          },
+          {
+            "no": 8,
+            "topic": "Basis of molecular evolution"
+          },
+          {
+            "no": 9,
+            "topic": "Functional Genomics"
+          },
+          {
+            "no": 10,
+            "topic": "Ecological genomics"
+          },
+          {
+            "no": 11,
+            "topic": "Systems Biology"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Periodical written Exam",
+            "Timing": "4",
+            "Score": "10"
+          },
+          {
+            "Activity": "Midterm written Exam",
+            "Timing": "8",
+            "Score": "20"
+          },
+          {
+            "Activity": "Reports and Essay",
+            "Timing": "9",
+            "Score": "10"
+          },
+          {
+            "Activity": "Practical Computer Exam",
+            "Timing": "14",
+            "Score": "25"
+          },
+          {
+            "Activity": "Final written Exam",
+            "Timing": "16",
+            "Score": "35"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "1. Genomics: a very short introduction (very short introductions) by john m. archibald 2018 2. Essential Genetics and Genomics by Daniel L. Hartl, 2018"
+          ],
+          "Supportive References": [
+            "-"
+          ],
+          "Electronic Materials": [
+            "Websites on the internet that are relevant to the topics of the course Suggested: https://www.coursera.org/learn/introduction-genomics https://online-learning.harvard.edu/course/introduction-genomics"
+          ],
+          "Other Learning Materials": [
+            "https://www.classcentral.com/course/genintro-3472"
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "- Computer laboratory for at least 25 students",
+          "Technology equipment": "- Computers, SPSS program, Minitab program",
+          "Other equipment": "Equipment and illustration tools relevant to the course material. Safety facilities"
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Course evaluation by student. Providing samples of all kind of assessment in the departmental course portfolio of each course. Attending specific sessions for teaching process and exam designing. Attending workshops given by experts on the teaching strategies.",
+          "Assessment Method": "Indirect"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students’ assessment",
+          "Assessor": "",
+          "Assessment Method": ""
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "The course material and learning outcomes are periodically reviewed and the changes to be taken are approved in the departmental and higher councils. The head of department and faculty-peer reviewer take the responsibility of implementing the proposed changes",
+          "Assessment Method": "Indirect- Survey"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Departmental council discussion. Discussions with the group of faculties teaching the course",
+          "Assessment Method": "Direct- Student exam"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "",
+          "Assessment Method": ""
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "DBS COUNCIL MEETING 29TH FOR ACADEMIC YEAR 2023",
+        "Reference No.": "15",
+        "Date": "25/11/1444 H – 14 JUNE 2023"
+      }
+    }
+  }
+}

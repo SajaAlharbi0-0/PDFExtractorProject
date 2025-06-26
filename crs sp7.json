@@ -1,0 +1,272 @@
+{
+  "Course Info": {
+    "Course Title": "Nutrition and Sport",
+    "Course Code": "FNU 451",
+    "Program": "Nutrition Science",
+    "Department": "Human Science and Design",
+    "Faculty": "Human Sciences and Design",
+    "Institution": "King Abdulaziz University",
+    "Version": "2",
+    "Last Revision Date": "Pick Revision Date."
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3 credit",
+          "2. Course type": {
+            "A.": "Department",
+            "B.": "Required"
+          },
+          "3. Level/year at which this course is offered": "7 level"
+        },
+        "2. Course Description": "This course expands upon basic nutrition concepts by exploring the unique nutritional needs for physical activity and athletic performance. In addition to, gaining knowledge of the proper dietary habits in connection to physical activity or sport-specific training to support health, energy, and adaptations.",
+        "3. Pre-requisites": "FNU 216 Nutrition through Lifecycle FNU 311 Macro-Nutrient Metabolism",
+        "4. Co-requisites": "",
+        "5. Course Main Objectives": "The purpose of this course is to provide students with a comprehensive knowledge about nutrition in relation to sports training and performance. The course will teach students the fundamentals of nutrient requirements for a variety of physical activities, including endurance, strength, speed, and weight control. The evaluation of dietary supplements and ergogenic aids will also be addressed.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "3*15",
+            "Percentage": "100%"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": ""
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": ""
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)",
+            "Contact Hours": ""
+          },
+          {
+            "No": "Total",
+            "Activity": "Total",
+            "Contact Hours": "45"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Determine the appropriate nutrition for physical activity individual and athletes.",
+          "PLO Code": "K1",
+          "Teaching Strategies": "Lecture, Visualization, class discussion",
+          "Assessment Methods": "Periodical and final exams"
+        },
+        {
+          "Code": "1.2",
+          "Course Learning Outcome": "Recognize the sources of energy used in exercise and metabolism.",
+          "PLO Code": "K2",
+          "Teaching Strategies": "Lecture, Visualization, class discussion",
+          "Assessment Methods": "Periodical and final exams"
+        },
+        {
+          "Code": "1.3",
+          "Course Learning Outcome": "Describe the sources of energy and the energy expenditure",
+          "PLO Code": "K1",
+          "Teaching Strategies": "Lecture, Visualization, class discussion",
+          "Assessment Methods": "Periodical and final exams"
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Assess the nutritional needs for a variety of physical activities.",
+          "PLO Code": "S1",
+          "Teaching Strategies": "Lecture, Visualization, class discussion",
+          "Assessment Methods": "Periodical and final exams"
+        },
+        {
+          "Code": "2.2",
+          "Course Learning Outcome": "Formulate an appropriate diet plan for physical activity individual and athletes to improve",
+          "PLO Code": "S1",
+          "Teaching Strategies": "Lecture, Visualization, class discussion",
+          "Assessment Methods": "Periodical and final exams"
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": []
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Introduction to sports nutrition"
+          },
+          {
+            "no": 2,
+            "topic": "Recommended intake of nutrients for physical activity individual and athletes\n(Carbohydrates, proteins, fats, minerals, and vitamins)"
+          },
+          {
+            "no": 3,
+            "topic": "Review Fuel sources for muscle and exercise metabolism"
+          },
+          {
+            "no": 4,
+            "topic": "Energy: energetic efficiency, measuring the energy content in food, energy\nbalance, and energy expenditure."
+          },
+          {
+            "no": 5,
+            "topic": "Gastric emptying, digestion, and absorption. Regulation of gastrointestinal\ntract, gastrointestinal tract problems during and after exercise."
+          },
+          {
+            "no": 6,
+            "topic": "Body composition"
+          },
+          {
+            "no": 7,
+            "topic": "Meal planning and Weight management for physical activity individual and\nathletes"
+          },
+          {
+            "no": 8,
+            "topic": "Nutrition for endurance and ultra-endurance training"
+          },
+          {
+            "no": 9,
+            "topic": "Electrolytes and Supplement and ergogenic Aids"
+          },
+          {
+            "no": 10,
+            "topic": "Example of special Nutrition needs (disability, children, pregnant women, and\nVegetation athletes)"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Periodical exam (1)",
+            "Timing": "6th",
+            "Score": "15"
+          },
+          {
+            "Activity": "Periodical exam (2)",
+            "Timing": "11th",
+            "Score": "15"
+          },
+          {
+            "Activity": "Final exam",
+            "Timing": "16th",
+            "Score": "40"
+          },
+          {
+            "Activity": "Assignment",
+            "Timing": "5th -12th",
+            "Score": "15"
+          },
+          {
+            "Activity": "Small essay - presentation",
+            "Timing": "13th",
+            "Score": "15"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "Jeukendrup Asker & Gleeson Micheal (2019), Sport Nutrition 3rd Ed. Human Kinetics"
+          ],
+          "Supportive References": [
+            "Lanham-New, S. A., Stear, S. J., Shirreffs, S. M., and Colllins, A. L. (2011), Sport and Exercise nutrition. First edition. Wiley-Blackwell."
+          ],
+          "Electronic Materials": [
+            "Nutrition for Health, Fitness & Sport 10th edition. 2012. M.H. Williams, D.E. Anderson and E.S. Rawson"
+          ],
+          "Other Learning Materials": [
+            "https://jissn.biomedcentral.com/, Journal of the International Society of Sports Nutrition https://www.sciencedirect.com/topics/food-science/sports-nutrition https://ais.gov.au/nutrition https://www.scandpg.org/scan/scan-career-paths/scan-external- resources/sports-nutrition-professional-resources"
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "For lectures: Classroom",
+          "Technology equipment": "- Data show.",
+          "Other equipment": ""
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Students, Teaching and Learning Committee",
+          "Assessment Method": "Questionnaire, forms – Indirect instructor evaluation"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students assessment",
+          "Assessor": "Course Instructor, Teaching and Learning Committee, Academic Staff, Peer reviewer.",
+          "Assessment Method": "Blueprint, Rubrics, Forms, Course report, KPI (success rate) – Direct"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Peer Reviewer, Students, Technicians, Academic Staff",
+          "Assessment Method": "Questionnaire, Course Coordination – Indirect"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Course Instructor, Teaching and Learning Committee, Academic Staff.",
+          "Assessment Method": "Exit exam, Course reports KPI (success rate) – Direct"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "",
+          "Assessment Method": ""
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "Food and Nutrition Department",
+        "Reference No.": "11TH",
+        "Date": "8/5/2024"
+      }
+    }
+  }
+}

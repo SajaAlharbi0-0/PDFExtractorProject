@@ -1,0 +1,267 @@
+{
+  "Course Info": {
+    "Course Title": "General Genetics",
+    "Course Code": "Bio444",
+    "Program": "B.Sc. in Molecular Biology and Biotechnology",
+    "Department": "Department of Biological Sciences",
+    "Faculty": "staff and students",
+    "Institution": "King Abdulaziz University",
+    "Version": "3",
+    "Last Revision Date": "June 14 2023"
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3",
+          "2. Course type": {
+            "A.": "Department",
+            "B.": "Elective"
+          },
+          "3. Level/year at which this course is offered": "(8th level/ 4th year)"
+        },
+        "2. Course Description": "This course is intended to provide a learning the concepts in genetics at the cellular, molecular, and expands classical Mendelian principles and patterns of inheritance from parent to offspring, gene behavior in context of organism (e.g., dominance and recessive), the molecular nature of DNA and RNA, gene regulation, gene transcription and translation and mutations",
+        "3. Pre-requisites": "Bio110",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "The main objective of General genetics is to an understanding of the heredity and identify the inheritance patterns and able to solve the different between genotype and phenotypes.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "75",
+            "Percentage": "100"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "30"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": ""
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)……",
+            "Contact Hours": ""
+          },
+          {
+            "No": "",
+            "Activity": "Total",
+            "Contact Hours": "75"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Describe the basic information of genetics, cellular basis of inheritance, DNA structure and function, mechanism of inheritance, Mendilian genetics and cell division",
+          "PLO Code": "K1",
+          "Teaching Strategies": "",
+          "Assessment Methods": ""
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Design and perform basic experiments and techniques in major laboratories of biology safely and effectively",
+          "PLO Code": "S2",
+          "Teaching Strategies": "lab lectures /assignments",
+          "Assessment Methods": "Lab report and practical work"
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": [
+        {
+          "Code": "3.1",
+          "Course Learning Outcome": "Work effectively in groups",
+          "PLO Code": "V1",
+          "Teaching Strategies": "Discussion of different subjects",
+          "Assessment Methods": "Presentations"
+        }
+      ]
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Introduction: Essentials of Genetics"
+          },
+          {
+            "no": 2,
+            "topic": "Cell Cycle and Cell Division"
+          },
+          {
+            "no": 3,
+            "topic": "Mendelian Genetics"
+          },
+          {
+            "no": 4,
+            "topic": "Extension of Mendelian Genetics"
+          },
+          {
+            "no": 5,
+            "topic": "Inheritance Patterns Related to Gender Determination"
+          },
+          {
+            "no": 6,
+            "topic": "The Genetic Material"
+          },
+          {
+            "no": 7,
+            "topic": "DNA Replication"
+          },
+          {
+            "no": 8,
+            "topic": "Transcription and RNA Processing"
+          },
+          {
+            "no": 9,
+            "topic": "Translation and Genetic Code"
+          },
+          {
+            "no": 10,
+            "topic": "Regulation of Gene Expression"
+          },
+          {
+            "no": 11,
+            "topic": "Mutation"
+          },
+          {
+            "no": 12,
+            "topic": "Genetic General Techniques"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Periodic",
+            "Timing": "4",
+            "Score": "15%"
+          },
+          {
+            "Activity": "Midterm",
+            "Timing": "8",
+            "Score": "20"
+          },
+          {
+            "Activity": "Activity/Assignments",
+            "Timing": "12",
+            "Score": "10"
+          },
+          {
+            "Activity": "Practical",
+            "Timing": "13",
+            "Score": "25"
+          },
+          {
+            "Activity": "Final",
+            "Timing": "16",
+            "Score": "30"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "Principles of genetics. (2011). 1st edition by Jamal Sabir M. Sabir. [et. al.]."
+          ],
+          "Supportive References": [
+            "Introduction to Genetic Analysis, 10th Edition by Griffiths, Wessler, Carroll and Doebley (2012), W. H Freeman and Company. ISBN 1-4292-2943-8. Solutions Manual for Introduction to Genetic Analysis, 10th Edition by Scott, Sia, Brockett, Fixsen and Lavett (2012) W.H. Freeman and Company. ISBN 1429201770."
+          ],
+          "Electronic Materials": [
+            "www. Online web sites for general genetics lecture notes, carrying the suffix \"edu\""
+          ],
+          "Other Learning Materials": [
+            "Multimedia associated with the text book and the relevant websites."
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "-Lecture rooms with 30 or 60 seats. Blackboard platform Laboratories, with a capacity of 25 students.",
+          "Technology equipment": "Smart board, computer, data show, and internet connection",
+          "Other equipment": "Laboratory equipped with materials relevant to the course along with safety facilities, safety cabinet, biohazard cabinet"
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Students and/or Peer Reviewers",
+          "Assessment Method": "Indirect"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students assessment",
+          "Assessor": "Course coordinator Assessment committee",
+          "Assessment Method": "Direct- Student results"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Faculty staff and students",
+          "Assessment Method": "Indirect- Survey"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Course coordinator",
+          "Assessment Method": "Direct- Student exam"
+        },
+        {
+          "Assessment Area/Issue": "",
+          "Assessor": "",
+          "Assessment Method": ""
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "DBS COUNCIL MEETING 29TH FOR THE ACADEMIC YEAR 2023",
+        "Reference No.": "15",
+        "Date": "25/11/1444 H – 14 JUNE 2023"
+      }
+    }
+  }
+}

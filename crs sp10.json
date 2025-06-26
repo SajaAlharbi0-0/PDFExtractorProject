@@ -1,0 +1,257 @@
+{
+  "Course Info": {
+    "Course Title": "Graduation Research Project",
+    "Course Code": "Bio491",
+    "Program": "B.Sc. in Molecular Biology and Biotechnology",
+    "Department": "Department of Biological Sciences",
+    "Faculty": "evaluator and survey",
+    "Institution": "King Abdulaziz University",
+    "Version": "2",
+    "Last Revision Date": "14 JUNE 2023"
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3",
+          "2. Course type": {
+            "A.": "Department",
+            "B.": "Required"
+          },
+          "3. Level/year at which this course is offered": "( 8th level- 4th year)"
+        },
+        "2. Course Description": "of Biological Sciences organizes lectures and workshops throughout the semester. These lectures include an introductory meeting with students on the definition and objectives of the graduation project course, and workshops help to understand the construction of the scientific database, literature survey, and the main concepts of writing a scientific report. Students are encouraged to work in groups. Each group chooses a subject for their graduation project and works under the supervision of a professor. The graduation projects are experimental practical research. Finally, students are required to submit a graduation report and present it scientifically.",
+        "3. Pre-requisites": "Department approval",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "The graduation research project aims to provide students with higher skills that are expected from the graduates of the biological sciences department and are required in the working and research fields after graduation, those skills are: Preparing students for the scientific research by introducing them to its tools and providing the learner with the skills of formulating hypotheses and designing methods for testing this hypothesis. The ability to conduct a scientific experiment, collect, analyze, and interpret data. Working in a group and learning effective communication.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "20 hrs./semester",
+            "Percentage": "50%"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "5",
+            "Mode": "Other (lab work)",
+            "Contact Hours": "20 hrs./semester",
+            "Percentage": "50%"
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "20"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": "14"
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": "6"
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)……",
+            "Contact Hours": ""
+          },
+          {
+            "No": "",
+            "Activity": "Total",
+            "Contact Hours": "40"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Identify scientific research types & approaches used in solving scientific problems.",
+          "PLO Code": "K1",
+          "Teaching Strategies": "- Workshops using different teaching strategies like clicker questions",
+          "Assessment Methods": "Quiz Attendance certificate"
+        }
+      ],
+      "2.0 Skills": [],
+      "3.0 Values, autonomy, and responsibility": []
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Introduction to Scientific Research\nDefinition of Scientific Research\nAttitudes and Skills\nBasic and Applied Research Definition\nResearch & Data Ethic"
+          },
+          {
+            "no": 2,
+            "topic": "Scientific Research Design\nHow to formulate a Research hypothesis\nScientific research variables\nResearch aims & objectives"
+          },
+          {
+            "no": 3,
+            "topic": "Mastering References Search in Databases\nWhat is a reference?"
+          },
+          {
+            "no": 4,
+            "topic": "Reading and Understanding Scientific papers5.1 Overview of the • Why\ndo we need to read scientific articles?\nWhat is a scientific paper?\nTypes of scientific papers\nThe Scientific paper outline"
+          },
+          {
+            "no": 5,
+            "topic": "Paraphrasing for Effective Research Writing\nWhat is paraphrasing?\nWhat/why do we paraphrase?\nWhat is plagiarism?\n5 C's of paraphrasing\n9 paraphrasing techniques\nPractical application using iThenticate and other programs (Plagiarism\nChecker)"
+          },
+          {
+            "no": 6,
+            "topic": "The Art of Scientific Writing\nWhat is academic paper?\nTypes of academic papers\nWriting a research article"
+          },
+          {
+            "no": 7,
+            "topic": "Citation Styles and Tools:\nWhy & when to cite resources?\nHow to create an in-text citation in different citation styles (APA, MLA\n... etc)\nHow to create a work cited list?\nHow to format a work cited list?"
+          },
+          {
+            "no": 8,
+            "topic": "Managing Data Analysis\nSelect appropriate univariate analysis for a descriptive study.\nInterpret the analysis and summarize the results.\nIntroduce bivariate analysis with real life examples"
+          },
+          {
+            "no": 9,
+            "topic": "Reporting Research Findings\nWhat is graphpad prism?\nHow to choose the right graph to present specific data?\nHow to format the graph to meet journal / institution criteria?\nWhat are the graph parts (title, axes, legend)?"
+          },
+          {
+            "no": 10,
+            "topic": "Designing and creating a scientific presentation and/or poster\nWhat is a scientific poster?\nCharacteristics of scientific poster"
+          },
+          {
+            "no": 11,
+            "topic": "11"
+          },
+          {
+            "no": 12,
+            "topic": "12."
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Workshop attendance",
+            "Timing": "1-11",
+            "Score": "15%"
+          },
+          {
+            "Activity": "Workshop quiz",
+            "Timing": "15",
+            "Score": "5"
+          },
+          {
+            "Activity": "Several required submissions",
+            "Timing": "1-17",
+            "Score": "21"
+          },
+          {
+            "Activity": "Evaluation of 2nd draft of student writing",
+            "Timing": "8-17",
+            "Score": "30"
+          },
+          {
+            "Activity": "Evaluation of the final draft of student writing",
+            "Timing": "17",
+            "Score": "4"
+          },
+          {
+            "Activity": "Evaluation of the student lab work",
+            "Timing": "7-9",
+            "Score": "15"
+          },
+          {
+            "Activity": "Evaluation of the student poster presentation",
+            "Timing": "16",
+            "Score": "10"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "Brookshire, R. H., & Brundage, S. B. (2015). Writing Scientific Research in Communication Sciences and Disorder. Plural Publishing."
+          ],
+          "Supportive References": [
+            "Basten, G. (2011). Introduction to scientific research projects. Bookboon."
+          ],
+          "Electronic Materials": [
+            "https://www.ncbi.nlm.nih.gov/pmc/ https://scholar.google.com/"
+          ],
+          "Other Learning Materials": [
+            "Microsoft applications including Word, PowerPoint slides, and Excel. References manger Statistical software"
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "-Lecture rooms - Research laboratory",
+          "Technology equipment": "Smart board, computer, data show, and internet connection",
+          "Other equipment": "Laboratory materials and equipment that facilitate students’ lab work and standard safety requirements."
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Extent of achievement of course learning outcomes",
+          "Assessor": "Student assessments and CLOs achievement",
+          "Assessment Method": "Direct"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching and assessment.",
+          "Assessor": "Student survey",
+          "Assessment Method": "Indirect"
+        },
+        {
+          "Assessment Area/Issue": "Resources quality",
+          "Assessor": "Faculty evaluator and survey",
+          "Assessment Method": "Indirect"
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "DBS COUNCIL MEETING 29TH FOR THE ACADEMIC YEAR 2023",
+        "Reference No.": "15",
+        "Date": "25/11/1444 H – 14 JUNE 2023"
+      }
+    }
+  }
+}

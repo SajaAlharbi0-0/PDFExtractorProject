@@ -2,16 +2,23 @@ import json
 import matplotlib.pyplot as plt
 
 # --- ربط كل كورس بملفه ---
+# --- ملفات الكورسات ---
 course_files = {
     "STAT110": "crs sp1 (1).json",
-    "PHYS110": "crs_sp2.json",
+    "PHYS110": "crs_sp2 (1).json",
     "BIO241": "crs_sp3.json",
-    "BIO491": "crs sp4.json"
+    "BIO491": "crs sp4.json",
+    "FNU121": "crs sp6.json",
+    "FNU471": "crs sp5.json",
+    "MET450": "crs sp-elec.json",
+    "MET491": "crs sp11.json",
+    "FNU451": "crs sp7.json",
+    "BIO444": "crs sp8.json"
 }
 
 # --- إدخال المستخدم ---
-department = input("Enter Department (STAT / PHYS / BIO): ").strip().upper()
-code = input("Enter Course Code (110 / 241 / 491) [Optional]: ").strip()
+department = input("Enter Department (STAT / PHYS / BIO / FNU / MET): ").strip().upper()
+code = input("Enter Course Code (110 / 241 / 491 / 121 / 471 / 444/ 450 / 451) [Optional]: ").strip()
 
 # --- تحديد المفاتيح المستهدفة ---
 if code:

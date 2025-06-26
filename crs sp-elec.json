@@ -1,0 +1,360 @@
+{
+  "Course Info": {
+    "Course Title": "Tropical Meteorology",
+    "Course Code": "MET 450",
+    "Program": "Meteorology",
+    "Department": "Meteorology",
+    "Faculty": ", Students",
+    "Institution": "King Abdulaziz University",
+    "Version": "3",
+    "Last Revision Date": "10 January 2025"
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3",
+          "2. Course type": {
+            "A.": "Department",
+            "B.": "Elective"
+          },
+          "3. Level/year at which this course is offered": "(7/4)"
+        },
+        "2. Course Description": "Studies atmospheric processes specific to the tropics, including monsoons, tropical cyclones, and convective systems. The course emphasizes their formation, dynamics, and impact on global weather. Challenges in forecasting tropical phenomena are also addressed.",
+        "3. Pre-requisites": "",
+        "4. Co-requisites": "MET 352",
+        "5. Course Main Objectives": "Understand tropical atmospheric processes, including monsoons, tropical cyclones, and convective systems. Study the formation, dynamics, and impact of tropical cyclones and monsoons. Explore tropical convection systems and their role in weather patterns. Analyze the impact of tropical phenomena on global weather systems. Address challenges in forecasting tropical weather and phenomena.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "45",
+            "Percentage": "100"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": ""
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": ""
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)",
+            "Contact Hours": ""
+          },
+          {
+            "No": "Total",
+            "Activity": "Total",
+            "Contact Hours": "45"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Explain the formation and dynamics of tropical cyclones, monsoons, and convective systems.",
+          "PLO Code": "1.1",
+          "Teaching Strategies": "Interactive lectures Case studies Group discussions",
+          "Assessment Methods": "Quizzes Written exams"
+        },
+        {
+          "Code": "1.2",
+          "Course Learning Outcome": "Describe the impact of tropical weather phenomena on global weather patterns.",
+          "PLO Code": "1.2",
+          "Teaching Strategies": "Problem-based learning Data analysis tasks",
+          "Assessment Methods": "Assignments Exams"
+        },
+        {
+          "Code": "1.3",
+          "Course Learning Outcome": "Relate tropical meteorological phenomena to large- scale weather systems and climate patterns.",
+          "PLO Code": "1.3",
+          "Teaching Strategies": "Data interpretation Group discussions",
+          "Assessment Methods": "Research reports Class participation"
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Analyze the dynamics of tropical cyclones and monsoons using observational and model data.",
+          "PLO Code": "2.1",
+          "Teaching Strategies": "Data analysis labs Hands-on forecasting exercises",
+          "Assessment Methods": "Lab reports Practical assessments"
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": []
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Introduction to Tropical Meteorology: Basic Concepts and Importance"
+          },
+          {
+            "no": 2,
+            "topic": "Tropical Cyclones: Formation, Dynamics, and Impact"
+          },
+          {
+            "no": 3,
+            "topic": "Monsoons: Mechanisms, Effects, and Seasonal Variability"
+          },
+          {
+            "no": 4,
+            "topic": "Tropical Convection: Storms, Squall Lines, and Weather Systems"
+          },
+          {
+            "no": 5,
+            "topic": "Air-Sea Interaction and Its Role in Tropical Weather"
+          },
+          {
+            "no": 6,
+            "topic": "Observational and Modeling Techniques in Tropical Meteorology"
+          },
+          {
+            "no": 7,
+            "topic": "Forecasting Tropical Cyclones and Monsoons"
+          },
+          {
+            "no": 8,
+            "topic": "Impact of Tropical Weather Phenomena on Global Climate"
+          },
+          {
+            "no": 9,
+            "topic": "Case Studies: Real-World Tropical Weather Events and their Forecasting"
+          },
+          {
+            "no": 10,
+            "topic": "Quizzes (Assessing knowledge of tropical cyclone formation, monsoons, and convection)"
+          },
+          {
+            "no": 11,
+            "topic": "Midterm Exam (Covers first half of the course)"
+          },
+          {
+            "no": 12,
+            "topic": "Lab Reports/Assignments (Practical applications of tropical meteorology concepts and data analysis)"
+          },
+          {
+            "no": 13,
+            "topic": "Group Project (Forecasting tropical cyclones and analyzing their impact on global weather)"
+          },
+          {
+            "no": 14,
+            "topic": "Final Exam (Comprehensive assessment)"
+          },
+          {
+            "no": 15,
+            "topic": "- Elsner, J. B., & Kara, A. L. (1999). Hurricane Dynamics and the\nGlobal Climate System. Cambridge University Press."
+          },
+          {
+            "no": 16,
+            "topic": "- Stull, R. B. (2017). Practical Meteorology: An Algebra-based\nSurvey of Atmospheric Science. University of British Columbia."
+          },
+          {
+            "no": 17,
+            "topic": "- McIlveen, R. (2010). Fundamentals of Weather and Climate.\nOxford University Press."
+          },
+          {
+            "no": 18,
+            "topic": "- Webster, P. J., et al. (1998). Monsoons: Processes, Predictability\nand the Role of Human Interaction. Wiley."
+          },
+          {
+            "no": 19,
+            "topic": "- NOAA National Weather Service (https://www.weather.gov/)"
+          },
+          {
+            "no": 20,
+            "topic": "- NASA Earth Science (https://science.nasa.gov/)"
+          },
+          {
+            "no": 21,
+            "topic": "- IPCC Reports (https://www.ipcc.ch/)"
+          },
+          {
+            "no": 22,
+            "topic": "- Satellite and radar data for monitoring tropical systems."
+          },
+          {
+            "no": 23,
+            "topic": "- Software tools for tropical weather forecasting (e.g., WRF, GFS)."
+          },
+          {
+            "no": 24,
+            "topic": "- Online tutorials and video resources on tropical meteorology,\ncyclones, and monsoons."
+          },
+          {
+            "no": 25,
+            "topic": "-Lecture room with 25 seats\n-Lab with 25 computers"
+          },
+          {
+            "no": 26,
+            "topic": "-Projector"
+          },
+          {
+            "no": 27,
+            "topic": "-Equipment and illustration tools relevant to the course material"
+          },
+          {
+            "no": 28,
+            "topic": "Faculty, Students"
+          },
+          {
+            "no": 29,
+            "topic": "Faculty, Program Assessment Committee"
+          },
+          {
+            "no": 30,
+            "topic": "Students, Faculty"
+          },
+          {
+            "no": 31,
+            "topic": "Faculty, Curriculum Committee"
+          },
+          {
+            "no": 32,
+            "topic": "Faculty, Industry Experts"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Quizzes (Assessing knowledge of tropical cyclone formation, monsoons, and convection)",
+            "Timing": "Week 3 and\nWeek 6",
+            "Score": "20%"
+          },
+          {
+            "Activity": "Midterm Exam (Covers first half of the course)",
+            "Timing": "Week 6",
+            "Score": "20%"
+          },
+          {
+            "Activity": "Lab Reports/Assignments (Practical applications of tropical meteorology concepts and data analysis)",
+            "Timing": "Week 5 and\nWeek 9",
+            "Score": "20%"
+          },
+          {
+            "Activity": "Group Project (Forecasting tropical cyclones and analyzing their impact on global weather)",
+            "Timing": "Week 11",
+            "Score": "20%"
+          },
+          {
+            "Activity": "Final Exam (Comprehensive assessment)",
+            "Timing": "Week 13",
+            "Score": "20%"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "- Emanuel, K. A. (2003). Divine Wind: The History and Science of Hurricanes. Oxford University Press.",
+            "- Elsner, J. B., & Kara, A. L. (1999). Hurricane Dynamics and the Global Climate System. Cambridge University Press.",
+            "- Stull, R. B. (2017). Practical Meteorology: An Algebra-based Survey of Atmospheric Science. University of British Columbia."
+          ],
+          "Supportive References": [
+            "- McIlveen, R. (2010). Fundamentals of Weather and Climate. Oxford University Press.",
+            "- Webster, P. J., et al. (1998). Monsoons: Processes, Predictability and the Role of Human Interaction. Wiley."
+          ],
+          "Electronic Materials": [
+            "- NOAA National Weather Service (https://www.weather.gov/)",
+            "- NASA Earth Science (https://science.nasa.gov/)",
+            "- IPCC Reports (https://www.ipcc.ch/)"
+          ],
+          "Other Learning Materials": [
+            "- Satellite and radar data for monitoring tropical systems.",
+            "- Software tools for tropical weather forecasting (e.g., WRF, GFS).",
+            "- Online tutorials and video resources on tropical meteorology, cyclones, and monsoons."
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "-Lecture room with 25 seats -Lab with 25 computers",
+          "Technology equipment": "-Projector",
+          "Other equipment": "-Equipment and illustration tools relevant to the course material"
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Faculty, Students",
+          "Assessment Method": "Student evaluations, peer reviews, classroom observations"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students assessment",
+          "Assessor": "Faculty, Program Assessment Committee",
+          "Assessment Method": "Review of exam results, quizzes, and assignment quality"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Students, Faculty",
+          "Assessment Method": "Resource usage surveys, feedback on library and lab facilities"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Faculty, Curriculum Committee",
+          "Assessment Method": "CLO-PLO alignment review, analysis of student performance"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "Faculty, Industry Experts",
+          "Assessment Method": "Employer feedback, advisory board reviews"
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "DEPARTMENT OF METEOROLOGY COUNCIL",
+        "Reference No.": "",
+        "Date": ""
+      }
+    }
+  }
+}

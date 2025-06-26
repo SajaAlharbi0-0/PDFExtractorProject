@@ -1,0 +1,245 @@
+{
+  "Course Info": {
+    "Course Title": "Research Methods",
+    "Course Code": "FUN 471",
+    "Program": "BSC Nutrition Science",
+    "Department": "Food and Nutrition",
+    "Faculty": "Human Sciences and Design",
+    "Institution": "King Abdulaziz University",
+    "Version": "1",
+    "Last Revision Date": "December 31, 2024"
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3",
+          "2. Course type": {
+            "A.": "Track",
+            "B.": "Elective"
+          },
+          "3. Level/year at which this course is offered": "(Level 7/ Year 4 )"
+        },
+        "2. Course Description": "This course is an introduction to designing, conducting, and reporting on scientific research. Evaluation of scientific literature, research methods within the literature, and the quality of scientific studies to produce an evidence-based review. Finally, this course elucidates the requirements for an academic work, considering aspects related to language, writing style, and layout. To culminate this final stage, students will learn to write a comprehensive research proposal that may be conducted in the future research project.",
+        "3. Pre-requisites": "Seminar FNU 381 General Statistics STAT 110 Analysis in nutrition research (FNU 372)",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "Students will gain an overview of research design, methodology, and critically reviewing the literature. At the end of this course, students will be able to: Discuss research ethics. Describe key research methods. Identify characteristics of high-quality research studies. Conduct and write reviews of literature reflecting current research consensus and future directions. Describe common problems (validity, reliability, ethical concerns) associated with collecting research data, interpreting and reporting findings, and strategies for effectively managing these problems. Plan a high-quality proposal that uses appropriate research methods and ethical procedures. Present a proposal and demonstrate research presentation skills.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "3",
+            "Percentage": "100%"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": ""
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": ""
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)",
+            "Contact Hours": ""
+          },
+          {
+            "No": "Total",
+            "Activity": "Total",
+            "Contact Hours": "45"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Identify the research problem, aim, and related questions, or hypothesis.",
+          "PLO Code": "",
+          "Teaching Strategies": "Lecture Group discussion",
+          "Assessment Methods": "Assignments Writing a full proposal"
+        },
+        {
+          "Code": "1.2",
+          "Course Learning Outcome": "Distinquish the different scientific research designs and methods .",
+          "PLO Code": "",
+          "Teaching Strategies": "Lecture Group discussion",
+          "Assessment Methods": "Assignments Writing a full proposal"
+        }
+      ],
+      "2.0 Skills": [],
+      "3.0 Values, autonomy, and responsibility": []
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Overview of course outline; introduction to research."
+          },
+          {
+            "no": 2,
+            "topic": "Research ethics and plagiarism."
+          },
+          {
+            "no": 3,
+            "topic": "Identification of research problems."
+          },
+          {
+            "no": 4,
+            "topic": "Generation of research objectives and questions or hypotheses."
+          },
+          {
+            "no": 5,
+            "topic": "Conducting a literature Review."
+          },
+          {
+            "no": 6,
+            "topic": "Research designs."
+          },
+          {
+            "no": 7,
+            "topic": "Data collection methods."
+          },
+          {
+            "no": 8,
+            "topic": "Sampling and sample size considerations."
+          },
+          {
+            "no": 9,
+            "topic": "Scientific writing"
+          },
+          {
+            "no": 10,
+            "topic": "Preparation of project proposal."
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Discussion and participation",
+            "Timing": "2-15",
+            "Score": "20%"
+          },
+          {
+            "Activity": "Assignments",
+            "Timing": "4-12",
+            "Score": "15%"
+          },
+          {
+            "Activity": "Presentation",
+            "Timing": "14",
+            "Score": "15%"
+          },
+          {
+            "Activity": "Writing a full proposal",
+            "Timing": "4-15",
+            "Score": "50%"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "-Creswell, John. Educational Research: Planning, Conducting, and Evaluating Quantitative and Qualitative Research (2015) -Wilson, JH, Joye SW. Research Methods and Statistics: An Integrated Approach. SAGE (2016). -Leedy, Paul D.; and Jeanne Ellis Ormrod. Practical Research: Planning and Design [12th edition]. Prentice-Hall (2018). -Nutrition Research: Concepts and Application 1st edition (2018) Karen Drummond and Allison Murphy-Reyes. ISBN:978-1-284-10153-9"
+          ],
+          "Supportive References": [
+            ""
+          ],
+          "Electronic Materials": [
+            "Nutrition related websites www.nutrition.org National Library of Medicine - www.nlm.nih.gov National Center for Health Statistics (NCHS) (www.cdc.gov) www.pubmed.com Epidemiology and Biostatistics Websites Public Health (www.lib.umich.edu/hw/public.health.html) Public Health & Epidemiology Websites"
+          ],
+          "Other Learning Materials": [
+            ""
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "Lecture room: capacity for 15 students",
+          "Technology equipment": "Computer and data show",
+          "Other equipment": ""
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Students, Teaching and Learning Committee",
+          "Assessment Method": "Questionnaire, forms-Indirect"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students assessment",
+          "Assessor": "Course Instructor, Teaching and Learning Committee, Academic Staff, Peer reviewer.",
+          "Assessment Method": "Blueprint, Rubrics, Forms, Course report, KPI (success rate) – _Direct"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Peer Reviewer, Students, Technicians, Academic Staff",
+          "Assessment Method": "Questionnaire, Course Coordination – _Indirect"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Course Instructor, Teaching and Learning Committee, Academic Staff.",
+          "Assessment Method": "Exit exam, Course reports KPI (success rate) – _Direct"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "",
+          "Assessment Method": ""
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "Food and Nutrition Department",
+        "Reference No.": "11TH",
+        "Date": "8/5/2024"
+      }
+    }
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "Course Info": {
+    "Course Title": "Principles of Food Sciences",
+    "Course Code": "FNU 121",
+    "Program": "Food Sciences Bachelor program",
+    "Department": "Food and Nutrition",
+    "Faculty": "Human Sciences and Design",
+    "Institution": "King AbdulAziz University",
+    "Version": "1",
+    "Last Revision Date": "Pick Revision Date."
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3",
+          "2. Course type": {
+            "A.": "Others",
+            "B.": "Elective"
+          },
+          "3. Level/year at which this course is offered": "(Level 2/Year 1)"
+        },
+        "2. Course Description": "The student will learn about understanding the basic concepts of food and nutrition, as well as understanding the requirements for energy and nutrients. They will also learn about the integration of the core principles of biological, chemical, and physical sciences associated with the study of food from farm to fork. Additionally, the course will provide an introduction to the global control of food quality and safety.",
+        "3. Pre-requisites": "General Chemistry CHEM 110",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "This course aims to introduces the field of food science and nutrition, covering topics such as nutrients, their properties, sources, and importance. Gain knowledge of the fundamentals of food science and the underlying technology associated with providing a safe, nutritious, and abundant supply of fresh and processed foods to consumers.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "3",
+            "Percentage": "100%"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": ""
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": ""
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)",
+            "Contact Hours": ""
+          },
+          {
+            "No": "Total",
+            "Activity": "Total",
+            "Contact Hours": "45"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Recognize nutrients' importance, classification, sources, function, and requirements",
+          "PLO Code": "K1",
+          "Teaching Strategies": "Lecture Group discussion",
+          "Assessment Methods": "Exam"
+        },
+        {
+          "Code": "1.2",
+          "Course Learning Outcome": "Outline fundamental aspects of food science.",
+          "PLO Code": "K2",
+          "Teaching Strategies": "Lecture Group discussion",
+          "Assessment Methods": "Exam"
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Explain food preservation principles to achieve high quality products",
+          "PLO Code": "S1",
+          "Teaching Strategies": "Lecture Group discussion",
+          "Assessment Methods": "Exam Assignment"
+        },
+        {
+          "Code": "2.2",
+          "Course Learning Outcome": "Evaluate food science current issues and problems and implement principles to assure food quality.",
+          "PLO Code": "S3",
+          "Teaching Strategies": "Lecture Group discussion",
+          "Assessment Methods": "Assignment"
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": []
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Introduction to Food Sciences and Nutrition: Overview of the field of food sciences and nutrition Importance of studying food sciences and nutrition\nBasic concepts and principles in food sciences and nutrition"
+          },
+          {
+            "no": 2,
+            "topic": "Food Composition and Nutritional Analysis:\nUnderstanding the components of food (carbohydrates, proteins, fats, vitamins, minerals, etc.)\nTechniques for analyzing and evaluating the nutritional content of food Interpretation of food labels and nutritional information"
+          },
+          {
+            "no": 3,
+            "topic": "Food Processing and Preservation:\nPrinciples of food processing and preservation techniques\nOverview of different food processing methods (thermal processing, freezing, drying, fermentation)\nEffects of processing on the nutritional value and quality of food"
+          },
+          {
+            "no": 4,
+            "topic": "Food Safety and Sanitation:\nImportance of food safety and sanitation in the food industry Principles of foodborne illness prevention and control\nGood manufacturing practices and Hazard Analysis Critical Control Point principles"
+          },
+          {
+            "no": 5,
+            "topic": "Food Quality and Sensory Evaluation:\nFactors affecting food quality (appearance, taste, texture, aroma) Sensory evaluation techniques for assessing food quality Quality control and assurance in the food industry"
+          },
+          {
+            "no": 6,
+            "topic": "Food and Society:\nSocial, cultural, and economic aspects of food\nFood sustainability and environmental considerations"
+          },
+          {
+            "no": 7,
+            "topic": "Food Product Development and Innovation:\nIntroduction to food product development process\nConsumer preferences and market research in product development Food product labeling and packaging considerations"
+          },
+          {
+            "no": 8,
+            "topic": "Food Product Labeling and Regulations: Understanding food labeling regulations and requirements Interpretation of nutrition facts labels and ingredient lists\nClaims and certifications on food packaging (organic, gluten-free, non- GMO)\nConsumer rights and protection regarding food labeling and advertising"
+          },
+          {
+            "no": 9,
+            "topic": "Food and Human Nutrition:\nBasic principles of human nutrition\nNutritional requirements and guidelines for different age groups and populations\nRelationship between diet and health"
+          },
+          {
+            "no": 10,
+            "topic": "Emerging Trends in Food Sciences and Nutrition:\nExploration of current and emerging topics in the field\nDiscussion of advancements in food technology, functional foods, and nutraceuticals\nFuture directions and opportunities in food sciences and nutrition"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Discussion and participation",
+            "Timing": "2-15",
+            "Score": "5%"
+          },
+          {
+            "Activity": "Assignments",
+            "Timing": "4-12",
+            "Score": "15%"
+          },
+          {
+            "Activity": "Activities",
+            "Timing": "4-12",
+            "Score": "15%"
+          },
+          {
+            "Activity": "Exams",
+            "Timing": "7-12",
+            "Score": "20%"
+          },
+          {
+            "Activity": "Presentation",
+            "Timing": "14",
+            "Score": "15%"
+          },
+          {
+            "Activity": "Final exam",
+            "Timing": "16",
+            "Score": "30%"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "Vaclavik. V.A, Christian. E. W, Campbell. T. (2021). Essentials of Food Science (Food Science Text Series). 5th edition. Springer. Gallegos. D and Wahlqvist. M.L.(2020) Food and Nutrition. 4th edition. Taylor and Francis"
+          ],
+          "Supportive References": [
+            "Journal of Food Safety https://onlinelibrary.wiley.com/journal/17454565 Journal of Food Science https://onlinelibrary.wiley.com/journal/17503841 Journal of Food Protection http://jfoodprotection.org/ Journal of Food Science Technology Abstract https://www.ifis.org/fsta"
+          ],
+          "Electronic Materials": [
+            "*U.S. Department of Health & Human Services https://www.foodsafety.gov/ *U.S. Food and Drug Administration https://www.fda.gov/Food/ResourcesForYou/default.htm *الهيئة العامة للغذاء والدواء https://www.sfda.gov.sa/ar/food/Pages/default.aspx *Food Standard Agency https://www.food.gov.uk/ *Nutrition and Food Sciences Database https://www.cabi.org/nutrition/ *Institute of Food Technology https://www.ift.org/"
+          ],
+          "Other Learning Materials": [
+            ""
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "Lecture room: capacity for 20 students",
+          "Technology equipment": "Computer and data show",
+          "Other equipment": ""
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Students, Teaching and Learning Committee",
+          "Assessment Method": "Questionnaire, forms – Indirect"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students’ assessment",
+          "Assessor": "Course Instructor, Teaching and Learning Committee, Academic   Staff,   Peer reviewer.",
+          "Assessment Method": "Blueprint, Rubrics, Forms, Course report, KPI (success rate) – Direct"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Peer Reviewer, Students, Technicians, Academic Staff",
+          "Assessment Method": "Questionnaire, Course Coordination – Indirect"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Course Instructor, Teaching and Learning Committee, Academic Staff.",
+          "Assessment Method": "Exit exam, Course reports KPI (success rate) – Direct"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "",
+          "Assessment Method": ""
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "DEPARTMENT COUNCIL, 11TH COUNCIL MEETING, 2023-2024",
+        "Reference No.": "45113507",
+        "Date": "29/10/1445H"
+      }
+    }
+  }
+}

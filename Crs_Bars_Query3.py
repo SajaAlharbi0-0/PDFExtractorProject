@@ -7,11 +7,18 @@ course_files = {
     "STAT110": "crs sp1 (1).json",
     "PHYS110": "crs_sp2 (1).json",
     "BIO241": "crs_sp3.json",
-    "BIO491": "crs sp4.json"
+    "BIO491": "crs sp4.json",
+    "FNU121": "crs sp6.json",
+    "FNU471": "crs sp5.json",
+    "MET450": "crs sp-elec.json",
+    "MET491": "crs sp11.json",
+    "FNU451": "crs sp7.json",
+    "BIO444": "crs sp8.json",
+
 }
 
 # --- إدخال المستخدم: القسم فقط ---
-user_dept = input("Enter Department (STATISTICS / PHYSICS / DEPARTMENT OF BIOLOGICAL SCIENCES): ").strip().lower()
+user_dept = input("Enter Department (STATISTICS / PHYSICS / DEPARTMENT OF BIOLOGICAL SCIENCES / FOOD AND Nutrition / Meteorology): ").strip().lower()
 
 # --- تجميع البيانات للقسم المحدد ---
 required = 0
