@@ -156,6 +156,22 @@ canvas {
   background-color: #3a3771;
 }
 
+.result-message {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #058646;
+  margin: 10px auto 0;
+  text-align: center;
+  background: none !important;  /* 🔥 ضروري عشان يلغي أي تأثير من المتصفح أو bootstrap */
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: block;
+  width: fit-content;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
 .result-message.success {
   color: #058646;
 }
