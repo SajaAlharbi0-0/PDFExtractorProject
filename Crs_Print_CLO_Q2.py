@@ -5,7 +5,7 @@ course_files = {
     "STAT110": "crs sp1 (1).json",
     "PHYS110": "crs_sp2.json",
     "BIO241": "crs_sp3.json",
-    "BIO": "crs sp4.json"
+    "BIO491": "crs sp4.json"
 }
 
 # --- إدخال المستخدم ---
