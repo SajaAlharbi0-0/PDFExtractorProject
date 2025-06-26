@@ -86,10 +86,6 @@ function loadDepartments() {
         option.textContent = dep;
         departmentDropdown.appendChild(option);
       });
-
-      // ✅ إظهار حقل الإخراج بعد ما المستخدم يختار قسم
-      document.getElementById("viewTypeContainer").style.display = "block";
-
     } else {
       departmentDropdown.innerHTML = '<option value="" disabled selected>No departments found</option>';
     }
@@ -98,7 +94,6 @@ function loadDepartments() {
     departmentDropdown.innerHTML = '<option value="" disabled selected>Error loading departments</option>';
   });
 }
-
 
 
 // ===== Chart logic =====
@@ -187,40 +182,26 @@ loadBtn.addEventListener('click', () => {
 });
 
 
-// ===== Update Chart Type Options Based on File Type & View =====
+// ===== Update Chart Type Options Based on File Type =====
 function updateChartTypeOptions() {
   const fileType = document.getElementById("fileType").value;
-  const viewType = document.getElementById("viewType")?.value;
   const chartTypeDropdown = document.getElementById("chartType");
 
   chartTypeDropdown.innerHTML = '<option value="" disabled selected>Select Chart Type</option>';
 
-  if (!viewType) return;
-
-  if (viewType === "chart") {
-    if (fileType === "Course") {
-      chartTypeDropdown.innerHTML += `
-        <option value="assessment">Assessment Distribution</option>
-        <option value="elective">Required vs Elective Courses per Department</option>
-      `;
-    } else if (fileType === "Experience") {
-      chartTypeDropdown.innerHTML += `
-        <option value="clo_group">CLO Count By Group</option>
-        <option value="stakeholders">Stakeholder Activities</option>
-        <option value="evaluation">Evaluation Methods (Direct or Indirect)</option>
-      `;
-    }
-  } else if (viewType === "table") {
-    if (fileType === "Course") {
-      chartTypeDropdown.innerHTML += `
-        <option value="outcomes">Learning Outcomes & Assessment</option>
-        <option value="resources">Learning Resources and References</option>
-      `;
-    } else if (fileType === "Experience") {
-      chartTypeDropdown.innerHTML += `
-        <option value="location">Field Experience Location</option>
-      `;
-    }
+  if (fileType === "Course") {
+    chartTypeDropdown.innerHTML += `
+      <option value="assessment">Assessment Distribution</option>
+      <option value="outcomes">Learning Outcomes & Assessment</option>
+      <option value="elective">Required vs Elective Courses per Department</option>
+      <option value="resources">Learning Resources and References</option>
+    `;
+  } else if (fileType === "Experience") {
+    chartTypeDropdown.innerHTML += `
+      <option value="location">Field Experience Location</option>
+      <option value="clo_group">CLO Count By Group</option>
+      <option value="stakeholders">Stakeholder Activities</option>
+      <option value="evaluation">Evaluation Methods (Direct or Indirect)</option>
+    `;
   }
 }
-

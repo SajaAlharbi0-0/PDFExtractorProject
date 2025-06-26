@@ -4,7 +4,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 
 # استيراد دوال التحويل
-from exp1 import extract_to_json  # ملف التدريب الميداني
+from exp import extract_to_json  # ملف التدريب الميداني
 from crs import extract_course_to_json  # ملف توصيف المقرر
 
 app = Flask(__name__)
@@ -139,4 +139,3 @@ def get_departments():
 # ✅ تشغيل الخادم
 if __name__ == '__main__':
     app.run(debug=True)
-

@@ -62,4 +62,3 @@ def extract_course_to_json(docx_path):
     full["Sections"]["G"] = {"title": "Specification Approval", "content": section_fg.get("Specification Approval", {})}
 
     return full
-
