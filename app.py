@@ -4,7 +4,7 @@ import re
 import tempfile
 import firebase_admin
 from firebase_admin import credentials, firestore
-from exp import extract_to_json  # ⬅️ دالة تحويل ملفات التدريب فقط
+from exp1 import extract_to_json  # ⬅️ دالة تحويل ملفات التدريب فقط
 
 
 app = Flask(__name__)
@@ -17,7 +17,6 @@ db = firestore.client()
 # 🏠 الصفحة الرئيسية
 @app.route('/')
 def index():
-    
     return render_template('index.html')
 
 # 📤 رفع الملف ومعالجته
