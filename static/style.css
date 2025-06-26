@@ -101,6 +101,8 @@ h2 {
   background-color: #3a3771;
 }
 
+
+
 .chart-section {
   margin-top: 60px;
 }
@@ -156,6 +158,7 @@ canvas {
   background-color: #3a3771;
 }
 
+
 .result-message {
   font-weight: 600;
   font-size: 1.1em;
@@ -175,6 +178,12 @@ canvas {
 .result-message.success {
   color: #058646;
 }
+
+.result-message.error {
+  color: #d25629;
+}
+
+
 
 .result-message.error {
   color: #d25629;
