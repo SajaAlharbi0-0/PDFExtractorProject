@@ -1,0 +1,260 @@
+{
+  "Course Info": {
+    "Course Title": "General Botany 556",
+    "Course Code": "Bio 241",
+    "Program": "B.Sc. in Molecular Biology and Biotechnology",
+    "Department": "Department of Biological Sciences",
+    "Faculty": "staff and students",
+    "Institution": "King Abdulaziz University",
+    "Version": "42",
+    "Last Revision Date": "14 June 2022"
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "4 credit hrs.",
+          "2. Course type": {
+            "A.": "College",
+            "B.": "Required"
+          },
+          "3. Level/year at which this course is offered": "(5th level / 3rd year)"
+        },
+        "2. Course Description": "The course is an overall introduction that aims to provide students with the basic principles of flowering plants morphology, anatomy, physiology, and their interaction with the environment.",
+        "3. Pre-requisites": "Bio 202",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "The student will achieve competency concerning the following aspects of plant biology: How plants grow and acquire the resources necessary for growth, development, and survival. Plant morphology and how this enables environmental adaptation. Plant physiology and biochemistry. Plant flowering and reproduction. Anatomy of plant tissue.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "75",
+            "Percentage": "100"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "-",
+            "Percentage": "-"
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "-",
+            "Percentage": "-"
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "-",
+            "Percentage": "-"
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "30"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": "-"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Explain the plant importance to the humans and the ecosystem, and its adaptation to the environment.",
+          "PLO Code": "K2",
+          "Teaching Strategies": "Lectures and lab observations",
+          "Assessment Methods": "Written and MCQs Exams. Periodic, Midterm and Final."
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Conduct experiments and discuss results",
+          "PLO Code": "S3",
+          "Teaching Strategies": "Lectures, experiments, and lab observations",
+          "Assessment Methods": "Objective structured practical examination (OSPE) and Exams."
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": [
+        {
+          "Code": "3.1",
+          "Course Learning Outcome": "Work effectively within a team",
+          "PLO Code": "V1",
+          "Teaching Strategies": "Samples collection, and plant description",
+          "Assessment Methods": "Group project to produce plant’s photo-album and presentations"
+        }
+      ]
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Syllabus + Introduction + Importance of Botany"
+          },
+          {
+            "no": 2,
+            "topic": "Plant Classification"
+          },
+          {
+            "no": 3,
+            "topic": "Seeds & seed germination"
+          },
+          {
+            "no": 4,
+            "topic": "Root morphology and modifications"
+          },
+          {
+            "no": 5,
+            "topic": "Water and mineral acquisition"
+          },
+          {
+            "no": 6,
+            "topic": "Stem morphology and modifications"
+          },
+          {
+            "no": 7,
+            "topic": "Leaves morphology and modifications"
+          },
+          {
+            "no": 8,
+            "topic": "Photosynthesis"
+          },
+          {
+            "no": 9,
+            "topic": "Flowers and Inflorescence"
+          },
+          {
+            "no": 10,
+            "topic": "Pollination and Fertilization"
+          },
+          {
+            "no": 11,
+            "topic": "Fruits"
+          },
+          {
+            "no": 12,
+            "topic": "Sexual and Asexual reproduction"
+          },
+          {
+            "no": 13,
+            "topic": "Plant Tissue Anatomy- Root, Stem, and leaf"
+          },
+          {
+            "no": 14,
+            "topic": "Plant interaction with the environment"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Periodic",
+            "Timing": "4",
+            "Score": "15"
+          },
+          {
+            "Activity": "Midterm",
+            "Timing": "8",
+            "Score": "20"
+          },
+          {
+            "Activity": "Quizzes and activities",
+            "Timing": "Multiple quizzes\nduring semester",
+            "Score": "10"
+          },
+          {
+            "Activity": "Practical",
+            "Timing": "14",
+            "Score": "25"
+          },
+          {
+            "Activity": "Final",
+            "Timing": "16",
+            "Score": "30"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "Mauseth, J.D. (2019). Botany: An Introduction to Plant Biology, 7th ed. (Burlington, MA: Jones and Bartlett Learning)."
+          ],
+          "Supportive References": [
+            "Book +Slides on Blackboard"
+          ],
+          "Electronic Materials": [
+            "A free e-copy of the textbook is provided to students by the beginning of each semester through VitalSource."
+          ],
+          "Other Learning Materials": [
+            "Mauseth, J.D. (2019). Botany: An Introduction to Plant Biology, 7th ed. (Burlington, MA: Jones and Bartlett Learning)."
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "Classrooms; size depend on students' number ranged 30-40 seats. Laboratories.",
+          "Technology equipment": "lecture rooms equipped with a whiteboard, computer and data show, and internet connection",
+          "Other equipment": "Laboratory equipped with materials relevant to the course along with safety facilities, safety cabinet, biohazard cabinet"
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Students and/or Peer Reviewer",
+          "Assessment Method": "Indirect"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students assessment",
+          "Assessor": "Course coordinator Assessment committee",
+          "Assessment Method": "Direct- Student results"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Faculty staff and students",
+          "Assessment Method": "Indirect- Survey"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Course coordinator",
+          "Assessment Method": "Direct- Student exam"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "",
+          "Assessment Method": ""
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "DBS COUNCIL MEETING 29TH FOR ACADEMIC YEAR 2023",
+        "Reference No.": "15",
+        "Date": "25/11/1444 H – 14 JUNE 2023"
+      }
+    }
+  }
+}

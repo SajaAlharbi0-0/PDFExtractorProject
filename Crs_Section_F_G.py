@@ -43,5 +43,16 @@ def extract_F_and_G(file_path):
                     elif "date" in key:
                         result["Specification Approval"]["Date"] = value
 
+    def clean_text_recursive(data):
+        if isinstance(data, dict):
+            return {k: clean_text_recursive(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [clean_text_recursive(item) for item in data]
+        elif isinstance(data, str):
+            return data.replace('\t', ' ').replace('\n', ' ').strip()
+        else:
+            return data
+    result = clean_text_recursive(result)
+
     return result
 

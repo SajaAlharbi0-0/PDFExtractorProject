@@ -52,6 +52,17 @@ def extract_section_e_from_docx(file_path):
             elif "other equipment" in key_lower:
                 refs["Required Facilities and Equipment"]["Other equipment"] = value
 
+    def clean_text_recursive(data):
+        if isinstance(data, dict):
+            return {k: clean_text_recursive(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [clean_text_recursive(item) for item in data]
+        elif isinstance(data, str):
+            return data.replace('\t', ' ').replace('\n', ' ').strip()
+        else:
+            return data
+    refs = clean_text_recursive(refs)
+    
     return refs
 
 

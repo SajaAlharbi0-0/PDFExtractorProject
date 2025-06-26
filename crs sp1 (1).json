@@ -1,0 +1,270 @@
+{
+  "Course Info": {
+    "Course Title": "General Statistics",
+    "Course Code": "STAT 110",
+    "Program": "B.Sc. in Statistics",
+    "Department": "Statistics",
+    "Faculty": "Science",
+    "Institution": "King Abdulaziz University",
+    "Version": "2.0",
+    "Last Revision Date": "Sunday, February 20, 2022"
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3",
+          "2. Course type": {
+            "A.": "Faculty",
+            "B.": "Required"
+          },
+          "3. Level/year at which this course is offered": "(1st Level or 2nd Level / 1st Year)"
+        },
+        "2. Course Description": "This is an introductory course in statistics which is designed to teach scientific track preparatory year students about the basic concepts of statistics, data analysis and probability theory.",
+        "3. Pre-requisites": "None",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "After completing this course, students are able to conduct basic data analysis using fundamental descriptive and inferential statistical methods and solve basic problems in probability.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "45",
+            "Percentage": "100%"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": ""
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": ""
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (…)",
+            "Contact Hours": ""
+          },
+          {
+            "No": "Total",
+            "Activity": "Total",
+            "Contact Hours": "45"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Define fundamental statistical and probability terminology",
+          "PLO Code": "Depend on the scientific program",
+          "Teaching Strategies": "Lecturing",
+          "Assessment Methods": "Activities; Midterms; Final Exam"
+        },
+        {
+          "Code": "1.2",
+          "Course Learning Outcome": "Identify solutions for data analysis and probability problems analytically.",
+          "PLO Code": "Depend on the scientific program",
+          "Teaching Strategies": "Lecturing",
+          "Assessment Methods": "Activities; Midterms; Final Exam"
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Apply fundamental descriptive statistical methods",
+          "PLO Code": "Depend on the scientific program",
+          "Teaching Strategies": "Lecturing",
+          "Assessment Methods": "Activities; Midterms; Final Exam"
+        },
+        {
+          "Code": "2.2",
+          "Course Learning Outcome": "Apply fundamental inferential statistical methods.",
+          "PLO Code": "Depend on the scientific program",
+          "Teaching Strategies": "Lecturing",
+          "Assessment Methods": "Activities; Midterms; Final Exam"
+        },
+        {
+          "Code": "2.3",
+          "Course Learning Outcome": "Analyze data via a computational tool.",
+          "PLO Code": "Depend on the scientific program",
+          "Teaching Strategies": "Presentation",
+          "Assessment Methods": "Activities; Midterms; Final Exam"
+        },
+        {
+          "Code": "2.4",
+          "Course Learning Outcome": "Interpret statistical outcomes.",
+          "PLO Code": "Depend on the scientific program",
+          "Teaching Strategies": "Lecturing",
+          "Assessment Methods": "Activities; Midterms; Final Exam"
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": []
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Definition of Statistics; Areas of Statistics (Descriptive and Inferential); Variable, data, population, and sample; General classification of variables; Scale-measurement classification of\nvariables; Data collection, sampling techniques, and types of studies."
+          },
+          {
+            "no": 2,
+            "topic": "Organizing data using different types of frequency distributions; Histogram, frequency polygons, and ogives; Other types of graphs;\nApplication using Excel/MegaStat"
+          },
+          {
+            "no": 3,
+            "topic": "Measures of central tendency, their properties, and distribution\nshapes; Measures of variation; Measures of position; Exploratory"
+          },
+          {
+            "no": 4,
+            "topic": "data analysis using the five-number summary and boxplot;\nApplication using Excel/MegaStat"
+          },
+          {
+            "no": 5,
+            "topic": "Scatter plot, correlation and its types; Pearson’s and Spearman’s\ncorrelation coefficients; Equation of the regression line; Application\nusing Excel/MegaStat"
+          },
+          {
+            "no": 6,
+            "topic": "Fundamental concepts of probability theory; Types of events and\ndefinitions of probability; Addition and Multiplication rules of probability; Counting rules"
+          },
+          {
+            "no": 7,
+            "topic": "Definitions of discrete probability distributions; Properties of discrete\nprobability distributions; The binomial experiment and the binomial distribution; Application using Excel/MegaStat"
+          },
+          {
+            "no": 8,
+            "topic": "Properties of the normal distribution; The standard normal\ndistribution; Applications of the normal distribution; The central limit theorem; Application using Excel/MegaStat"
+          },
+          {
+            "no": 9,
+            "topic": "Steps in hypothesis testing; One-sample Z-test for the population\nmean; Application using Excel/MegaStat"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "Activities",
+            "Timing": "TBA",
+            "Score": "10%"
+          },
+          {
+            "Activity": "Midterm #1",
+            "Timing": "6",
+            "Score": "25%"
+          },
+          {
+            "Activity": "Midterm #2",
+            "Timing": "12",
+            "Score": "25%"
+          },
+          {
+            "Activity": "Final Exam",
+            "Timing": "16",
+            "Score": "40%"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "Bluman, A. G. (2023). Elementary Statistics: A Step-by-Step Approach (11th ed.). McGraw Hill"
+          ],
+          "Supportive References": [
+            "None"
+          ],
+          "Electronic Materials": [
+            "McGraw-Hill Education. (2024). ALEKS: Assessment and Learning in Knowledge Spaces. Retrieved from www.aleks.com"
+          ],
+          "Other Learning Materials": [
+            "Computational tool’s documentation"
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "Classrooms (60+ seats).",
+          "Technology equipment": "Data show, and suitable computational tool (e.g., Excel/MegaStat).",
+          "Other equipment": "None"
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Faculty Students",
+          "Assessment Method": "Direct: Success rate Indirect: Survey"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students assessment",
+          "Assessor": "Faculty Students",
+          "Assessment Method": "Direct: Peer-review Indirect: Survey"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Faculty Students",
+          "Assessment Method": "Direct: Peer-review Indirect: Survey"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "Faculty Students",
+          "Assessment Method": "Direct: CLO Assessment Indirect: Survey"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "None",
+          "Assessment Method": "None"
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "DEPARTMENTAL COUNCIL MEETING",
+        "Reference No.": "MEETING #23, DECISION #6",
+        "Date": "MONDAY, JULY 29, 2024"
+      }
+    }
+  }
+}

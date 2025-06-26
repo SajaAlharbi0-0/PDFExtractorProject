@@ -1,0 +1,276 @@
+{
+  "Course Info": {
+    "Course Title": "General Physics 33I",
+    "Course Code": "PHYS110",
+    "Program": "General Physics",
+    "Department": "Physics",
+    "Faculty": "Science",
+    "Institution": "KAU",
+    "Version": "1",
+    "Last Revision Date": "Pick Revision Date."
+  },
+  "Sections": {
+    "A": {
+      "title": "General information about the course",
+      "content": {
+        "1. Course Identification": {
+          "1. Credit hours": "3",
+          "2. Course type": {
+            "A.": "College",
+            "B.": ""
+          },
+          "3. Level/year at which this course is offered": "1"
+        },
+        "2. Course Description": "The course is an introduction to fundamentals of physics (mechanics, electricity, optics, fluids and waves)",
+        "3. Pre-requisites": "None",
+        "4. Co-requisites": "None",
+        "5. Course Main Objectives": "At the end of this course, students will: Understand the classical mechanics and the applications of Newton’s laws. Be familiar with the electrostatic force and the oscillating phenomena. Be able to solve elementary physics problems. Have a basic understanding of heat, temperature and pressure.",
+        "6. Modes of Instruction": [
+          {
+            "No": "1",
+            "Mode": "Traditional classroom",
+            "Contact Hours": "45",
+            "Percentage": "100%"
+          },
+          {
+            "No": "2",
+            "Mode": "E-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "3",
+            "Mode": "Hybrid\nTraditional classroom\nE-learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          },
+          {
+            "No": "4",
+            "Mode": "Distance learning",
+            "Contact Hours": "",
+            "Percentage": ""
+          }
+        ],
+        "7. Activities": [
+          {
+            "No": "1.",
+            "Activity": "Lectures",
+            "Contact Hours": "45"
+          },
+          {
+            "No": "2.",
+            "Activity": "Laboratory/Studio",
+            "Contact Hours": ""
+          },
+          {
+            "No": "3.",
+            "Activity": "Field",
+            "Contact Hours": ""
+          },
+          {
+            "No": "4.",
+            "Activity": "Tutorial",
+            "Contact Hours": ""
+          },
+          {
+            "No": "5.",
+            "Activity": "Others (specify)",
+            "Contact Hours": ""
+          },
+          {
+            "No": "Total",
+            "Activity": "Total",
+            "Contact Hours": "45"
+          }
+        ]
+      }
+    },
+    "B": {
+      "1.0 Knowledge and understanding": [
+        {
+          "Code": "1.1",
+          "Course Learning Outcome": "Explain the dynamics, Newton's laws, electrostatic force, fluid mechanics and the idea of oscillation.",
+          "PLO Code": "K.1",
+          "Teaching Strategies": "Lecture, discussion",
+          "Assessment Methods": "Exam- Homework"
+        },
+        {
+          "Code": "1.2",
+          "Course Learning Outcome": "Mention some applications of fluid mechanics and oscillation.",
+          "PLO Code": "K.3",
+          "Teaching Strategies": "Lecture, discussion",
+          "Assessment Methods": "Exam"
+        }
+      ],
+      "2.0 Skills": [
+        {
+          "Code": "2.1",
+          "Course Learning Outcome": "Apply Newton's laws for linear motion.",
+          "PLO Code": "S.3",
+          "Teaching Strategies": "Lecture, Problem solving",
+          "Assessment Methods": "Exam- Homework"
+        },
+        {
+          "Code": "2.2",
+          "Course Learning Outcome": "Discuss the pressure and the heat effects.",
+          "PLO Code": "S.3",
+          "Teaching Strategies": "Lecture, Problem solving",
+          "Assessment Methods": "Exam- Homework"
+        }
+      ],
+      "3.0 Values, autonomy, and responsibility": []
+    },
+    "C": {
+      "title": "Course Content (Topics)",
+      "content": {
+        "topics": [
+          {
+            "no": 1,
+            "topic": "Measurement"
+          },
+          {
+            "no": 2,
+            "topic": "Vectors"
+          },
+          {
+            "no": 3,
+            "topic": "Motion along straight line"
+          },
+          {
+            "no": 4,
+            "topic": "Force and Motion"
+          },
+          {
+            "no": 5,
+            "topic": "Newton law"
+          },
+          {
+            "no": 6,
+            "topic": "Oscillations"
+          },
+          {
+            "no": 7,
+            "topic": "Waves"
+          },
+          {
+            "no": 8,
+            "topic": "Sound waves"
+          },
+          {
+            "no": 9,
+            "topic": "Temperature and Heat"
+          },
+          {
+            "no": 10,
+            "topic": "Electric Charge"
+          },
+          {
+            "no": 11,
+            "topic": "Electric Fields"
+          },
+          {
+            "no": 12,
+            "topic": "Electric Current"
+          },
+          {
+            "no": 13,
+            "topic": "Reflection and Refraction"
+          },
+          {
+            "no": 14,
+            "topic": "Images"
+          }
+        ]
+      }
+    },
+    "D": {
+      "title": "Student Assessment",
+      "content": {
+        "Assessment Activities": [
+          {
+            "Activity": "First midterm exam.",
+            "Timing": "8-9",
+            "Score": "25%"
+          },
+          {
+            "Activity": "Second midterm exam.",
+            "Timing": "12-13",
+            "Score": "25%"
+          },
+          {
+            "Activity": "Student activities (assignment- attendance)",
+            "Timing": "1-15",
+            "Score": "10%"
+          },
+          {
+            "Activity": "Final exam",
+            "Timing": "17-18",
+            "Score": "40%"
+          }
+        ]
+      }
+    },
+    "E": {
+      "title": "Learning Resources and Facilities",
+      "content": {
+        "References and Learning Resources": {
+          "Essential References": [
+            "Fundamentals of Physics Halliday, Resnick, and Walker, 8th Edition."
+          ],
+          "Supportive References": [
+            ""
+          ],
+          "Electronic Materials": [
+            ""
+          ],
+          "Other Learning Materials": [
+            ""
+          ]
+        },
+        "Required Facilities and Equipment": {
+          "Facilities": "Lecture room with max 50 seats.",
+          "Technology equipment": "Projector, smart board",
+          "Other equipment": ""
+        }
+      }
+    },
+    "F": {
+      "title": "Assessment of Course Quality",
+      "content": [
+        {
+          "Assessment Area/Issue": "Effectiveness of teaching",
+          "Assessor": "Students",
+          "Assessment Method": "Indirect (survey)"
+        },
+        {
+          "Assessment Area/Issue": "Effectiveness of Students assessment",
+          "Assessor": "Peer review",
+          "Assessment Method": "Indirect"
+        },
+        {
+          "Assessment Area/Issue": "Quality of learning resources",
+          "Assessor": "Staff-students",
+          "Assessment Method": "Indirect (survey)"
+        },
+        {
+          "Assessment Area/Issue": "The extent to which CLOs have been achieved",
+          "Assessor": "staff",
+          "Assessment Method": "direct"
+        },
+        {
+          "Assessment Area/Issue": "Other",
+          "Assessor": "",
+          "Assessment Method": ""
+        }
+      ]
+    },
+    "G": {
+      "title": "Specification Approval",
+      "content": {
+        "Council/Committee": "",
+        "Reference No.": "",
+        "Date": ""
+      }
+    }
+  }
+}

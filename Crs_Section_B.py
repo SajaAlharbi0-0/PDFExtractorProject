@@ -2,7 +2,7 @@ from docx import Document
 import json
 import re
 
-def extract_clos(doc_path):
+def extract_clos2(doc_path):
     clos_data = {
         "1.0 Knowledge and understanding": [],
         "2.0 Skills": [],
@@ -12,27 +12,26 @@ def extract_clos(doc_path):
     doc = Document(doc_path)
     target_table = None
 
-    expected_headers = [
-        "Code",
-        "Course Learning Outcomes",
-        "Code of CLOs aligned with program",
-        "Teaching Strategies",
-        "Assessment Methods"
-    ]
+    def normalize(text):
+        return " ".join(text.replace("\n", " ").split()).strip().lower()
 
     for tbl in doc.tables:
-        hdr = [c.text.replace("\n", " ").strip() for c in tbl.rows[0].cells]
-        # code to delete \n from hdr = Table headers detected: ['code', 'course learning\noutcomes', 'code of clos aligned\nwith program', 'teaching\nstrategies', 'assessment\nmethods']
-
-
+        hdr = [normalize(c.text) for c in tbl.rows[0].cells]
         print("Table headers detected:", hdr)  # 🐞 Debug output
-        if hdr[:5] == expected_headers:
-            target_table = tbl
-            break
+
+        if len(hdr) >= 5:
+            if (
+                hdr[0] == "code" and
+                "course learning outcomes" in hdr[1] and
+                hdr[2].startswith("code of") and
+                "teaching strategies" in hdr[3] and
+                "assessment methods" in hdr[4]
+            ):
+                target_table = tbl
+                break
 
     if not target_table:
-        print(hdr)
-        raise RuntimeError("Couldn't find the CLOs table.")
+        raise RuntimeError("❌ Couldn't find the CLOs table.")
 
     code_pattern = re.compile(r"^[1-3]\.(?!0$)\d+")
 
