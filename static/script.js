@@ -1,4 +1,4 @@
-// Upload logic
+// ===== Upload logic =====
 const uploadBtn = document.getElementById('uploadBtn');
 const fileInput = document.getElementById('fileInput');
 const specType = document.getElementById('specType');
@@ -26,11 +26,33 @@ uploadBtn.addEventListener('click', () => {
     return;
   }
 
-  message.textContent = 'File uploaded successfully as ' + selectedType + '.';
-  message.className = 'message success';
+  const formData = new FormData();
+  formData.append('docx_files', file);
+  formData.append('file_type', selectedType);
+
+  message.textContent = '⏳ Uploading... please wait.';
+  message.className = 'message';
+
+  fetch('/upload', {
+    method: 'POST',
+    body: formData
+  })
+    .then(res => res.text())
+    .then(data => {
+      message.innerHTML = data.includes('✅')
+        ? '✅ File processed and uploaded to Firebase.'
+        : data;
+      message.className = data.includes('✅') ? 'message success' : 'message error';
+    })
+    .catch(err => {
+      console.error('Error:', err);
+      message.textContent = '⚠️ Error uploading file.';
+      message.className = 'message error';
+    });
 });
 
-// Chart logic
+
+// ===== Chart logic =====
 const departmentData = {
   BIO: ['BIO101', 'BIO210', 'BIO390'],
   CHEM: ['CHEM101', 'CHEM202'],
@@ -120,7 +142,7 @@ loadBtn.addEventListener('click', () => {
   showQueryList(dept, code);
 });
 
-// Show list of queries used
+// ===== Show list of queries used =====
 function showQueryList(dept, code) {
   const queryList = document.getElementById('queryList');
   queryList.innerHTML = '';
