@@ -17,6 +17,7 @@ db = firestore.client()
 # 🏠 الصفحة الرئيسية
 @app.route('/')
 def index():
+    
     return render_template('index.html')
 
 # 📤 رفع الملف ومعالجته
