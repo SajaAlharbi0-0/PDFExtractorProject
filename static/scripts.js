@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
 uploadBtn?.addEventListener('click', () => {
   const file = fileInput.files[0];
   const selectedType = specType.value;
@@ -212,12 +211,12 @@ loadBtn.addEventListener('click', () => {
       }
 
       const outcomesHtml = res.data.map(course => {
-  const details = course.data.map(item =>
-    `<li style="color: white;"><strong>Outcome:</strong> ${item.outcome}<br><strong>Assessed by:</strong> ${item.assessment}</li>`
-  ).join('');
+        const details = course.data.map(item =>
+          `<li><strong>Outcome:</strong> ${item.outcome}<br><strong>Assessed by:</strong> ${item.assessment}</li>`
+        ).join('');
 
-  return `<h3 style="color: skyblue;">${course.course}</h3><ul>${details}</ul>`;
-}).join('');
+        return `<h3>${course.course}</h3><ul>${details}</ul>`;
+      }).join('');
 
       chartError.innerHTML = outcomesHtml;
       chartError.style.display = 'block';
@@ -286,13 +285,13 @@ loadBtn.addEventListener('click', () => {
         return;
       }
 
-        const resourcesHtml = res.data.map(course => {
+      const resourcesHtml = res.data.map(course => {
         const resList = Object.entries(course.resources).map(([category, items]) => {
-          const itemsHtml = items.length ? items.map(r => `<li style="color: #ffffff;>${r}</li style="color: #ffffff>`).join('') : "<li>None listed</li>";
-          return `<strong style="color: #ffffff;>${category}:</strong><ul>${itemsHtml}</ul>`;
+          const itemsHtml = items.length ? items.map(r => `<li>${r}</li>`).join('') : "<li>None listed</li>";
+          return `<strong>${category}:</strong><ul>${itemsHtml}</ul>`;
         }).join('');
 
-        return `<h3 style="color: skyblue;>${course.course}</h3>${resList}<hr>`;
+        return `<h3>${course.course}</h3>${resList}<hr>`;
       }).join('');
 
       chartError.innerHTML = resourcesHtml;
