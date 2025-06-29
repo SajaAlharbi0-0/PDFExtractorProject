@@ -115,17 +115,13 @@ let chartAllInstance = null;
 let chartSubInstance = null;
 
 loadBtn.addEventListener('click', () => {
-  document.getElementById("queryList").innerHTML = '';
-
   const fileType = document.getElementById('fileType').value;
   const department = document.getElementById('department').value;
   const subjectCode = document.getElementById('subjectCode').value.trim();
   const chartType = document.getElementById('chartType').value;
-  const viewType = document.getElementById('viewType').value;
 
   chartError.style.display = 'none';
   chartSubjectCanvas.style.display = 'none';
-  chartAllCanvas.style.display = 'none';
 
   if (chartAllInstance) chartAllInstance.destroy();
   if (chartSubInstance) chartSubInstance.destroy();
@@ -136,17 +132,18 @@ loadBtn.addEventListener('click', () => {
     return;
   }
 
-  fetch('/get_charts_data', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      fileType,
-      department,
-      subjectCode,
-      chartType,
-      viewType
+  // ===== Chart Type 1: Assessment Distribution =====
+  if (chartType === 'assessment') {
+    fetch('/get_course_charts_data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fileType,
+        department,
+        subjectCode,
+        chartType
+      })
     })
-  })
     .then(res => res.json())
     .then(res => {
       if (res.status !== 'success') {
@@ -160,105 +157,157 @@ loadBtn.addEventListener('click', () => {
       const title = res.data.chartTitle || 'Chart';
       const isSingle = res.isSingleCourse;
 
-      const chartArea = document.getElementById("queryList");
-
-      if (viewType === 'chart') {
-        const canvas = isSingle ? chartSubjectCanvas : chartAllCanvas;
-        canvas.style.display = 'block';
-        chartArea.innerHTML = '';
-        chartArea.appendChild(canvas);
-        canvas.width = 1000; // 🔁 عرض أوسع
-        canvas.height = 500;
-
-
-        const ctx = canvas.getContext('2d');
-
-        let chartKind = 'bar';
-        if (chartType === 'evaluation') chartKind = 'pie';
-        else if (chartType === 'stakeholders') chartKind = 'scatter';
-
-        const data = chartKind === 'scatter'
-          ? {
-              datasets: [{
-                label: title,
-                data: values,
-                backgroundColor: 'blue'
-              }]
-            }
-          : {
-              labels,
-              datasets: [{
-                label: title,
-                data: values,
-                backgroundColor: ['#4f4a8b', '#d25629', '#058646', '#999']
-              }]
-            };
-
-        const options = {
-          responsive: true,
-          plugins: { legend: { display: false } },
-        };
-
-        if (chartKind === 'bar') {
-          options.scales = {
-            x: {
-              ticks: {
-                autoSkip: false,
-                maxRotation: 0,
-                minRotation: 0,
-                font: { size: 12 }
-              }
-            }
-          };
-        } else if (chartKind === 'scatter') {
-          options.scales = {
-            x: {
-              type: 'category',
-              title: { display: true, text: 'Stakeholders' },
-              labels: [
-                "Department/College",
-                "Field Supervisor",
-                "Student",
-                "Teaching Staff",
-                "Training Organization"
-              ],
-              ticks: {
-                autoSkip: false,
-                maxRotation: 45,
-                minRotation: 45,
-                font: { size: 12 }
-              }
-            },
-            y: {
-              type: 'category',
-              title: { display: true, text: 'Activities' }
-            }
-          };
-        }
-
-        const chart = new Chart(ctx, {
-          type: chartKind,
-          data: data,
-          options: options
+      if (isSingle) {
+        chartSubjectCanvas.style.display = 'block';
+        chartSubInstance = new Chart(chartSubjectCanvas, {
+          type: 'pie',
+          data: {
+            labels,
+            datasets: [{
+              label: title,
+              data: values,
+              backgroundColor: ['#4f4a8b', '#d25629', '#058646', '#999']
+            }]
+          },
+          options: { responsive: true }
         });
-
-        if (isSingle) chartSubInstance = chart;
-        else chartAllInstance = chart;
-
-      } else if (viewType === 'table') {
-        if (res.html) {
-          chartArea.innerHTML = res.html;
-        } else {
-          chartArea.innerHTML = '<p>No data available for this query.</p>';
-        }
+      } else {
+        chartAllInstance = new Chart(chartAllCanvas, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [{
+              label: title,
+              data: values,
+              backgroundColor: '#4f4a8b'
+            }]
+          },
+          options: { responsive: true }
+        });
       }
-
     })
     .catch(() => {
       chartError.textContent = '⚠️ Error connecting to server.';
       chartError.style.display = 'block';
     });
+
+  // ===== Chart Type 2: Learning Outcomes =====
+  } else if (chartType === 'outcomes') {
+    fetch('/get_learning_outcomes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fileType,
+        department,
+        subjectCode
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.status !== 'success') {
+        chartError.textContent = res.message || 'Failed to load outcomes data.';
+        chartError.style.display = 'block';
+        return;
+      }
+
+      const outcomesHtml = res.data.map(course => {
+        const details = course.data.map(item =>
+          `<li><strong>Outcome:</strong> ${item.outcome}<br><strong>Assessed by:</strong> ${item.assessment}</li>`
+        ).join('');
+
+        return `<h3>${course.course}</h3><ul>${details}</ul>`;
+      }).join('');
+
+      chartError.innerHTML = outcomesHtml;
+      chartError.style.display = 'block';
+    })
+    .catch(() => {
+      chartError.textContent = '⚠️ Error connecting to server.';
+      chartError.style.display = 'block';
+    });
+
+  // ===== Chart Type 3: Required vs Elective =====
+  } else if (chartType === 'elective') {
+    fetch('/get_required_vs_elective', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fileType,
+        department
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.status !== 'success') {
+        chartError.textContent = res.message || 'Failed to load data.';
+        chartError.style.display = 'block';
+        return;
+      }
+
+      const required = res.data.required;
+      const elective = res.data.elective;
+      const deptName = res.data.department;
+
+      chartAllInstance = new Chart(chartAllCanvas, {
+        type: 'bar',
+        data: {
+          labels: ['Required', 'Elective'],
+          datasets: [{
+            label: `Required vs Elective in ${deptName}`,
+            data: [required, elective],
+            backgroundColor: ['steelblue', 'darkorange']
+          }]
+        },
+        options: { responsive: true }
+      });
+    })
+    .catch(() => {
+      chartError.textContent = '⚠️ Error connecting to server.';
+      chartError.style.display = 'block';
+    });
+
+  // ===== Chart Type 4: Learning Resources =====
+  } else if (chartType === 'resources') {
+    fetch('/get_learning_resources', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fileType,
+        department,
+        subjectCode
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.status !== 'success') {
+        chartError.textContent = res.message || 'Failed to load learning resources.';
+        chartError.style.display = 'block';
+        return;
+      }
+
+      const resourcesHtml = res.data.map(course => {
+        const resList = Object.entries(course.resources).map(([category, items]) => {
+          const itemsHtml = items.length ? items.map(r => `<li>${r}</li>`).join('') : "<li>None listed</li>";
+          return `<strong>${category}:</strong><ul>${itemsHtml}</ul>`;
+        }).join('');
+
+        return `<h3>${course.course}</h3>${resList}<hr>`;
+      }).join('');
+
+      chartError.innerHTML = resourcesHtml;
+      chartError.style.display = 'block';
+    })
+    .catch(() => {
+      chartError.textContent = '⚠️ Error connecting to server.';
+      chartError.style.display = 'block';
+    });
+
+  } else {
+    chartError.textContent = '⚠️ This chart type is not implemented yet.';
+    chartError.style.display = 'block';
+  }
 });
+
 
 
 // ===== Update Chart Type Options Based on File Type & View =====

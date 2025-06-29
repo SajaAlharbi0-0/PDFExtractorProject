@@ -1,4 +1,7 @@
 import json
+import os
+
+# --- ربط كل كورس بملفه ---
 course_files = {
     "STAT110": "crs sp1 (1).json",
     "PHYS110": "crs_sp2 (1).json",
@@ -11,38 +14,46 @@ course_files = {
     "FNU451": "crs sp7.json",
     "BIO444": "crs sp8.json"
 }
-department = input("Enter Department (STAT / PHYS / BIO / FNU / MET): ").strip().upper()
-code = input("Enter Course Code (110 / 241 / 491 / 121 / 471 / 444/ 450 / 451) [Optional]: ").strip()
-if code:
-    course_key = department + code
-    if course_key in course_files:
-        target_keys = [course_key]
+
+# --- دالة قابلة للاستدعاء من Flask ---
+def get_learning_resources(department, code=None):
+    department = department.strip().upper()
+    target_keys = []
+
+    if code:
+        course_key = department + code.strip()
+        if course_key in course_files:
+            target_keys = [course_key]
+        else:
+            return {"status": "error", "message": f"No file found for {course_key}"}
     else:
-        print(f"❌ No file found for {course_key}")
-        exit()
-else:
-    target_keys = [k for k in course_files if k.startswith(department)]
-    if not target_keys:
-        print(f"❌ No courses found for department {department}")
-        exit()
-for key in target_keys:
-    json_file = course_files[key]
-    try:
-        with open(json_file, encoding="utf-8") as f:
-            data = json.load(f)
+        target_keys = [k for k in course_files if k.startswith(department)]
+        if not target_keys:
+            return {"status": "error", "message": f"No courses found for department {department}"}
 
-        resources = data["Sections"]["E"]["content"]["References and Learning Resources"]
+    results = []
+    for key in target_keys:
+        json_file = course_files[key]
 
-        print(f"\n📚 Learning Resources for {key}:\n")
+        if not os.path.exists(json_file):
+            continue
 
-        for category, items in resources.items():
-            print(f"🔹 {category}:")
-            if not items or items == ["None"]:
-                print("   - None listed")
-            else:
-                for ref in items:
-                    print(f"   - {ref}")
-            print("")
+        try:
+            with open(json_file, encoding="utf-8") as f:
+                data = json.load(f)
 
-    except Exception as e:
-        print(f"❌ Error in {json_file}: {e}")
+            resources = data["Sections"]["E"]["content"]["References and Learning Resources"]
+
+            formatted_resources = {}
+            for category, items in resources.items():
+                formatted_resources[category] = items if items and items != ["None"] else []
+
+            results.append({
+                "course": key,
+                "resources": formatted_resources
+            })
+
+        except Exception as e:
+            return {"status": "error", "message": f"Error reading {json_file}: {e}"}
+
+    return {"status": "success", "data": results}

@@ -14,51 +14,51 @@ course_files = {
     "BIO444": "crs sp8.json",
 }
 
-# --- إدخال المستخدم ---
-department = input("Enter Department (STAT / PHYS / BIO / FNU / MET): ").strip().upper()
-code = input("Enter Course Code (110 / 241 / 491 / 121 / 471 / 444/ 450 / 451) [Optional]: ").strip()
+def get_learning_outcomes(department, code=None):
+    department = department.strip().upper()
+    code = code.strip() if code else ""
 
-
-# --- تحديد المفاتيح المستهدفة ---
-if code:
-    course_key = department + code
-    if course_key in course_files:
+    if code:
+        course_key = department + code
+        if course_key not in course_files:
+            return {"status": "error", "message": f"No file found for {course_key}"}
         target_keys = [course_key]
     else:
-        print(f"❌ No file found for {course_key}")
-        exit()
-else:
-    target_keys = [k for k in course_files if k.startswith(department)]
-    if not target_keys:
-        print(f"❌ No courses found for department {department}")
-        exit()
+        target_keys = [k for k in course_files if k.startswith(department)]
+        if not target_keys:
+            return {"status": "error", "message": f"No courses found for department {department}"}
 
-# --- عرض مخرجات التعلم وطرق التقييم ---
-for key in target_keys:
-    json_file = course_files[key]
+    results = []
 
-    try:
-        with open(json_file, encoding="utf-8") as f:
-            data = json.load(f)
+    for key in target_keys:
+        json_file = course_files[key]
 
-        sections_b = data["Sections"]["B"]
+        try:
+            with open(json_file, encoding="utf-8") as f:
+                data = json.load(f)
 
-        print(f"\n📘 Course Learning Outcomes and Assessment Methods for {key}:\n")
-        found = False
+            sections_b = data["Sections"]["B"]
 
-        for outcomes_list in sections_b.values():
-            if not outcomes_list:
-                continue
-            for outcome in outcomes_list:
-                clo = outcome.get("Course Learning Outcome", "").strip()
-                assessment = outcome.get("Assessment Methods", "").strip()
-                if clo:
-                    print(f"➤ Outcome: {clo}")
-                    print(f"  Assessed by: {assessment}\n")
-                    found = True
+            course_results = []
 
-        if not found:
-            print("⚠️ No learning outcomes found.")
+            for outcomes_list in sections_b.values():
+                if not outcomes_list:
+                    continue
+                for outcome in outcomes_list:
+                    clo = outcome.get("Course Learning Outcome", "").strip()
+                    assessment = outcome.get("Assessment Methods", "").strip()
+                    if clo:
+                        course_results.append({
+                            "outcome": clo,
+                            "assessment": assessment
+                        })
 
-    except Exception as e:
-        print(f"❌ Error in {json_file}: {e}")
+            results.append({
+                "course": key,
+                "data": course_results
+            })
+
+        except Exception as e:
+            return {"status": "error", "message": f"Error in {json_file}: {e}"}
+
+    return {"status": "success", "data": results}

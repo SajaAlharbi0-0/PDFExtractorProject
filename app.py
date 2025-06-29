@@ -2,6 +2,12 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, f
 import tempfile
 import firebase_admin
 from firebase_admin import credentials, firestore
+from Crs_Query1 import get_assessment_data  # تأكد أن الملف بنفس المجلد أو عدل الاستيراد حسب المسار
+from Crs_Query2 import get_learning_outcomes
+from Crs_Query3 import get_required_vs_elective
+from Crs_Query4 import get_learning_resources
+
+
 from exp_Q import (
     load_location_chart,
     load_clo_group_chart,
@@ -14,7 +20,7 @@ from firebase_config import db
 
 
 # استيراد دوال التحويل
-from exp1 import extract_to_json  # ملف التدريب الميداني
+from exp import extract_to_json  # ملف التدريب الميداني
 from crs import extract_course_to_json  # ملف توصيف المقرر
 
 app = Flask(__name__)
@@ -179,6 +185,114 @@ def get_charts_data():
 
 
 
+
+#Crs_Query1
+@app.route('/get_course_charts_data', methods=['POST'])
+def get_course_charts_data_route():
+    data = request.get_json()
+    file_type = data.get('fileType', '')
+    department = data.get('department', '')
+    subject_code = data.get('subjectCode', '').strip()
+    chart_type = data.get('chartType', '')
+
+    if file_type != "Course":
+        return jsonify({"status": "error", "message": "Only Course type supported for this chart."})
+
+    if not department or not chart_type:
+        return jsonify({"status": "error", "message": "Missing required parameters."})
+
+    result = get_assessment_data(department, subject_code if subject_code else None)
+
+    if result["status"] != "success":
+        return jsonify(result)
+
+    # تجهيز البيانات للرسم
+    if result["isSingleCourse"]:
+        chart_data = result["data"][0]
+        return jsonify({
+            "status": "success",
+            "isSingleCourse": True,
+            "data": {
+                "labels": chart_data["labels"],
+                "values": chart_data["values"],
+                "chartTitle": f"Assessment Distribution - {chart_data['course']}"
+            }
+        })
+    else:
+        # تجميع الدرجات لكل كورس في نفس الرسم
+        labels = []
+        values = []
+        for item in result["data"]:
+            total_score = sum(item["values"])
+            labels.append(item["course"])
+            values.append(total_score)
+
+        return jsonify({
+            "status": "success",
+            "isSingleCourse": False,
+            "data": {
+                "labels": labels,
+                "values": values,
+                "chartTitle": "Total Assessment Distribution by Course"
+            }
+        })
+
+
+#Crs_Query2
+@app.route('/get_learning_outcomes', methods=['POST'])
+def get_learning_outcomes_route():
+    data = request.get_json()
+    file_type = data.get('fileType', '')
+    department = data.get('department', '')
+    subject_code = data.get('subjectCode', '').strip()
+
+    if file_type != "Course":
+        return jsonify({"status": "error", "message": "Only Course type supported for this chart."})
+
+    if not department:
+        return jsonify({"status": "error", "message": "Missing required parameters."})
+
+    result = get_learning_outcomes(department, subject_code if subject_code else None)
+
+    return jsonify(result)
+
+
+#Crs_Query3
+@app.route('/get_required_vs_elective', methods=['POST'])
+def get_required_vs_elective_route():
+    data = request.get_json()
+    file_type = data.get('fileType', '')
+    department = data.get('department', '').strip()
+
+    if file_type != "Course":
+        return jsonify({"status": "error", "message": "Only Course type supported for this chart."})
+
+    if not department:
+        return jsonify({"status": "error", "message": "Missing required parameters."})
+
+    result = get_required_vs_elective(department)
+
+    return jsonify(result)
+
+# Crs_Query4 - Learning Resources
+@app.route('/get_learning_resources', methods=['POST'])
+def get_learning_resources_route():
+    data = request.get_json()
+    file_type = data.get('fileType', '')
+    department = data.get('department', '').strip()
+    subject_code = data.get('subjectCode', '').strip()
+
+    if file_type != "Course":
+        return jsonify({"status": "error", "message": "Only Course type supported for this chart."})
+
+    if not department:
+        return jsonify({"status": "error", "message": "Missing required parameters."})
+
+    result = get_learning_resources(department, subject_code if subject_code else None)
+    return jsonify(result)
+
+
+
 # ✅ تشغيل الخادم
 if __name__ == '__main__':
     app.run(debug=True)
@@ -200,9 +314,3 @@ if __name__ == '__main__':
 
 
 
-
-
-
-# ✅ تشغيل الخادم
-if __name__ == '__main__':
-    app.run(debug=True)
