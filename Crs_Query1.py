@@ -1,71 +1,74 @@
-import json
-
-# ربط كل كورس بملفه
-course_files = {
-    "STAT110": "crs sp1 (1).json",
-    "PHYS110": "crs_sp2 (1).json",
-    "BIO241": "crs_sp3.json",
-    "BIO491": "crs sp4.json",
-    "FNU121": "crs sp6.json",
-    "FNU471": "crs sp5.json",
-    "MET450": "crs sp-elec.json",
-    "MET491": "crs sp11.json",
-    "FNU451": "crs sp7.json",
-    "BIO444": "crs sp8.json"
-}
-
+import re
+from firebase_config import db
 
 def get_assessment_data(department, code=None):
-    department = department.upper()
-    target_keys = []
+    department = department.strip().upper()
+    code = code.strip() if code else ""
 
-    if code:
-        course_key = department + code
-        if course_key in course_files:
-            target_keys = [course_key]
-        else:
-            return {"status": "error", "message": f"No file found for {course_key}"}
-    else:
-        target_keys = [k for k in course_files if k.startswith(department)]
-        if not target_keys:
-            return {"status": "error", "message": f"No courses found for department {department}"}
+    all_labels = []
+    all_values = []
 
-    all_data = []
-    for key in target_keys:
-        json_file = course_files[key]
+    try:
+        collection = db.collection("course_specification").stream()
+    except Exception as e:
+        return {"status": "error", "message": f"Firebase error: {e}"}
+
+    for doc in collection:
+        doc_data = doc.to_dict().get("data", {})
+        course_code = doc_data.get("Course Info", {}).get("Course Code", "").replace(" ", "").upper()
+
+        if not course_code.startswith(department):
+            continue
+        if code and not course_code.endswith(code):
+            continue
 
         try:
-            with open(json_file, encoding="utf-8") as f:
-                data = json.load(f)
+            assessments = doc_data["Sections"]["D"]["content"]["Assessment Activities"]
+        except KeyError:
+            continue
 
-            assessments = data["Sections"]["D"]["content"]["Assessment Activities"]
-            names = [a["Activity"] for a in assessments]
-            scores = []
+        labels = []
+        values = []
 
-            for a in assessments:
-                score_str = a["Score"].replace('%', '').strip()
-                try:
-                    scores.append(float(score_str))
-                except ValueError:
-                    continue
-
-            if not scores:
+        for a in assessments:
+            activity = a.get("Activity", "").strip()
+            score_str = re.sub(r'[^0-9.]', '', a.get("Score", ""))
+            if not activity or not score_str:
+                continue
+            try:
+                values.append(float(score_str))
+                labels.append(activity)
+            except ValueError:
                 continue
 
-            all_data.append({
-                "course": key,
-                "labels": names,
-                "values": scores
-            })
+        if not labels or not values:
+            continue
 
-        except Exception as e:
-            return {"status": "error", "message": f"Error in {json_file}: {e}"}
+        # ✅ return early if one course
+        if code:
+            return {
+                "status": "success",
+                "isSingleCourse": True,
+                "chartTitle": f"Assessment Distribution - {course_code}",
+                "data": {
+                    "labels": labels,
+                    "values": values
+                }
+            }
 
-    if not all_data:
-        return {"status": "error", "message": "No valid score data found."}
+        # aggregate all courses
+        all_labels.extend([f"{course_code}: {label}" for label in labels])
+        all_values.extend(values)
+
+    if not all_labels:
+        return {"status": "error", "message": "No valid assessment data found."}
 
     return {
         "status": "success",
-        "isSingleCourse": len(all_data) == 1,
-        "data": all_data
+        "isSingleCourse": False,
+        "chartTitle": f"Assessment Distribution for {department}",
+        "data": {
+            "labels": all_labels,
+            "values": all_values
+        }
     }
