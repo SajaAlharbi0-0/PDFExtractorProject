@@ -82,40 +82,121 @@
   <!-- Charts Section -->
   <section id="charts" class="section">
     <h2>Evaluation Charts</h2>
+<div class="upload-form">
+  <div class="chart-filters">
+    
+    <!-- File Type Selection -->
+    <select id="fileType" class="dropdown" onchange="handleFileTypeChange()">
+      <option value="" disabled selected>Select File Type</option>
+      <option value="experience">Experience</option>
+      <option value="course">Course</option>
+    </select>
 
-    <div class="upload-form">
-      <div class="chart-filters">
-        <select id="fileType" class="dropdown">
-          <option value="" disabled selected>Select File Type</option>
-          <option value="experience">Experience</option>
-          <option value="course">Course</option>
-        </select>
+    <!-- Chart Type Selection -->
+    <select id="chartType" class="dropdown" onchange="updateDepartments()">
+      <option value="" disabled selected>Select Chart Type</option>
+    </select>
 
-        <select id="department" class="dropdown">
-          <option value="" disabled selected>Select Department</option>
-          <option value="BIO">BIO</option>
-          <option value="STAT">STAT</option>
-          <option value="PHYS">PHYS</option>
-          <option value="FNU">FNU</option>
-          <option value="MET">MET</option>
-        </select>
+    <!-- Department Selection -->
+    <select id="department" class="dropdown">
+      <option value="" disabled selected>Select Department</option>
+    </select>
 
-        <input type="text" id="subjectCode" class="file-input"
-               placeholder="e.g. 390 (optional)"
-               maxlength="3"
-               pattern="\\d{3}"
-               oninput="validateSubjectCode(this)" />
+    <!-- Subject Code Input -->
+    <input type="text" id="subjectCode" class="file-input"
+           placeholder="e.g. 390 (optional)"
+           maxlength="3"
+           pattern="\\d{3}"
+           oninput="validateSubjectCode(this)" />
 
-        <select id="chartType" class="dropdown">
-          <option value="" disabled selected>Select Chart Type</option>
-          <option value="assessment">Assessment Distribution</option>
-          <option value="evaluation">Direct vs Indirect Evaluation</option>
-          <option value="stakeholders">Activity & Stakeholders Distribution</option>
-        </select>
+    <button id="loadCharts" class="upload-btn">Load Charts</button>
+  </div>
+</div>
 
-        <button id="loadCharts" class="upload-btn">Load Charts</button>
-      </div>
-    </div>
+<script>
+  function handleFileTypeChange() {
+    updateChartTypes();
+    updateDepartments();
+  }
+
+  function updateChartTypes() {
+    const chartSelect = document.getElementById("chartType");
+    const fileType = document.getElementById("fileType").value;
+
+    chartSelect.innerHTML = '<option value="" disabled selected>Select Chart Type</option>';
+
+    const courseCharts = [
+      { value: "assessment", label: "Assessment Distribution" },
+      { value: "outcomes", label: "Learning Outcomes & Assessment" },
+      { value: "required", label: "Required vs Elective Courses per Department" },
+      { value: "resources", label: "Learning Resources and References" }
+    ];
+
+    const experienceCharts = [
+      { value: "location", label: "Field Experience Location" },
+      { value: "cloCount", label: "CLO Count By Group" },
+      { value: "stakeholder", label: "Stakeholder Activities" },
+      { value: "evaluation", label: "Evaluation Methods (Direct or Indirect)" }
+    ];
+
+    const charts = fileType === "experience" ? experienceCharts : courseCharts;
+
+    charts.forEach(chart => {
+      const option = document.createElement("option");
+      option.value = chart.value;
+      option.textContent = chart.label;
+      chartSelect.appendChild(option);
+    });
+  }
+
+  function updateDepartments() {
+    const departmentSelect = document.getElementById("department");
+    const fileType = document.getElementById("fileType").value;
+    const chartType = document.getElementById("chartType").value;
+
+    departmentSelect.innerHTML = '<option value="" disabled selected>Select Department</option>';
+
+    const courseDepartments = ["BIO", "STAT", "PHYS", "FNU", "MET"];
+    const fullNamedDepartments = [
+      "STATISTICS",
+      "PHYSICS",
+      "DEPARTMENT OF BIOLOGICAL SCIENCES",
+      "FOOD AND Nutrition",
+      "Meteorology"
+    ];
+    const experienceDepartments = ["BIO", "FNU"];
+
+    let departments = [];
+
+    if (fileType === "experience") {
+      departments = experienceDepartments;
+    } else if (fileType === "course") {
+      if (chartType === "required") {
+        departments = fullNamedDepartments;
+      } else {
+        departments = courseDepartments;
+      }
+    }
+
+    departments.forEach(dept => {
+      const option = document.createElement("option");
+      option.value = dept;
+      option.textContent = dept;
+      departmentSelect.appendChild(option);
+    });
+  }
+
+  function validateSubjectCode(input) {
+    const pattern = /^\d{0,3}$/;
+    if (!pattern.test(input.value)) {
+      input.setCustomValidity("Please enter up to 3 digits only.");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
+</script>
+
+
 
     <div id="chartArea">
       <canvas id="chartAll" width="400" height="250"></canvas>
