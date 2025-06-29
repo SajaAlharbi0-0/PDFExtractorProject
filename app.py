@@ -1,18 +1,27 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, get_flashed_messages
 import tempfile
 import firebase_admin
 from firebase_admin import credentials, firestore
+from exp_Q import (
+    load_location_chart,
+    load_clo_group_chart,
+    load_stakeholders_chart,
+    load_evaluation_chart
+)
+
+import json
+from firebase_config import db
+
 
 # استيراد دوال التحويل
-from exp import extract_to_json  # ملف التدريب الميداني
+from exp1 import extract_to_json  # ملف التدريب الميداني
 from crs import extract_course_to_json  # ملف توصيف المقرر
 
 app = Flask(__name__)
+app.secret_key = 'rakn_eduSpec_2025'
 
-# 🔐 إعداد Firebase
-cred = credentials.Certificate("secrets/firebase_key.json")
-firebase_admin.initialize_app(cred)
-db = firestore.client()
+
+
 
 # 🏠 الصفحة الرئيسية
 @app.route('/')
@@ -27,11 +36,13 @@ def upload():
 
     # ✅ التحقق من رفع الملفات
     if not uploaded_files:
-        return render_template("index.html", result="❌ No file was uploaded.", result_class="error")
+        flash("❌ No file was uploaded.", "error")
+        return redirect(url_for('index') + '#upload')
 
     # ✅ التحقق من نوع الملف المدعوم
     if file_type not in ['Experience', 'Course']:
-        return render_template("index.html", result="❌ Unsupported file type. Please choose 'Course' or 'Experience'.", result_class="error")
+        flash("❌ Unsupported file type. Please choose 'Course' or 'Experience'.", "error")
+        return redirect(url_for('index') + '#upload')
 
     try:
         uploaded_names = []
@@ -60,10 +71,13 @@ def upload():
             uploaded_names.append(uploaded_file.filename)
 
         success_message = f"✅ Files uploaded successfully: {', '.join(uploaded_names)}"
-        return render_template("index.html", result=success_message, result_class="success")
+        flash(success_message, "success")
+        return redirect(url_for('index') + '#upload')
 
     except Exception as e:
-        return render_template("index.html", result="⚠️ An error occurred during processing.", result_class="error")
+        flash("⚠️ An error occurred during processing.", "error")
+        return redirect(url_for('index') + '#upload')
+
 
 
 # ✅ إرجاع قائمة الأقسام (BIO, FNU...) حسب نوع الملف
@@ -105,16 +119,69 @@ def get_departments():
 
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+    
+
+@app.route("/get_charts_data", methods=["POST"])
+def get_charts_data():
+    try:
+        req = request.get_json()
+        file_type = req.get("fileType")
+        department = req.get("department")
+        subject_code = req.get("subjectCode", "").strip()
+        chart_type = req.get("chartType")
+        view_type = req.get("viewType", "").strip().lower()
+
+        if not department:
+            return jsonify({"status": "error", "message": "Missing department"})
+
+        if file_type == "Experience":
+            if chart_type == "location":
+                result = load_location_chart(department, subject_code)
+            elif chart_type == "clo_group":
+                result = load_clo_group_chart(department, subject_code)
+            elif chart_type == "stakeholders":
+                result = load_stakeholders_chart(department, subject_code)
+            elif chart_type == "evaluation":
+                result = load_evaluation_chart(department, subject_code)
+                print("=== DEBUG: Evaluation Chart Result ===")
+                print(result)
+            else:
+                return jsonify({"status": "error", "message": "Chart type not supported for Experience."})
+
+            # 🔁 سواء طلب عرض نصي أو شارت، نتحقق من المحتوى
+            if view_type == "table":
+                return jsonify({
+                    "status": "success",
+                    "html": result.get("html", ""),
+                    "data": {  # عشان ما يصير خطأ في JS
+                        "labels": [],
+                        "values": []
+                    },
+                    "isSingleCourse": result.get("isSingleCourse", False),
+                    "chartTitle": result.get("chartTitle", "")
+                })
+            else:  # chart
+                return jsonify({
+                    "status": "success",
+                    "data": result.get("data", {  # يدعم النتائج العادية
+                        "labels": [],
+                        "values": []
+                    }),
+                    "isSingleCourse": result.get("isSingleCourse", False),
+                    "chartTitle": result.get("chartTitle", "")
+                })
+
+        else:
+            return jsonify({"status": "error", "message": "Only Experience charts are supported."})
+
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
 
 
 
-
-
-
-
-
-
-
+# ✅ تشغيل الخادم
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 

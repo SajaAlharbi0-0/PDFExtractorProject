@@ -64,6 +64,15 @@ uploadBtn?.addEventListener('click', () => {
 });
 
 
+// ===== Show Output Type after selecting department =====
+document.getElementById("department").addEventListener("change", () => {
+  const selectedDept = document.getElementById("department").value;
+  if (selectedDept) {
+    document.getElementById("viewType").style.display = "block";
+  }
+});
+
+
 // ===== Load Departments =====
 function loadDepartments() {
   const fileType = document.getElementById("fileType").value;
@@ -106,13 +115,17 @@ let chartAllInstance = null;
 let chartSubInstance = null;
 
 loadBtn.addEventListener('click', () => {
+  document.getElementById("queryList").innerHTML = '';
+
   const fileType = document.getElementById('fileType').value;
   const department = document.getElementById('department').value;
   const subjectCode = document.getElementById('subjectCode').value.trim();
   const chartType = document.getElementById('chartType').value;
+  const viewType = document.getElementById('viewType').value;
 
   chartError.style.display = 'none';
   chartSubjectCanvas.style.display = 'none';
+  chartAllCanvas.style.display = 'none';
 
   if (chartAllInstance) chartAllInstance.destroy();
   if (chartSubInstance) chartSubInstance.destroy();
@@ -130,78 +143,157 @@ loadBtn.addEventListener('click', () => {
       fileType,
       department,
       subjectCode,
-      chartType
+      chartType,
+      viewType
     })
   })
-  .then(res => res.json())
-  .then(res => {
-    if (res.status !== 'success') {
-      chartError.textContent = res.message || 'Failed to load chart data.';
+    .then(res => res.json())
+    .then(res => {
+      if (res.status !== 'success') {
+        chartError.textContent = res.message || 'Failed to load chart data.';
+        chartError.style.display = 'block';
+        return;
+      }
+
+      const labels = res.data.labels;
+      const values = res.data.values;
+      const title = res.data.chartTitle || 'Chart';
+      const isSingle = res.isSingleCourse;
+
+      const chartArea = document.getElementById("queryList");
+
+      if (viewType === 'chart') {
+        const canvas = isSingle ? chartSubjectCanvas : chartAllCanvas;
+        canvas.style.display = 'block';
+        chartArea.innerHTML = '';
+        chartArea.appendChild(canvas);
+        canvas.width = 1000; // 🔁 عرض أوسع
+        canvas.height = 500;
+
+
+        const ctx = canvas.getContext('2d');
+
+        let chartKind = 'bar';
+        if (chartType === 'evaluation') chartKind = 'pie';
+        else if (chartType === 'stakeholders') chartKind = 'scatter';
+
+        const data = chartKind === 'scatter'
+          ? {
+              datasets: [{
+                label: title,
+                data: values,
+                backgroundColor: 'blue'
+              }]
+            }
+          : {
+              labels,
+              datasets: [{
+                label: title,
+                data: values,
+                backgroundColor: ['#4f4a8b', '#d25629', '#058646', '#999']
+              }]
+            };
+
+        const options = {
+          responsive: true,
+          plugins: { legend: { display: false } },
+        };
+
+        if (chartKind === 'bar') {
+          options.scales = {
+            x: {
+              ticks: {
+                autoSkip: false,
+                maxRotation: 0,
+                minRotation: 0,
+                font: { size: 12 }
+              }
+            }
+          };
+        } else if (chartKind === 'scatter') {
+          options.scales = {
+            x: {
+              type: 'category',
+              title: { display: true, text: 'Stakeholders' },
+              labels: [
+                "Department/College",
+                "Field Supervisor",
+                "Student",
+                "Teaching Staff",
+                "Training Organization"
+              ],
+              ticks: {
+                autoSkip: false,
+                maxRotation: 45,
+                minRotation: 45,
+                font: { size: 12 }
+              }
+            },
+            y: {
+              type: 'category',
+              title: { display: true, text: 'Activities' }
+            }
+          };
+        }
+
+        const chart = new Chart(ctx, {
+          type: chartKind,
+          data: data,
+          options: options
+        });
+
+        if (isSingle) chartSubInstance = chart;
+        else chartAllInstance = chart;
+
+      } else if (viewType === 'table') {
+        if (res.html) {
+          chartArea.innerHTML = res.html;
+        } else {
+          chartArea.innerHTML = '<p>No data available for this query.</p>';
+        }
+      }
+
+    })
+    .catch(() => {
+      chartError.textContent = '⚠️ Error connecting to server.';
       chartError.style.display = 'block';
-      return;
-    }
-
-    const labels = res.data.labels;
-    const values = res.data.values;
-    const title = res.data.chartTitle || 'Chart';
-    const isSingle = res.isSingleCourse;
-
-    if (isSingle) {
-      chartSubjectCanvas.style.display = 'block';
-      chartSubInstance = new Chart(chartSubjectCanvas, {
-        type: chartType === 'evaluation' ? 'pie' : 'bar',
-        data: {
-          labels,
-          datasets: [{
-            label: title,
-            data: values,
-            backgroundColor: ['#4f4a8b', '#d25629', '#058646', '#999']
-          }]
-        },
-        options: { responsive: true }
-      });
-    } else {
-      chartAllInstance = new Chart(chartAllCanvas, {
-        type: 'bar',
-        data: {
-          labels,
-          datasets: [{
-            label: title,
-            data: values,
-            backgroundColor: '#4f4a8b'
-          }]
-        },
-        options: { responsive: true }
-      });
-    }
-  })
-  .catch(() => {
-    chartError.textContent = '⚠️ Error connecting to server.';
-    chartError.style.display = 'block';
-  });
+    });
 });
 
 
-// ===== Update Chart Type Options Based on File Type =====
+// ===== Update Chart Type Options Based on File Type & View =====
 function updateChartTypeOptions() {
   const fileType = document.getElementById("fileType").value;
+  const viewType = document.getElementById("viewType")?.value;
   const chartTypeDropdown = document.getElementById("chartType");
 
   chartTypeDropdown.innerHTML = '<option value="" disabled selected>Select Chart Type</option>';
 
-  if (fileType === "Course") {
-    chartTypeDropdown.innerHTML += `
-      <option value="assessment">Assessment Distribution</option>
-      <option value="outcomes">Learning Outcomes & Assessment</option>
-      <option value="elective">Required vs Elective Courses per Department</option>
-      <option value="resources">Learning Resources and References</option>
-    `;
-  } else if (fileType === "Experience") {
-    chartTypeDropdown.innerHTML += `
-      <option value="location">Field Experience Location</option>
-      <option value="clo_group">CLO Count By Group</option>
-      <option value="stakeholders">Stakeholder Activities</option>
-      <option value="evaluation">Evaluation Methods (Direct or Indirect)</option>
-    `;
+  if (!viewType) return;
+
+  if (viewType === "chart") {
+    if (fileType === "Course") {
+      chartTypeDropdown.innerHTML += `
+        <option value="assessment">Assessment Distribution</option>
+        <option value="elective">Required vs Elective Courses per Department</option>
+      `;
+    } else if (fileType === "Experience") {
+      chartTypeDropdown.innerHTML += `
+        <option value="clo_group">CLO Count By Group</option>
+        <option value="stakeholders">Stakeholder Activities</option>
+        <option value="evaluation">Evaluation Methods (Direct or Indirect)</option>
+      `;
+    }
+  } else if (viewType === "table") {
+    if (fileType === "Course") {
+      chartTypeDropdown.innerHTML += `
+        <option value="outcomes">Learning Outcomes & Assessment</option>
+        <option value="resources">Learning Resources and References</option>
+      `;
+    } else if (fileType === "Experience") {
+      chartTypeDropdown.innerHTML += `
+        <option value="location">Field Experience Location</option>
+      `;
+    }
   }
 }
