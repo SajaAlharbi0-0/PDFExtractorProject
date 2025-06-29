@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduSpec – Smart Accreditation Assistant</title>
+  <title>Accura – Smart Accreditation Assistant</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
+
 
 </head>
 <body>
@@ -14,14 +14,14 @@
     <div class="nav-container">
       <div class="logo-container">
         <img  src="{{ url_for('static', filename='media/logo.png') }}" alt="Logo" class="logo-image" />
-        <span class="logo-text">EduSpec</span>
+        <span class="logo-text">Accura </span>
       </div>
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#overview">Overview</a></li>
         <li><a href="#who">Users</a></li>
         <li><a href="#upload">Upload</a></li>
-        <li><a href="#charts">Charts</a></li>
+        <li><a href="#charts">Reports&Statistics</a></li>
       </ul>
     </div>
   </nav>
@@ -30,7 +30,7 @@
   <section id="hero" class="hero">
     <div class="glass-container">
       <h1>Smarter Accreditation Starts Here</h1>
-      <p>Automate and visualize academic specification data with ease.</p>
+      <p>Accura is a professional platform that empowers educational institutions to manage accreditation, align course specifications, and ensure quality — all with accuracy.</p>
     </div>
   </section>
 
@@ -38,7 +38,7 @@
   <section id="overview" class="section">
     <div class="section-content">
       <h2>Project Overview</h2>
-      <p>Our mission is to automate the extraction of accreditation data from unstructured Word documents into structured, usable formats. This system supports Saudi universities in achieving accreditation goals and aligning with Vision 2030.</p>
+      <p>Our mission is to automate the extraction of accreditation data from smi-structured documents into structured, usable formats. This system supports Saudi universities in achieving accreditation goals and aligning with Vision 2030.</p>
     </div>
   </section>
 
@@ -59,9 +59,9 @@
         <p>Track learning outcomes, teaching methods, and assessments across all departments effortlessly.</p>
       </div>
       <div class="usage-card">
-        <h3>Institutional Planners</h3>
-        <p>Leverage automated data extraction to support accreditation and Vision 2030 compliance.</p>
-      </div>
+        <h3>Deanship of Quality and Academic Accreditation</h3>
+<p>Empower the deanship with automated data extraction tools to streamline accreditation processes, monitor course specifications, and ensure alignment with Vision 2030 goals.</p>
+</div>
     </div>
   </section>
 
@@ -69,7 +69,7 @@
     <!-- ========== Upload Section ========== -->
     
     <section id="upload" class="section">
-      <h2>Upload Specification</h2>
+      <h2>Upload File</h2>
       <form method="POST" enctype="multipart/form-data" action="/upload" class="upload-form">
         <select name="file_type" id="specType" class="dropdown" required>
           <option value="" disabled selected>Select Type</option>
@@ -96,15 +96,15 @@
 
     <!-- ========== Charts Section ========== -->
     <section id="charts" class="section">
-      <h2>Evaluation Charts</h2>
+      <h2>Reports and Statistics</h2>
       
       <div class="upload-form">
         <div class="chart-filters">
           <select id="fileType" class="dropdown"
                   onchange="loadDepartments(); updateChartTypeOptions();" required>
             <option value="" disabled selected>Select File Type</option>
-            <option value="Experience">Experience</option>
-            <option value="Course">Course</option>
+            <option value="Experience">Field Experience</option>
+            <option value="Course">Course Spacification</option>
           </select>
 
           <select id="department" class="dropdown" required >
@@ -122,7 +122,7 @@
           <select id="viewType" class="dropdown" style="display: none;" onchange="updateChartTypeOptions()" required>
             <option value="" disabled selected>Select Output Type</option>
             <option value="chart">Chart</option>
-            <option value="table">Printable Table</option>
+            <option value="table">Repots</option>
           </select>
 
           <select id="chartType" class="dropdown" required>
@@ -152,6 +152,8 @@
 
   <!-- ========== Scripts ========== -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
   <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
