@@ -16,7 +16,8 @@ course_files = {
 
 # --- إدخال المستخدم ---
 department = input("Enter Department (STAT / PHYS / BIO / FNU / MET): ").strip().upper()
-code = input("Enter Course Code (110 / 241 / 491) [Optional]: ").strip()
+code = input("Enter Course Code (110 / 241 / 491 / 121 / 471 / 444/ 450 / 451) [Optional]: ").strip()
+
 
 # --- تحديد المفاتيح المستهدفة ---
 if code:
